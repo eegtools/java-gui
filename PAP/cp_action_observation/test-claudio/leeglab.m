@@ -1,0 +1,1 @@
+addpath('C:\Users\User\Matlab-work\Toolbox\EEGLAB');

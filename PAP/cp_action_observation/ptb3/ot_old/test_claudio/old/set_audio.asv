@@ -1,0 +1,17 @@
+
+
+set_audio
+
+
+% Gestione scheda audio
+fc = 10000;
+ft = 440;
+Tmax = 2;
+t = linspace(0,4,Tmax*fc);
+s = sin(2*pi*ft.*t);
+ao = analogoutput('winsound')
+set(ao,'SampleRate',fc)
+set([ao],'TriggerType','Manual')
+
+chans = addchannel(ao,1);
+putdata(ao,s')

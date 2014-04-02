@@ -1,0 +1,644 @@
+% PSYCHTOOLBOX experiment : multisensory Action Observation for adults and children (healthy and Cerebral Palsy)
+% Author: Alberto Inuggi, September 2013.
+
+% SECTIONS:
+%   1)  local paths
+%   2)  string definition
+%   3)  data acquisitions objects (parallel, audio)
+%   4)  stimuli & task definition (permutations etc..)
+%   5)  temporal & graphics setting
+%   6)  output triggers definition
+%   7)  input (user selections: 7.1 subject name, 7.2 exp mode, 7.3 video side)
+%   8)  screen settings (start psychtoolbox
+%   9)  init vars
+%   10) TRAINING
+%   11) EXPERIMENT ( 11.1 check resume, 11.2 show stimuli, 11.3 check question, 11.4 check pause, 11.5 check rest)
+
+clear all 
+close all
+
+% =========================================================================
+% 1) LOCAL PATHS
+% =========================================================================
+
+
+...root_dir = 'C:\Documents and Settings\finisguerra\My Documents\MATLAB\cpchildren';
+...global_scripts_path='C:\Documents and Settings\finisguerra\My Documents\MATLAB\EEG_tools_svn\global_scripts\';
+...ptb3_scripts_path=fullfile(global_scripts_path, 'ptb3');
+
+root_dir = 'C:\Users\pippo\Documents\BEHAVIOUR_PLATFORM\behaviourPlatform@local\cpchildren\';
+global_scripts_path='C:\Users\pippo\Documents\BEHAVIOUR_PLATFORM\behaviourPlatform@svn\EEG_Tools\cp_action_observation\';
+ptb3_scripts_path=fullfile(global_scripts_path, 'ptb3');
+
+addpath(ptb3_scripts_path);
+
+% ===================================================================
+% 2) STRING DEFINITION 
+% ===================================================================
+%== screen instructions =====================================================
+txt_pre_samplevideos='Preparati! ti mostreremo alcuni video di esempio\n\n\n'; ...'Get ready! we'll show you some sample video\n\n\n'
+txt_letsgo='Cominciamo!';   ...'Let's go!'
+txt_start_question='Se ti e` tutto chiaro possiamo iniziare con l`esperimento\nPremi S per iniziare \nun qualsiasi altro tasto per rivedere i video'; ...'If everything is clear, we can start the experiment \nPress S key to start \nor any other key to review the videos'
+txt_pause='esperimento in PAUSA';...'PAUSE ...'
+txt_pause_resume='Preparati! stiamo sta per ripartire\n\n\n'; ...'Get Ready! The experiment is going to start\n\n\n', 'Let's start!'
+txt_big_pause='Questa parte dell esperimento e` finita\nriposati qualche minuto\nquando sei pronto, avvisa lo sperimentatore';  ...'This part of the experiment is finished Relac for a few minutes, when you're ready, warns the experimenter'
+txt_big_pause_resume='Fai un cenno quando sei pronto per ricominciare';... 'when you are ready, make a sign'
+
+
+% =========================================================================
+% 3) DATA ACQUISITION OBJECTS
+% =========================================================================
+isWindow=0;
+if  strncmp(system_dependent('getos'),'Microsoft',9)
+    isWindow=1;
+end
+
+if isWindow
+    ao = analogoutput('winsound');  % set the sound card to load and send audios when required. create an object mapping the soundcard
+    set(ao,'TriggerType','Manual'); % set the trigger to manual to use the trigger() and get a faster sound reproduction
+    chans = addchannel(ao,1);       %add an audio channel to the sound card to reproduce the sound
+else
+    ao='none';
+    chans='none';    
+end
+
+% if send_out_trigger ~ 0 run in test modality (without sending values to serial ports), if test==0 active 2 is supposed to be connected
+send_out_trigger=1;
+
+if ~send_out_trigger
+    dio=digitalio('parallel','LPT1');% crea oggetto porta parallela usando le impostazioni di default
+    line=addline(dio,0:7,'out');     % aggiunge una linea dati in output di 8 bit
+else
+    dio='none';
+    line='none';
+end
+
+try
+    
+% Check if Psychtoolbox is properly installed:
+AssertOpenGL;
+
+
+% ===================================================================
+% 4) STIMULI & TASK DEFINITION 
+% ===================================================================
+% accepted values are when : N_stimuli_x_cond * N_type_stim / N_block / N_available_video ..... is an integer
+N_games_block = 3;
+N_block=5;                                              % number of blocks composing the experiment, a 3-4 minutes rest is done during the experiment.
+N_type_stim=4;                                          % number of different types of stimuli
+N_stimuli_x_cond=60;                                    % number of stimuli for condition
+N_available_video=6;                                    % number of available video
+
+N_stimuli_x_cond_x_block=N_stimuli_x_cond / N_block;    % number of stimuli for condition for each block
+N_tot_stimuli=N_stimuli_x_cond * N_type_stim;           % TOTAL number of stimuli 
+N_tot_stimuli_x_block=N_tot_stimuli / N_block;          % number of stimuli for block
+
+N_video_repetition=N_stimuli_x_cond / N_available_video;  % 60/6=10
+
+N_random_questions=24; 
+N_stimuli_noquestions=N_tot_stimuli - N_random_questions;
+
+% PERMUTATION (each of the 3 block is permuted separately, then stimuli are then concatenated)
+% --- files
+
+% Control video:                    11,12,13,14,15,16
+% action observation (AO):          21,22,23,24,25,26
+% AO + congruent audio (AOCS):      31,32,33,34,35,36
+% AO + incongruent audio (AOIS):    41,42,43,44,45,46
+
+conditions_triggers_values={11,12,13,14,15,16; ...
+            21,22,23,24,25,26; ...
+            31,32,33,34,35,36; ...
+            41,42,43,44,45,46};
+
+video_file={'ctrl01','ctrl02','ctrl03','ctrl04','ctrl05','ctrl06'; ...
+            'ao01','ao02','ao03','ao04','ao05','ao06'; ...
+            'ao01','ao02','ao03','ao04','ao05','ao06'; ...
+            'ao01','ao02','ao03','ao04','ao05','ao06'};
+        
+audio_file={'none'      ,'none'      ,'none'      ,'none'      ,'none'      ,'none'       ;...
+            'none'      ,'none'      ,'none'      ,'none'      ,'none'      ,'none'       ;...
+            'cs01','cs02','cs03','cs04','cs05','cs06'; ...
+            'is01','is02','is03','is04','is05','is06'};         
+
+A=[1 2 3 4];        % --- conditions : controls, ao, aocs, aois
+
+ordered_list1=repmat(A,1,N_stimuli_x_cond_x_block);
+permutation1=randperm(N_tot_stimuli_x_block);
+trials_list1=ordered_list1(permutation1); 
+
+ordered_list2=repmat(A,1,N_stimuli_x_cond_x_block);
+permutation2=randperm(N_tot_stimuli_x_block);
+trials_list2=ordered_list2(permutation2); 
+
+ordered_list3=repmat(A,1,N_stimuli_x_cond_x_block);
+permutation3=randperm(N_tot_stimuli_x_block);
+trials_list3=ordered_list3(permutation3); 
+
+ordered_list4=repmat(A,1,N_stimuli_x_cond_x_block);
+permutation4=randperm(N_tot_stimuli_x_block);
+trials_list4=ordered_list4(permutation4); 
+
+ordered_list5=repmat(A,1,N_stimuli_x_cond_x_block);
+permutation5=randperm(N_tot_stimuli_x_block);
+trials_list5=ordered_list5(permutation5); 
+
+trials_list=cat(2,trials_list1, trials_list2, trials_list3, trials_list4, trials_list5);
+
+% permute stimuli....
+ordered_video_files=repmat(video_file, 1, N_video_repetition); ... create a matrix of 4x60 cells, replicating the base one (video_file)   
+video_files_list=cell(N_type_stim,N_stimuli_x_cond); 
+
+ordered_audio_files=repmat(audio_file, 1, N_video_repetition); ... create a matrix of 4x60 cells, replicating the base one (video_file)   
+audio_files_list=cell(N_type_stim,N_stimuli_x_cond); 
+
+ordered_triggers_values=repmat(conditions_triggers_values, 1, N_video_repetition); ... create a matrix of 4x60 cells, replicating the base one (video_file)   
+conditions_triggers_values=cell(N_type_stim,N_stimuli_x_cond); 
+
+
+for row=1:N_type_stim
+    permutation=randperm(N_stimuli_x_cond);
+
+    input_row=ordered_video_files(row,:);
+    video_files_list(row,:)=input_row(permutation);   
+
+    input_row=ordered_audio_files(row,:);
+    audio_files_list(row,:)=input_row(permutation);   
+    
+    input_row=ordered_triggers_values(row,:);
+    conditions_triggers_values(row,:)=input_row(permutation);   
+   
+end
+
+% define question trials onset
+question_appearance = zeros(1,N_tot_stimuli);
+question_pace = N_tot_stimuli/(N_random_questions+1);
+
+% onset of questions. pauses are at 80 and 160 stimuli
+qapp=[8 17 27 36 45 54 63 72 88 97 106 115 124 137 145 153 169 178 187 196 205 214 223 232];
+
+for i=1:N_random_questions
+    question_appearance(qapp(i))=1;
+end
+
+% define when to rest : two pauses are planned for children (mode 0), 4 pauses for adults (mode 1 & 2)
+rest_appearence=zeros(1,N_tot_stimuli);
+
+
+% ===================================================================
+% 5) TEMPORAL & GRAPHICS SETTINGS
+% ===================================================================
+
+% ==== temporal 
+stimulus_time=3;        % time of presentation for each stimulus in seconds
+fix_time=0.5;           % time of the red fixation cross at the beginning of the experimental block
+iti_time=1.5;           % fixed inter stimulus time in seconds (actual ITI = 1.5 + rand(1) )
+question_time=4;        % time of question panel 
+trigger_duration=0.02;  % duration of the trigger in sec. (to avoid trigger overlapping AND trigger detection even subsampling)
+sound_frame=45;         % frame at which start audio and send trigger (thought to be 1.5 sec @ 30 fps)
+sound_start_onset=1.5;  % latency, within each video, where audio must be triggered
+
+% ==== graphics 
+black = [0 0 0];
+white = [255 255 255];
+dot_size = 4;
+
+% ===================================================================
+%  6) OUTPUTS (TRIGGERS)
+% ===================================================================
+
+start_experiment_trigger_value = 1;
+pause_trigger_value = 2;                    % start: pause, feedback and rest period
+resume_trigger_value = 3;                   % end: pause, feedback and rest period
+end_experiment_trigger_value = 4;
+
+videoend_trigger_value = 5;
+question_trigger_value = 6;
+AOCS_audio_trigger_value = 7;
+AOIS_audio_trigger_value = 8;
+cross_trigger_value = 9;
+
+% ===================================================================
+%  7) INPUTS (user selections)
+% ===================================================================
+% used keys
+s_key = KbName('s');    ... s: to start experiment after training
+r_key = KbName('r');    ... r: to resume after a manual pause
+p_key = KbName('p');    ... p: to manually pause the experiment
+y_key = KbName('y');    ... y: correct answer
+n_key = KbName('n');    ... n: wrong answer
+
+% 7.1) subject name =====================================================
+subject_label = input('please insert subject label (do not fill in any space char) :','s');
+output_log_file = fullfile(root_dir, 'logs', ['log_' subject_label '_' date '.txt']);
+
+while exist(output_log_file, 'file')
+    subject_label=input('the entered subject already exist....do you want to overwrite the current log file (Y) or insert a new subject label (N) ?','s');
+    if (subject_label == 'Y')
+        break;
+    else
+        subject_label=input('please insert subject label (do not fill in any space char)','s');
+        output_log_file=fullfile(root_dir, 'logs', ['log_' subject_label '_' date '.txt']);
+    end
+end
+ fp=fopen(output_log_file,'w+');
+if ~fp 
+    disp('error opening file descriptor');
+end
+
+% 7.2) experiment mode ================================================
+% 0:    full children   do training, wait for key press during questions, do 2 pauses
+% 1:    full adults     do training, 4 secs pause during questions, do 4 pauses
+% 2:    fast mode       no training, 4 secs pause during questions, do 4 pauses
+while 1
+    modestr = input('please insert experiment mode (accepted values are: 0,1,2) [0] :','s');
+    if isempty(modestr)
+        mode = 0;
+    else
+        switch modestr
+            case {'0','1','2'}
+                mode = str2num(modestr);
+                break;
+            otherwise
+                disp('accepted mode are: 0,1,2');
+        end
+    end
+end
+
+switch mode
+    case 0
+        do_training = 1;
+        do_question_pause = 1;
+    case 1
+        do_training = 1;
+        do_question_pause = 0;
+    case 2
+        do_training = 0;
+        do_question_pause = 0;
+end
+
+if do_question_pause == 0
+    % adults mode = 4 big pauses
+    rest_appearence(1,48)=1;
+    rest_appearence(1,96)=1;
+    rest_appearence(1,144)=1;
+    rest_appearence(1,192)=1;
+else
+    % children mode = only 2 big pauses
+    rest_appearence(1,round(N_tot_stimuli/N_games_block))=1;
+    rest_appearence(1,round((N_tot_stimuli/N_games_block)*2))=1;
+end
+
+% 7.3) video side =====================================================
+while 1
+    video_side = input('please specify the hand side to be displayed (press : r or l): ', 's');
+    switch video_side
+        case {'r','l'}
+            break;
+        otherwise
+            disp('accepted sides are: l & r');
+    end
+end
+
+input_video_folder = fullfile(root_dir, 'video', ['video_' video_side], '');
+input_audio_folder = fullfile(root_dir, 'video', 'audio', '');
+games_folder = fullfile(root_dir, 'video', 'games', '');
+
+start_video = fullfile(games_folder, 'start_video.avi');
+instruction_image = fullfile(games_folder, 'descrizione_compito.jpg');
+question_image = fullfile(games_folder, 'question.jpg');
+
+fb_roots = {fullfile(games_folder, 'feedback_1', ''), fullfile(games_folder, 'feedback_2', ''), fullfile(games_folder, 'feedback_3', '')};
+feedback_files = {'fb1_1.jpg','fb1_2.jpg','fb1_3.jpg','fb1_4.jpg','fb1_5.jpg','fb1_6.jpg','fb1_7.jpg','fb1_8.jpg'; ...
+                  'fb2_1.png','fb2_2.png','fb2_3.png','fb2_4.png','fb2_5.png','fb2_6.png','fb2_7.png','fb2_8.png'; ...
+                  'fb3_1.jpg','fb3_2.jpg','fb3_3.jpg','fb3_4.jpg','fb3_5.jpg','fb3_6.jpg','fb3_7.jpg','fb3_8.jpg'; ...
+                  'fb3_1.mp4','fb3_2.mp4','fb3_3.mp4','fb3_4.mp4','fb3_5.mp4','fb3_6.mp4','fb3_7.mp4','fb3_8.mp4'};
+              
+pause_videos = {fullfile(games_folder, 'pause_1.avi'), fullfile(games_folder, 'pause_2.mp4')};
+prepause_photos = {fullfile(games_folder, 'prePause1.jpg'), fullfile(games_folder, 'prePause2.png')};
+end_video = fullfile(games_folder, 'end_video.mp4');
+
+
+success_audio = fullfile(games_folder, 'sound_success.wav');
+video_file_extension='.mp4';
+audio_file_extension='.wav';
+
+% ===================================================================
+% 8) SCREEN SETTINGS
+% ===================================================================
+Screen('Preference', 'SkipSyncTests', 0);
+Screen('Preference', 'SuppressAllWarnings', 0);
+
+...W=800; H=600; rec = [0,0,W,H]; 
+rec = Screen('Rect',0);[W, H]=Screen('WindowSize', 0);
+
+[window, rect] = Screen('OpenWindow', 0, black, rec);
+monitorFlipInterval = Screen('GetFlipInterval', window);
+monitor_freq = 1/monitorFlipInterval;
+
+%====================================================================================================================================
+% 9) INIT VARS
+HideCursor;
+is_paused=0;
+can_pause=0;
+pauses_number=0;
+fb_answers={0,0,0};     ... stores number of correct answers
+curr_block = 1;
+curr_stimulus_num=0; control_trial=0; ao_trial=0; aocs_trial=0; aois_trial=0; question_trial=0;
+cross_center = [W/2-12 W/2+12 W/2 W/2; H/2 H/2 H/2-12 H/2+12]; % cross
+
+%====================================================================================================================================
+if do_question_pause == 1
+     showMovie(start_video, window);
+     showImageNseconds(instruction_image, window, 0);
+end
+
+%====================================================================================================================================
+% 10) TRAINING / EXPLANATIONS    ====================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
+
+showCountDown(window, 3,txt_pre_samplevideos, txt_letsgo, white, 55);
+
+while 1
+    if do_training == 1
+              
+        showCross(window, 0.5, white, 3);       % pick a random control video
+        rnd=ceil(rand()*N_stimuli_x_cond);
+        file_video=fullfile(input_video_folder, [video_files_list{1,rnd} video_file_extension]);
+        showMovie(file_video, window);
+        Screen('FillRect', window, black, rect);
+        Screen('Flip', window);
+        WaitSecs(2);
+
+        showCross(window, 0.5, white, 3);       % pick a random AO video
+        rnd=ceil(rand()*N_stimuli_x_cond);
+        file_video=fullfile(input_video_folder, [video_files_list{2,rnd} video_file_extension]);
+        trigger_value=conditions_triggers_values{2,rnd};    
+        showMovie(file_video, window);
+        Screen('FillRect', window, black, rect);
+        Screen('Flip', window);
+        WaitSecs(2);
+
+        % show all AOCS & AOIS videos
+        for id=1:3 ... N_available_video
+
+            showCross(window, 0.5, white, 3); 
+            file_video=fullfile(input_video_folder, [video_file{3,id} video_file_extension]);
+            file_audio=fullfile(input_audio_folder, [audio_file{3,id} audio_file_extension]);
+            showMovieAudio(file_video, file_audio, window, sound_frame, ao);
+            WaitSecs(2);
+
+            showCross(window, 0.5, white, 3); 
+            file_video=fullfile(input_video_folder, [video_file{4,id} video_file_extension]);
+            file_audio=fullfile(input_audio_folder, [audio_file{4,id} audio_file_extension]);
+            showMovieAudio(file_video,file_audio, window, sound_frame, ao);
+            WaitSecs(2);
+        end
+        showImageNseconds(question_image, window, 0);
+        
+        for id=4:N_available_video
+            
+            showCross(window, 0.5, white, 3); 
+            file_video=fullfile(input_video_folder, [video_file{4,id} video_file_extension]);
+            file_audio=fullfile(input_audio_folder, [audio_file{4,id} audio_file_extension]);
+            showMovieAudio(file_video,file_audio, window, sound_frame, ao);
+            WaitSecs(2);
+            
+            showCross(window, 0.5, white, 3); 
+            file_video=fullfile(input_video_folder, [video_file{3,id} video_file_extension]);
+            file_audio=fullfile(input_audio_folder, [audio_file{3,id} audio_file_extension]);
+            showMovieAudio(file_video, file_audio, window, sound_frame, ao);
+            WaitSecs(2);
+        end        
+        showImageNseconds(question_image, window, 0);
+
+        % STOP
+        [nx, ny, textbounds] = DrawFormattedText(window, txt_start_question,'center','center',white, 55 ,[],[],1.5);
+        Screen('Flip', window);
+        
+        [a, keypressed, c] = KbWait;
+        if keypressed(s_key)
+            break;          ... esci dal while ed inizia l'esperimento
+        else 
+            continue;       ... fai un nuovo ciclo di training
+        end
+    else
+        % do_training = 0;
+        break;
+    end
+end
+
+%====================================================================================================================================
+%====================================================================================================================================
+% 11) EXPERIMENT  ===============================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
+
+
+if ~send_out_trigger
+    put_trigger(start_experiment_trigger_value, dio, trigger_duration);
+    WaitSecs(0.5);
+end
+experiment_start_time = GetSecs;
+for iter = trials_list
+
+    % 11.1) ========================================= if is paused, check for a 'r' press in order to resume the experiment
+    while is_paused == 1
+        [nx, ny, textbounds] = DrawFormattedText(window,txt_pause,'center','center',white, 55 ,[],[],1.5);
+        Screen('Flip',window);
+        [keyIsDown, secs, keyCode] = KbCheck;
+        if keyIsDown
+            if keyCode(r_key)
+                is_paused=0;
+                showCountDown(window, 3,txt_pause_resume, txt_letsgo , white, 55);
+                if ~send_out_trigger
+                    put_trigger(resume_trigger_value, dio, trigger_duration);
+                    WaitSecs(1);
+                end
+            end
+        end 
+    end
+
+    % draw the cross and wait for half a second
+    showCross(window, 0.5, white, 3); 
+ 
+    % 11.2) ========================================= show videos
+    curr_stimulus_num=curr_stimulus_num+1;
+    switch iter
+
+        case 1
+            control_trial=control_trial+1;
+            file_video=fullfile(input_video_folder, [video_files_list{iter,control_trial} video_file_extension]);
+            control_trigger_value=conditions_triggers_values{iter,control_trial};
+            showMovieTrigger(file_video, window, dio, control_trigger_value, send_out_trigger, trigger_duration);
+            fwrite(fp, [curr_stimulus_num ' ' video_files_list{iter,control_trial} ' ' num2str(GetSecs-experiment_start_time) '\n']);
+
+        case 2
+            ao_trial=ao_trial+1;
+            file_video=fullfile(input_video_folder, [video_files_list{iter,ao_trial} video_file_extension]);
+            AO_trigger_value=conditions_triggers_values{iter,ao_trial};
+            showMovieTrigger(file_video, window, dio, AO_trigger_value, send_out_trigger, trigger_duration);
+            fwrite(fp, [curr_stimulus_num ' ' video_files_list{iter,ao_trial} ' ' num2str(GetSecs-experiment_start_time) '\n']);
+
+        case 3
+            aocs_trial=aocs_trial+1;
+            file_video=fullfile(input_video_folder, [video_files_list{iter,aocs_trial} video_file_extension]);
+            file_audio=fullfile(input_audio_folder, [audio_files_list{iter,aocs_trial} audio_file_extension]);            
+            AOCS_trigger_value=conditions_triggers_values{iter,aocs_trial};
+            showMovieAudioTriggers(file_video, file_audio, window, dio, AOCS_trigger_value, sound_frame, AOCS_audio_trigger_value, send_out_trigger, trigger_duration, ao);    % also send the frame at which send the second trigger
+            fwrite(fp, [curr_stimulus_num ' ' video_files_list{iter,aocs_trial} ' ' num2str(GetSecs-experiment_start_time) '\n' ]);
+
+        case 4
+            aois_trial=aois_trial+1;
+            file_video=fullfile(input_video_folder, [video_files_list{iter,aois_trial} video_file_extension]);
+            file_audio=fullfile(input_audio_folder, [audio_files_list{iter,aois_trial} audio_file_extension]);            
+            AOIS_trigger_value=conditions_triggers_values{iter,aois_trial};
+            showMovieAudioTriggers(file_video, file_audio, window, dio, AOIS_trigger_value, sound_frame, AOIS_audio_trigger_value, send_out_trigger, trigger_duration, ao);    % also send the frame at which send the second trigger
+            fwrite(fp, [curr_stimulus_num ' ' video_files_list{iter,aois_trial} ' ' num2str(GetSecs-experiment_start_time) '\n']);
+    end
+    
+    if ~send_out_trigger
+        put_trigger(videoend_trigger_value, dio, trigger_duration);
+    end
+    
+    % 11.3) ========================================= check if QUESTION - FEEDBACK must be shown
+    if question_appearance(1,curr_stimulus_num)
+        if ~send_out_trigger
+           put_trigger(question_trigger_value, dio, trigger_duration);
+           put_trigger(pause_trigger_value, dio, trigger_duration);
+        end  
+        if do_question_pause == 1
+            keypressed = showImageNseconds(question_image, window, 0);  % SHOW QUESTION IMAGE and STOP
+            %CHILDREN
+            correct=0;
+            if keypressed(y_key)
+                fb_answers{curr_block}=fb_answers{curr_block}+1;
+                correct=1;
+            end
+            if fb_answers{curr_block} == 0
+                source = fullfile(fb_roots{curr_block}, feedback_files{curr_block,1});
+            else
+                source = fullfile(fb_roots{curr_block}, feedback_files{curr_block,fb_answers{curr_block}});
+            end
+            if correct == 1
+                playAudio(success_audio, ao);
+            end
+            showImageNseconds(source, window, question_time);
+            
+            if curr_block == 3
+                source = fullfile(fb_roots{curr_block}, feedback_files{4, fb_answers{curr_block}});
+                showMovie(source, window);
+            else
+            end
+            Screen('FillRect', window, black, rect);
+            Screen('Flip', window);            
+            showCountDown(window, 3, txt_pause_resume, txt_letsgo ,white, 55); 
+        else
+            %ADULTS
+            showImageNseconds(question_image, window, question_time);  % SHOW QUESTION IMAGE for question time seconds
+            Screen('FillRect', window, black, rect);
+            Screen('Flip', window);             
+            showCountDown(window, 3, txt_pause_resume, txt_letsgo ,white, 55); 
+        end
+        if ~send_out_trigger
+            put_trigger(resume_trigger_value, dio, trigger_duration);
+        end        
+    end
+
+    Screen('FillRect', window, black, rect);
+    Screen('Flip', window);
+    iti=round(iti_time+rand(1));
+
+    % 11.4) ========================================= check if 'p' is pressed in order to pause the experiment
+    can_pause=1;
+    start_time=GetSecs;
+    while is_paused == 0
+        [keyIsDown,secs, keyCode] = KbCheck;
+        if (keyIsDown && can_pause == 1)
+            if keyCode(p_key)
+                is_paused=1;
+                WaitSecs(0.5);
+                if ~send_out_trigger
+                    put_trigger(pause_trigger_value, dio, trigger_duration);
+                end                
+                break
+            end
+        end 
+        elapsed=GetSecs-start_time;
+        if elapsed > iti
+            break;
+        end            
+
+    end  
+    can_pause=0;
+    
+    % 11.5) ========================================= check if rest is expected
+    if rest_appearence(1, curr_stimulus_num) == 1
+        if ~send_out_trigger
+            put_trigger(pause_trigger_value, dio, trigger_duration);
+        end   
+        
+        if do_question_pause == 0
+            % ADULTS
+            [nx, ny, textbounds] = DrawFormattedText(window,txt_big_pause,'center','center',white, 55 ,[],[],1.5);
+            Screen('Flip',window);
+            KbWait;
+        else
+            % CHILDREN
+            playAudio(success_audio, ao);
+            showImageNseconds(prepause_photos{curr_block}, window, question_time);
+            showMovie(pause_videos{curr_block}, window);
+            [nx, ny, textbounds] = DrawFormattedText(window,txt_big_pause_resume,'center','center',white, 55 ,[],[],1.5);
+            Screen('Flip',window);
+            KbWait;
+        end
+        % show a 3 seconds countdown panel
+        showCountDown(window, 3,txt_pause_resume, txt_letsgo ,white, 55); 
+        if ~send_out_trigger
+            put_trigger(resume_trigger_value, dio, trigger_duration);
+        end       
+        curr_block=curr_block+1;
+    end
+end
+
+put_trigger(end_experiment_trigger_value, dio, trigger_duration);
+
+if do_question_pause == 1
+    showMovie(end_video, window);
+end
+ 
+ShowCursor;
+Screen('Flip', window);
+Screen('CloseAll');
+sca;
+catch err
+    % This "catch" section executes in case of an error in the "try" section
+    % above.  Importantly, it closes the onscreen window if it's open.
+    Screen('CloseAll');
+    err
+    err.message
+    err.stack(1)
+end
+
+% =========================================================================================================
+% =========================================================================================================
+% LAST MODS
+% =========================================================================================================
+% =========================================================================================================
+% 18/9/2013
+% set photo before the 2 pauses' videos
+% predetermined questions onsets
+% no success sound before 3rd block videos
+% 20/09/2013
+% send pause trigger together with question triggers (to enable automatic removal of undesidered recordings)
+% 23/9/2013
+% added a feedback image at block 3 (the map), before video.
+% 3/10/2013
+% added 0.5 sec pause after start trigger
+% 4/11/2013
+% added end video & end experiment triggers
+% 6/11/2013
+% removed need to press Y after a question in adults experiment
+% 11/2/2014
+% language localization, text set in variables and located at the beginning of the code
