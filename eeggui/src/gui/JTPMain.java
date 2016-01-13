@@ -19,7 +19,8 @@ public class JTPMain extends javax.swing.JPanel {
     public JTPMain() {
         initComponents();
         addTabs();
-        
+        project = new Project();
+        project.loadMAT("");
     }
 
     private void addTabs(){
