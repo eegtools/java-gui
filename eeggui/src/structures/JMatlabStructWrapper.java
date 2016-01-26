@@ -10,6 +10,8 @@ import com.jmatio.types.MLCell;
 import com.jmatio.types.MLChar;
 import com.jmatio.types.MLDouble;
 import com.jmatio.types.MLStructure;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  *
@@ -17,31 +19,32 @@ import com.jmatio.types.MLStructure;
  */
 public class JMatlabStructWrapper 
 {
-    
-    
     public String[][][] getStringCellMatrix3D(MLStructure struct, String field)
     {
         
-        MLCell a     = (MLCell) struct.getField(field);
-        int[] dim1   = a.getDimensions();
-        int rows1    = dim1[0];      
-        int cols1    = dim1[1];
+        MLCell a        = (MLCell) struct.getField(field);
+        int[] dim1      = a.getDimensions();
+        int rows1       = dim1[0];      
+        int cols1       = dim1[1];
+        int length1     = (rows1 > cols1 ? rows1 : cols1);
         
         MLCell aa; 
-        aa           = (MLCell) a.get(rows1-1,cols1-1);
-        int[] dim2   = aa.getDimensions();
-        int rows2    = dim2[0];      
-        int cols2    = dim2[1];
+        aa              = (MLCell) a.get(rows1-1,cols1-1);
+        int[] dim2      = aa.getDimensions();
+        int rows2       = dim2[0];      
+        int cols2       = dim2[1];
+        int length2     = (rows2 > cols2 ? rows2 : cols2);
         
         MLCell aaa; 
-        aaa           = (MLCell) aa.get(rows2-1,cols2-1);
-        int[] dim3   = aaa.getDimensions();
-        int rows3    = dim3[0];      
-        int cols3    = dim3[1];
+        aaa             = (MLCell) aa.get(rows2-1,cols2-1);
+        int[] dim3      = aaa.getDimensions();
+        int rows3       = dim3[0];      
+        int cols3       = dim3[1];
+        int length3     = (rows3 > cols3 ? rows3 : cols3);
         
 
         MLCell b; 
-        String[][][] cellarray = new String[rows1][rows2][rows3];
+        String[][][] cellarray = new String[length1][length2][length3];
         
         if (cols1==1)
         {
@@ -73,9 +76,6 @@ public class JMatlabStructWrapper
         }
         return cellarray;
     }     
-    
-    
-   
     
     public String[][] getStringCellMatrix(MLStructure struct, String field)
     {
@@ -129,7 +129,6 @@ public class JMatlabStructWrapper
         return cellarray;
     } 
 
-
     public String[] getStringCellArray(MLStructure struct, String field)
     {
         MLCell a           = (MLCell) struct.getField(field);
@@ -139,21 +138,39 @@ public class JMatlabStructWrapper
         return cellarray;
     }  
     
+    public String[] getStringCellArray(Map map, String field)
+    {
+        MLCell a           = (MLCell) map.get(field);
+        int nitem         = (a.cells()).size();
+        String[] cellarray  = new String[nitem];
+        for (int m = 0; m < nitem; m++) cellarray[m] = ((MLChar) a.get(m)).getString(0);    
+        return cellarray;
+    }  
+    
+    
     public String getString(MLStructure struct, String field)
     {    
         return ((MLChar) struct.getField(field)).getString(0);
     }
 
+    public String getString(Map map, String field)
+    {    
+        return ((MLChar) map.get(field)).getString(0);
+    }
+    
     
     public int getInt(MLStructure struct, String field)
     {
          return (int) ((MLDouble) struct.getField(field)).getArray()[0][0];
     }   
+
+    public int getInt(Map map, String field)
+    {
+         return (int) ((MLDouble) map.get(field)).getArray()[0][0];
+    } 
     
     public double[] getDoubleArray(MLStructure struct, String field)
     {
          return ((MLDouble) struct.getField(field)).getArray()[0];
-    }   
-            
-    
+    }              
 }
