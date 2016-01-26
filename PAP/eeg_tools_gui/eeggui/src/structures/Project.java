@@ -40,6 +40,8 @@ public class Project extends JMatlabStructWrapper{
             Map<String, MLArray> mlArrayRetrieved = mfr.getContent();
             MLStructure prj = (MLStructure) mlArrayRetrieved.get("project");  
             
+
+            
             // ------------------------------------------------------------------------------------------------------------------------------------
             // TASK 
             MLStructure stask = (MLStructure) prj.getField("task");
@@ -55,12 +57,13 @@ public class Project extends JMatlabStructWrapper{
             MLStructure sdata = (MLStructure) prj.getField("eegdata");
             eegdata = new EEGdata(sdata);
             
-
-            // Test 3D
-            MLStructure stest3D = (MLStructure) prj.getField("test3D");
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // SUBJECTS 
+            MLStructure ssubjs = (MLStructure) prj.getField("subjects");
+            subjects = new Subjects(ssubjs);
             
-            int[] dim3D   = stest3D.getDimensions();
-            //int rows    = dim[0];      int cols = dim[1];
+
+
             
             
             int grggdgdfhtrdh = 1;
@@ -105,6 +108,7 @@ public class Project extends JMatlabStructWrapper{
     public Import imp;
     public EEGdata eegdata;
     public Task task;
+    public Subjects subjects;
 }
 
 
