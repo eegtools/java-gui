@@ -1,7 +1,7 @@
 %% project Structure GUI information
 %
 %   this file is loaded and parsed each time I want to 
-%   1)  create a new project structure, fields are filled with default values
+%   1)  create a new project structure, fieldsP are filled with default values
 %   2)  I want to display/edit an existing project. fields are filled with existing values, alternatives are taken from here
 % 
 % each field is described through a structure with some pre-defined fields and some other ui type dependant

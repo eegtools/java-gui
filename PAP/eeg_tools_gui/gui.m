@@ -3,14 +3,14 @@ function [] = gui()
     % MATLAB_JAVA
 
     ...javaj_jar_path = '/data/behavior_lab_svn/behaviourPlatform/CommonScript/eeg/eeg_tools/gui/eeggui/dist/eeggui.jar';
-    javaj_jar_path = '\\VBOXSVR\data\behavior_lab_svn\behaviourPlatform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
+    javaj_jar_path = 'C:\Users\PHilt\Desktop\behaviour_platform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
     
     
     javaaddpath(javaj_jar_path);
     global gg  % Make the handle to the main panel global
 
     fig = figure('visible', 'on', 'units','normalized','outerposition',[0 0 1 1]);
-    drawnow
+    ...drawnow
     gg = GImport(fig, gui.JTPMain());
 
     handles = gg.getHandles();

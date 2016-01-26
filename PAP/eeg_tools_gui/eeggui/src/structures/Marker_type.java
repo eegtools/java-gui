@@ -11,7 +11,9 @@ package structures;
  */
 public class Marker_type {
     
-    
     public String begin_trial;
+    public String end_trial;
+    public String begin_baseline;
+    public String end_baseline;
     
 }

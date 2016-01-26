@@ -5,6 +5,11 @@
  */
 package gui;
 
+import com.jmatio.types.MLArray;
+import com.jmatio.types.MLCell;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
 import structures.Project;
        
 /**
@@ -15,12 +20,18 @@ public class JTPMain extends javax.swing.JPanel {
 
     /**
      * Creates new form basePanel
+     * @throws java.io.IOException
      */
-    public JTPMain() {
+    public JTPMain(){
+        
         initComponents();
         addTabs();
+        
+        
         project = new Project();
-        project.loadMAT("");
+        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_structure.mat");
+
+        
     }
 
     private void addTabs(){
@@ -987,7 +998,7 @@ public class JTPMain extends javax.swing.JPanel {
         // show OpenFile window, looking for .mat files and filling this variable
         // s_project_mat_file = ....
         // then....
-        project = project.loadMAT(s_project_mat_file);
+        // project = project.loadMAT(s_project_mat_file);
         project.setGUI();   // I could have directly called the setGUI methods of this class,
                             // but I wanted to provide this feature to Project class
         
@@ -995,7 +1006,7 @@ public class JTPMain extends javax.swing.JPanel {
 
     private void btSaveProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveProjectActionPerformed
         project = getGUI();
-        project.saveMAT(s_project_mat_file);
+        //project.saveMAT(s_project_mat_file);
     }//GEN-LAST:event_btSaveProjectActionPerformed
  
     private void jPresults_displayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPresults_displayMouseClicked
@@ -1067,7 +1078,7 @@ public class JTPMain extends javax.swing.JPanel {
         // s_project_mat_file = ....
         // then....
         project = getGUI();
-        project.saveMAT(s_project_mat_file);   
+        //project.saveMAT(s_project_mat_file);   
     }//GEN-LAST:event_btSaveAsProjectActionPerformed
 
     private String s_project_mat_file;
