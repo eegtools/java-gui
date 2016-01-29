@@ -5,10 +5,7 @@
  */
 package structures;
 
-import com.jmatio.types.MLArray;
-import com.jmatio.types.MLStructure;
-import java.io.IOException;
-import java.util.Collection;
+import com.jmatio.types.*;
 
 /**
  *
@@ -25,7 +22,7 @@ public class Task extends JMatlabStructWrapper{
     public Task(MLStructure task)
     {
         MLStructure sevents = (MLStructure) task.getField("events");
-        events = new Events(sevents);
+        events              = new Events(sevents);
     }
     
 }

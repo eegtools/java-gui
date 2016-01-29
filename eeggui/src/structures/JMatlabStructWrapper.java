@@ -5,11 +5,7 @@
  */
 package structures;
 
-import com.jmatio.types.MLArray;
-import com.jmatio.types.MLCell;
-import com.jmatio.types.MLChar;
-import com.jmatio.types.MLDouble;
-import com.jmatio.types.MLStructure;
+import com.jmatio.types.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -168,6 +164,11 @@ public class JMatlabStructWrapper
     {
          return (int) ((MLDouble) map.get(field)).getArray()[0][0];
     } 
+    
+    public double getDouble(MLStructure struct, String field)
+    {
+         return (double) ((MLDouble) struct.getField(field)).getArray()[0][0];
+    }   
     
     public double[] getDoubleArray(MLStructure struct, String field)
     {

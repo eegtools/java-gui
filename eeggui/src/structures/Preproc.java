@@ -5,48 +5,51 @@
  */
 package structures;
 
-import com.jmatio.types.MLArray;
-import java.io.IOException;
-import java.util.Collection;
+import com.jmatio.types.MLStructure;
+
 
 /**
  *
  * @author alba
  */
-public class Preproc {
+public class Preproc extends JMatlabStructWrapper{
     
     public String output_folder;
-    public String filter_algorithm;
     
-    public float ff1_global;
+    public double ff1_global;
+    public double ff1_eeg;
+    public double ff1_eog;
+
+    public int do_notch;
     public int ff2_global;
-    
-    public String do_notch;
-    public int notch_fcenter;
-    public int notch_fspan;
-    public String notch_remove_armonics;
-    
-    public float ff1_eeg;
     public int ff2_eeg;
-    
-    public float ff1_eog;
     public int ff2_eog;
-    
-    public float ff1_emg;
+    public int ff1_emg;
     public int ff2_emg;
     
-    public Rt rt;
-      
-    public Marker_type marker_type;
     
-    public Insert_begin_trial insert_begin_trial;
-    
-    public Insert_end_trial insert_end_trial;
-    
-    public int insert_block_trials_per_block;
-    public String[][] montage_list;
+    public Preproc()
+    {
+        
+    }
     
     
+    public Preproc(MLStructure prep)
+    {
+           
+        output_folder  = getString(prep, "output_folder");
+        
+        ff1_global  = getDouble(prep, "ff1_global");
+        ff1_eeg  = getDouble(prep, "ff1_eeg");
+        ff1_eog  = getDouble(prep, "ff1_eog");
+        
+        do_notch = getInt(prep, "do_notch");
+        ff2_global = getInt(prep, "ff2_global");
+        ff2_eeg = getInt(prep, "ff2_eeg");
+        ff2_eog = getInt(prep, "ff2_eog");
+        ff1_emg = getInt(prep, "ff1_emg");
+        ff2_emg = getInt(prep, "ff2_emg");
 
+    }   
      
 }
