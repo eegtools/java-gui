@@ -28,7 +28,7 @@
 % ======================================================================================================
 ...project.research_group                           % A1: set in main: e.g.  PAP or MNI
 ...project.research_subgroup                        % A2: set in main: e.g.  PAP or MNI
-...project.name                                     % A3: set in main : must correspond to 'project.paths.local_projects_data' subfolder name
+project.name = '';                                     % A3: set in main : must correspond to 'project.paths.local_projects_data' subfolder name
 
 project.study_suffix='';                            % A4: sub name used to create a different STUDY name (fianl file will be called: [project.name project.study_suffix '.study'])
 project.analysis_name='OCICA_250_raw';            % A5: epoching output folder name, subfolder containing the condition files of the current analysis type
@@ -89,11 +89,11 @@ project.import.original_data_suffix='_OCICA_250';                       % E4:   
 project.import.original_data_prefix='';                                 % E5:   string before subject name in original EEG file name....often empty
 
 %output
-project.import.output_folder= '';                           % D6:   string appended to fullfile(project.paths.project,'epochs', ...=) , determining where to write imported file
+project.import.output_folder='';                           % D6:   string appended to fullfile(project.paths.project,'epochs', ...=) , determining where to write imported file
 project.import.output_suffix='';                                        % E5:   string appended to input file name after importing original file
-project.import.emg_output_postfix= [];                  				% E6:   string appended to input file name to EMG file
+project.import.emg_output_postfix='';                  				% E6:   string appended to input file name to EMG file
 
-project.import.reference_channels=[];                                   % E8:   list of electrodes to be used as reference
+project.import.reference_channels='';                                   % E8:   list of electrodes to be used as reference
 
 % E9:   rules to transform polygraphic ch in EMG ch. it takes 2 channels, substract their values and replaces them with one channel difference.
 %       each cell define the two channels to subtract and the label of the new channel
@@ -114,9 +114,9 @@ project.eegdata.eeglab_channels_file_path='';                           % D5:   
 project.eegdata.eeg_channels_list           = [1:project.eegdata.nch_eeg];  % E6:   list of EEG channels IDs
 
 project.eegdata.emg_channels_list           = [];
-project.eegdata.emg_channels_list_labels    = [];
+project.eegdata.emg_channels_list_labels    = {''};
 project.eegdata.eog_channels_list           = [];
-project.eegdata.eog_channels_list_labels    = [];
+project.eegdata.eog_channels_list_labels    = {''};
 
 for ch_id=1:length(project.import.ch2transform)
     ch = project.import.ch2transform(ch_id);
