@@ -11,7 +11,7 @@ import com.jmatio.types.MLStructure;
  *
  * @author alba
  */
-public class Subject extends JMatlabStructWrapper{
+public class Subject_su extends JMatlabStructWrapper{
    
     public String name;
     public String group;
@@ -20,9 +20,9 @@ public class Subject extends JMatlabStructWrapper{
     public String handedness;
     public String[] bad_ch;
     
-    public Subject(){}
+    public Subject_su(){}
     
-    public Subject(MLStructure subj)
+    public Subject_su(MLStructure subj)
     {    
         name        = getString(subj, "name");
         group       = getString(subj, "group");

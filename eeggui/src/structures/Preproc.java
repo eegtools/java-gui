@@ -32,12 +32,9 @@ public class Preproc extends JMatlabStructWrapper{
     {
         
     }
-    
-    
-    public Preproc(MLStructure prep)
+    public void setJMatData(MLStructure prep)
     {
-           
-        output_folder  = getString(prep, "output_folder");
+         output_folder  = getString(prep, "output_folder");
         
         ff1_global  = getDouble(prep, "ff1_global");
         ff1_eeg  = getDouble(prep, "ff1_eeg");
@@ -48,8 +45,17 @@ public class Preproc extends JMatlabStructWrapper{
         ff2_eeg = getInt(prep, "ff2_eeg");
         ff2_eog = getInt(prep, "ff2_eog");
         ff1_emg = getInt(prep, "ff1_emg");
-        ff2_emg = getInt(prep, "ff2_emg");
-
-    }   
+        ff2_emg = getInt(prep, "ff2_emg");       
+    }
+  
+    public MLStructure getJMatData()
+    {
+        MLStructure preproc = new MLStructure("preproc",new int[] {1,1});
+        
+        preproc.setField("output_folder",setString(output_folder));
+        
+        return preproc;
+    }
+  
      
 }
