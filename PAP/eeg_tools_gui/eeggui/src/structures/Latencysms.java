@@ -11,30 +11,21 @@ import com.jmatio.types.MLStructure;
  *
  * @author PHilt
  */
-public class Latency  extends JMatlabStructWrapper{
+public class Latencysms  extends JMatlabStructWrapper{
     
     public double s;
     public double ms;
     
-    public Latency()
+    public Latencysms()
     {
         
     }
     
     
-    public Latency(MLStructure lat)
+    public Latencysms(MLStructure lat)
     {
         s   = getDouble(lat, "s");
         ms  = getDouble(lat, "ms"); 
     } 
-
-    
-    public Latency getLatency(MLStructure lat)
-    {
-        Latency vec; 
-        vec = new Latency(lat);
-        return vec;
-    }
-
     
 }

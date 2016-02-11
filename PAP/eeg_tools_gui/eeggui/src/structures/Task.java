@@ -13,16 +13,24 @@ import com.jmatio.types.*;
  */
 public class Task extends JMatlabStructWrapper{
     
-    public Events events;
+    public Events_ta events;
     
     public Task()
     {
         
     }    
-    public Task(MLStructure task)
+
+    public void setJMatData(MLStructure task)
     {
         MLStructure sevents = (MLStructure) task.getField("events");
-        events              = new Events(sevents);
+        events              = new Events_ta(sevents);
+    }
+  
+    public MLStructure getJMatData()
+    {
+        MLStructure task = new MLStructure("task",new int[] {1,1});
+        
+        return task;
     }
     
 }

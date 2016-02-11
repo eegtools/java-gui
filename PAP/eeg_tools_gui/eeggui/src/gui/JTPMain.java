@@ -5,11 +5,7 @@
  */
 package gui;
 
-import com.jmatio.types.MLArray;
-import com.jmatio.types.MLCell;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 import structures.Project;
        
 /**
@@ -26,13 +22,19 @@ public class JTPMain extends javax.swing.JPanel {
         
         initComponents();
         addTabs();
-        
-        
+
+        try{
+         
         project = new Project();
 //        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_structure.mat");
         project = project.loadMAT("G:\\behavior_lab_svn\\behaviourPlatform\\PAP\\eeg_tools_gui\\project_structure2.mat");
-
-        
+  
+        int verif = project.saveMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\atest.mat");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+         
     }
 
     private void addTabs(){

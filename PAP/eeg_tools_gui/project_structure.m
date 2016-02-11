@@ -93,7 +93,7 @@ project.import.output_folder='';                           % D6:   string append
 project.import.output_suffix='';                                        % E5:   string appended to input file name after importing original file
 project.import.emg_output_postfix='';                  				% E6:   string appended to input file name to EMG file
 
-project.import.reference_channels='';                                   % E8:   list of electrodes to be used as reference
+project.import.reference_channels={''};                                   % E8:   list of electrodes to be used as reference
 
 % E9:   rules to transform polygraphic ch in EMG ch. it takes 2 channels, substract their values and replaces them with one channel difference.
 %       each cell define the two channels to subtract and the label of the new channel

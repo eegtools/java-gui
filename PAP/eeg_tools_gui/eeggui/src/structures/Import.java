@@ -19,6 +19,7 @@ public class Import extends JMatlabStructWrapper{
     public String original_data_prefix;
     public String output_folder;
     public String output_suffix;
+    
     public String emg_output_postfix;
     
     public String[] reference_channels;
@@ -30,10 +31,9 @@ public class Import extends JMatlabStructWrapper{
     public Import()
     {
     }
-
-    public Import(MLStructure imp)
+    
+    public void setJMatData(MLStructure imp)
     {
-        
         acquisition_system          = getString(imp, "acquisition_system");
         original_data_extension     = getString(imp, "original_data_extension");
         original_data_folder        = getString(imp, "original_data_folder");
@@ -41,6 +41,7 @@ public class Import extends JMatlabStructWrapper{
         original_data_prefix        = getString(imp, "original_data_prefix");
         output_folder               = getString(imp, "output_folder");
         output_suffix               = getString(imp, "output_suffix");
+
         emg_output_postfix          = getString(imp, "emg_output_postfix");
         
         reference_channels          = getStringCellArray(imp, "reference_channels");
@@ -48,6 +49,14 @@ public class Import extends JMatlabStructWrapper{
         
         ch2transform                = getDoubleArray(imp, "ch2transform");
         
-    }    
-
+        int a = 1;
+    }
+  
+    public MLStructure getJMatData()
+    {
+        MLStructure impo = new MLStructure("import",new int[] {1,1});
+        
+        return impo;
+    }
+    
 }

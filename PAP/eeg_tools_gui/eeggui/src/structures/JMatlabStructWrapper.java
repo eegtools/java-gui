@@ -6,7 +6,6 @@
 package structures;
 
 import com.jmatio.types.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -127,17 +126,24 @@ public class JMatlabStructWrapper
 
     public String[] getStringCellArray(MLStructure struct, String field)
     {
-        MLCell a           = (MLCell) struct.getField(field);
-        int nitem         = (a.cells()).size();
-        String[] cellarray  = new String[nitem];
-        for (int m = 0; m < nitem; m++) cellarray[m] = ((MLChar) a.get(m)).getString(0);    
-        return cellarray;
+        if ((struct.getField(field)).isEmpty())
+        {
+            return null;
+        }
+        else 
+        {
+            MLCell a            = (MLCell) struct.getField(field);
+            int nitem           = (a.cells()).size();
+            String[] cellarray  = new String[nitem];
+            for (int m = 0; m < nitem; m++) cellarray[m] = ((MLChar) a.get(m)).getString(0);    
+            return cellarray;
+        }
     }  
     
     public String[] getStringCellArray(Map map, String field)
     {
-        MLCell a           = (MLCell) map.get(field);
-        int nitem         = (a.cells()).size();
+        MLCell a            = (MLCell) map.get(field);
+        int nitem           = (a.cells()).size();
         String[] cellarray  = new String[nitem];
         for (int m = 0; m < nitem; m++) cellarray[m] = ((MLChar) a.get(m)).getString(0);    
         return cellarray;
@@ -160,10 +166,12 @@ public class JMatlabStructWrapper
          return (int) ((MLDouble) struct.getField(field)).getArray()[0][0];
     }   
 
+
     public int getInt(Map map, String field)
     {
          return (int) ((MLDouble) map.get(field)).getArray()[0][0];
     } 
+
     
     public double getDouble(MLStructure struct, String field)
     {
@@ -172,6 +180,210 @@ public class JMatlabStructWrapper
     
     public double[] getDoubleArray(MLStructure struct, String field)
     {
-         return ((MLDouble) struct.getField(field)).getArray()[0];
-    }              
+        if ((struct.getField(field)).isEmpty())
+        {
+            return null;
+        }
+        else return ((MLDouble) struct.getField(field)).getArray()[0];
+    }          
+    
+    public double[] getDoubleArray(Map map, String field)
+    {
+         return ((MLDouble) map.get(field)).getArray()[0];
+    }    
+
+    //====================================================================================================================
+    
+    
+    /*
+    public MLCell setStringCellMatrix(String[][] data)
+    {
+        int row = data.length;
+        int col = data[0].length;
+        MLCell str_dblearr = new MLCell("XXX",new int[]{row,col});
+        
+        for (int r = 0; r < row; r++) 
+        {
+            for (int c = 0; c < col; c++) 
+            {
+                MLChar mlchar = new MLChar("XXX",data[r][c]);
+                str_dblearr.set(mlchar,r,c);
+            }
+        }
+        return str_dblearr;
+    }
+    */
+    
+    public MLCell setStringTripleColumnCell(String[][][] data)
+    {
+        int dimsub = data.length;
+        int dimsubsub = data[0].length;
+        int dimsubsubsub = data[0][0].length;
+        
+        MLCell sub_cell = new MLCell("XXX",new int[]{dimsub,1});
+        
+        for (int s = 0; s < dimsub; s++) 
+        {
+            MLCell subsub_cell = new MLCell("XXX",new int[]{dimsubsub,1});
+
+            for (int ss = 0; ss < dimsubsub; ss++) 
+            {
+                MLCell subsubsub_cell = new MLCell("XXX",new int[]{dimsubsubsub,1});
+            
+                for (int sss = 0; sss < dimsubsubsub; sss++) 
+                {
+                    MLChar mlchar = new MLChar("XXX",data[s][ss][sss]);
+                    subsubsub_cell.set(mlchar,sss,0);
+                }   
+                
+            subsub_cell.set(subsubsub_cell,ss,0);
+            }
+            
+            sub_cell.set(subsub_cell,s,0);
+        }
+        
+        return sub_cell;
+    }
+    
+    public MLCell setStringColLineCell(String[][] data)
+    {
+        int dimsub = data.length;
+        int dimsubsub = data[0].length;
+        
+        MLCell sub_cell = new MLCell("XXX",new int[]{dimsub,1});
+
+        for (int s = 0; s < dimsub; s++) 
+        {
+            MLCell subsub_cell = new MLCell("XXX",new int[]{1,dimsubsub});
+            
+            for (int ss = 0; ss < dimsubsub; ss++) 
+            {
+                MLChar mlchar = new MLChar("XXX",data[s][ss]);
+                subsub_cell.set(mlchar,0,ss);
+            }   
+            sub_cell.set(subsub_cell,s,0);
+        }
+        
+        return sub_cell;
+    }
+    
+    public MLCell setStringLineColCell(String[][] data)
+    {
+        int dimsub = data.length;
+        int dimsubsub = data[0].length;
+        
+        MLCell sub_cell = new MLCell("XXX",new int[]{1,dimsub});
+
+        for (int s = 0; s < dimsub; s++) 
+        {
+            MLCell subsub_cell = new MLCell("XXX",new int[]{dimsubsub,1});
+            
+            for (int ss = 0; ss < dimsubsub; ss++) 
+            {
+                MLChar mlchar = new MLChar("XXX",data[s][ss]);
+                subsub_cell.set(mlchar,ss,0);
+            }   
+            sub_cell.set(subsub_cell,0,s);
+        }
+        
+        return sub_cell;
+    }
+    
+    
+    public MLCell setStringColumnCell(String[][] data)
+    {
+        int dimsub = data.length;
+        int dimsubsub = data[0].length;
+        
+        MLCell sub_cell = new MLCell("XXX",new int[]{dimsub,1});
+
+        for (int s = 0; s < dimsub; s++) 
+        {
+            MLCell subsub_cell = new MLCell("XXX",new int[]{dimsubsub,1});
+            
+            for (int ss = 0; ss < dimsubsub; ss++) 
+            {
+                MLChar mlchar = new MLChar("XXX",data[s][ss]);
+                subsub_cell.set(mlchar,ss,0);
+            }   
+            sub_cell.set(subsub_cell,s,0);
+        }
+        
+        return sub_cell;
+    }
+    
+    public MLCell setStringLineCell(String[][] data)
+    {
+        int dimsub = data.length;
+        int dimsubsub = data[0].length;
+        
+        MLCell sub_cell = new MLCell("XXX",new int[]{1,dimsub});
+
+        for (int s = 0; s < dimsub; s++) 
+        {
+            MLCell subsub_cell = new MLCell("XXX",new int[]{1,dimsubsub});
+            
+            for (int ss = 0; ss < dimsubsub; ss++) 
+            {
+                MLChar mlchar = new MLChar("XXX",data[s][ss]);
+                subsub_cell.set(mlchar,0,ss);
+            }   
+            sub_cell.set(subsub_cell,0,s);
+        }
+        
+        return sub_cell;
+    }
+    
+    public MLCell setStringColumnArray(String[] data)
+    {
+        MLCell str_arr = new MLCell("XXX",new int[]{data.length,1});
+                
+        for (int m = 0; m < data.length; m++) 
+        {
+            MLChar mlchar = new MLChar("XXX",data[m]);
+            str_arr.set(mlchar,m,0);
+        }
+        return str_arr;
+    }
+    
+    public MLCell setStringLineArray(String[] data)
+    {
+        MLCell str_arr = new MLCell("XXX",new int[]{1,data.length});
+                
+        for (int m = 0; m < data.length; m++) 
+        {
+            MLChar mlchar = new MLChar("XXX",data[m]);
+            str_arr.set(mlchar,0,m);
+        }
+        return str_arr;
+    }
+    
+        
+    public MLDouble setDoubleColumnArray(double[] data)
+    {
+        MLDouble mljustdouble = new MLDouble("XXX",data,data.length);
+        return mljustdouble;
+    } 
+
+    
+    public MLChar setString(String data)
+    {    
+        return new MLChar("XXX", data);
+    }
+    
+    public MLDouble setInt(int data)
+    {
+        double[] justint = new double[]{data};
+        MLDouble mlint = new MLDouble("XXX",justint,1);
+        return mlint;
+    } 
+    
+    public MLDouble setDouble(double data)
+    {
+        double[] justdouble = new double[]{data};
+        MLDouble mljustdouble = new MLDouble("XXX",justdouble,1);
+        return mljustdouble;
+    } 
+
+    
 }
