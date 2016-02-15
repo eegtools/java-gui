@@ -462,51 +462,50 @@ project.study.precompute.do_spec                = 'on';
 project.study.precompute.erpim                  = {'interp','off','allcomps','on','erpim','on','erpimparams',{'nlines' 10 'smoothing' 10},'recompute','off'};
 project.study.precompute.spec                   = {'interp','off','allcomps','on','spec' ,'on','specparams' ,{'specmode' 'fft','freqs' [4 32]},'recompute','off'};
 
-%% ======================================================================================================
-% L:    DESIGN
-% ======================================================================================================
-if isfield(project, 'design')
-    project = rmfield(project, 'design');
+
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if isfield(project.study, 'design')
+    project = rmfield(project.study, 'design');
 end
 
-project.design(2)                   = struct('name',  'ao_control_ungrouped'   , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(3)                   = struct('name',  'aocs_control_ungrouped' , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(4)                   = struct('name',  'aocs_ao_ungrouped'      , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(5)                   = struct('name',  'aois_ao_ungrouped'      , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(6)                   = struct('name',  'aocs_aois_ungrouped'    , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(7)                   = struct('name',  'sound_effect_ungrouped' , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(8)                   = struct('name',  'ao_control'             , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(9)                   = struct('name',  'aocs_control'           , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(10)                  = struct('name', 'aocs_ao'                 , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(11)                  = struct('name', 'aois_ao'                 , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(12)                  = struct('name', 'aocs_aois'               , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.design(13)                  = struct('name', 'sound_effect'            , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(2)                   = struct('name',  'ao_control_ungrouped'   , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(3)                   = struct('name',  'aocs_control_ungrouped' , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(4)                   = struct('name',  'aocs_ao_ungrouped'      , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(5)                   = struct('name',  'aois_ao_ungrouped'      , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(6)                   = struct('name',  'aocs_aois_ungrouped'    , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(7)                   = struct('name',  'sound_effect_ungrouped' , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(8)                   = struct('name',  'ao_control'             , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(9)                   = struct('name',  'aocs_control'           , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(10)                  = struct('name', 'aocs_ao'                 , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(11)                  = struct('name', 'aois_ao'                 , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(12)                  = struct('name', 'aocs_aois'               , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(13)                  = struct('name', 'sound_effect'            , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
 
-project.design(2).factor1_levels    = {'AO','control'};
-project.design(3).factor1_levels    = {'AOCS','control'};
-project.design(4).factor1_levels    = {'AOCS','AO'};
-project.design(5).factor1_levels    = {'AOIS','AO'};
-project.design(6).factor1_levels    = {'AOCS','AOIS'};
-project.design(7).factor1_levels    = {'AOCS','AOIS','AO'};
-project.design(8).factor1_levels    = {'AO','control'};
-project.design(9).factor1_levels    = {'AOCS','control'};
-project.design(10).factor1_levels   = {'AOCS','AO'};
-project.design(11).factor1_levels   = {'AOIS','AO'};
-project.design(12).factor1_levels   = {'AOCS','AOIS'};
-project.design(13).factor1_levels   = {'AOCS','AOIS','AO'};
+project.study.design(2).factor1_levels    = {'AO','control'};
+project.study.design(3).factor1_levels    = {'AOCS','control'};
+project.study.design(4).factor1_levels    = {'AOCS','AO'};
+project.study.design(5).factor1_levels    = {'AOIS','AO'};
+project.study.design(6).factor1_levels    = {'AOCS','AOIS'};
+project.study.design(7).factor1_levels    = {'AOCS','AOIS','AO'};
+project.study.design(8).factor1_levels    = {'AO','control'};
+project.study.design(9).factor1_levels    = {'AOCS','control'};
+project.study.design(10).factor1_levels   = {'AOCS','AO'};
+project.study.design(11).factor1_levels   = {'AOIS','AO'};
+project.study.design(12).factor1_levels   = {'AOCS','AOIS'};
+project.study.design(13).factor1_levels   = {'AOCS','AOIS','AO'};
 
-project.design(8).factor2_levels    = {'CC','CP'};
-project.design(9).factor2_levels    = {'CC','CP'};
-project.design(10).factor2_levels   = {'CC','CP'};
-project.design(11).factor2_levels   = {'CC','CP'};
-project.design(12).factor2_levels   = {'CC','CP'};
-project.design(13).factor2_levels   = {'CC','CP'};
+project.study.design(8).factor2_levels    = {'CC','CP'};
+project.study.design(9).factor2_levels    = {'CC','CP'};
+project.study.design(10).factor2_levels   = {'CC','CP'};
+project.study.design(11).factor2_levels   = {'CC','CP'};
+project.study.design(12).factor2_levels   = {'CC','CP'};
+project.study.design(13).factor2_levels   = {'CC','CP'};
 
-project.design(1).factor1_levels    = {'cwalker' 'twalker' 'cscrambled' 'tscrambled'};
-project.design(2).factor1_levels    = {'centered','translating'};
-project.design(3).factor1_levels    = {'scrambled','walker'};
-project.design(4).factor1_levels    = {'scrambled','walker'};
-project.design(4).factor2_levels    = {'centered','translating'};
+project.study.design(1).factor1_levels    = {'cwalker' 'twalker' 'cscrambled' 'tscrambled'};
+project.study.design(2).factor1_levels    = {'centered','translating'};
+project.study.design(3).factor1_levels    = {'scrambled','walker'};
+project.study.design(4).factor1_levels    = {'scrambled','walker'};
+project.study.design(4).factor2_levels    = {'centered','translating'};
 
 
 
@@ -527,12 +526,12 @@ project.design(4).factor2_levels    = {'centered','translating'};
 % =================================================================================================================
 % STUDY
 % =================================================================================================================
-project.erp.study.tmin_analysis.s               = project.epoching.epo_st.s;
-project.erp.study.tmax_analysis.s               = project.epoching.epo_end.s;
-project.erp.study.ts_analysis.s                 = 0.008;
-project.erp.study.timeout_analysis_interval.s   = [project.erp.study.tmin_analysis.s:project.erp.study.ts_analysis.s:project.erp.study.tmax_analysis.s];
+project.erp.study_params.tmin_analysis.s               = project.epoching.epo_st.s;
+project.erp.study_params.tmax_analysis.s               = project.epoching.epo_end.s;
+project.erp.study_params.ts_analysis.s                 = 0.008;
+project.erp.study_params.timeout_analysis_interval.s   = [project.erp.study_params.tmin_analysis.s:project.erp.study_params.ts_analysis.s:project.erp.study_params.tmax_analysis.s];
 
-project.erp.study.precompute                    = {'interp','off','allcomps','on','erp'  ,'on','erpparams'  ,{},'recompute','off'};
+project.erp.study_params.precompute_param              = {'interp','off','allcomps','on','erp'  ,'on','erpparams'  ,{},'recompute','off'};
 
 % =================================================================================================================
 % STATS
@@ -755,15 +754,15 @@ project.erp.postprocess.emg.design(1).min_duration = 10;
 
 
 
-for ds=2:length(project.design)
+for ds=2:length(project.study.design)
     project.erp.postprocess.design(ds) = project.erp.postprocess.design(1);
 end
 
-for ds=2:length(project.design)
+for ds=2:length(project.study.design)
     project.erp.postprocess.eog.design(ds) = project.erp.postprocess.eog.design(1);
 end
 
-for ds=2:length(project.design)
+for ds=2:length(project.study.design)
     project.erp.postprocess.emg.design(ds) = project.erp.postprocess.emg.design(1);
 end
 
@@ -773,7 +772,7 @@ end
 % RESULTS DISPLAY
 % =================================================================================================================
 project.erp.results_display.time_smoothing                      = 10;           % frequency (Hz) of low-pass filter to be applied (only for visualization) of ERP data
-project.erp.results_display.time_range.s                        = [project.erp.study.tmin_analysis.s project.erp.study.tmax_analysis.s];       % time range for erp representation
+project.erp.results_display.time_range.s                        = [project.erp.study_params.tmin_analysis.s project.erp.study_params.tmax_analysis.s];       % time range for erp representation
 
 
 project.erp.results_display.filter_freq                         = 10;           %frequency (Hz) of low-pass filter to be applied (only for visualization) of ERP data
@@ -817,21 +816,30 @@ project.erp.results_display.z_transform                        = 'on';         %
 %===============================================================================================================================================================
 %===============================================================================================================================================================
 
-project.ersp.study.tmin_analysis.s              = project.epoching.epo_st.s;
-project.ersp.study.tmax_analysis.s              = project.epoching.epo_end.s;
-project.ersp.study.ts_analysis.s                = 0.008;
-project.ersp.study.timeout_analysis_interval.s  = [project.ersp.study.tmin_analysis.s:project.ersp.study.ts_analysis.s:project.ersp.study.tmax_analysis.s];
+project.ersp.study_params.tmin_analysis.s              = project.epoching.epo_st.s;
+project.ersp.study_params.tmax_analysis.s              = project.epoching.epo_end.s;
+project.ersp.study_params.ts_analysis.s                = 0.008;
+project.ersp.study_params.timeout_analysis_interval.s  = [project.ersp.study_params.tmin_analysis.s:project.ersp.study_params.ts_analysis.s:project.ersp.study_params.tmax_analysis.s];
 
-project.ersp.study.fmin_analysis                = 4;
-project.ersp.study.fmax_analysis                = 32;
-project.ersp.study.fs_analysis                  = 0.5;
-project.ersp.study.freqout_analysis_interval    = [project.ersp.study.fmin_analysis:project.ersp.study.fs_analysis:project.ersp.study.fmax_analysis];
-project.ersp.study.padratio                     = 16;
-project.ersp.study.cycles                       = 0; ...[3 0.8];
+project.ersp.study_params.fmin_analysis                = 4;
+project.ersp.study_params.fmax_analysis                = 32;
+project.ersp.study_params.fs_analysis                  = 0.5;
+project.ersp.study_params.freqout_analysis_interval    = [project.ersp.study_params.fmin_analysis:project.ersp.study_params.fs_analysis:project.ersp.study_params.fmax_analysis];
+project.ersp.study_params.padratio                     = 16;
+project.ersp.study_params.cycles                       = 0; ...[3 0.8];
 
-project.ersp.study.precompute                   = {'interp','off' ,'allcomps','on','ersp' ,'on','erspparams' ,{'cycles' project.ersp.study.cycles,  'freqs', project.ersp.study.freqout_analysis_interval, 'timesout', project.ersp.study.timeout_analysis_interval.s*1000, ...
-                                                   'freqscale','linear','padratio',project.ersp.study.padratio, 'baseline',[project.epoching.bc_st.s*1000 project.epoching.bc_end.s*1000] },'itc','on','recompute','off'};
+% project.ersp.study_params.precompute_param             = {'interp','off' ,'allcomps','on','ersp' ,'on','erspparams' ,{'cycles' project.ersp.study_params.cycles,  'freqs', project.ersp.study_params.freqout_analysis_interval, 'timesout', project.ersp.study_params.timeout_analysis_interval.s*1000, ...
+%                                                    'freqscale','linear','padratio',project.ersp.study_params.padratio, 'baseline',[project.epoching.bc_st.s*1000 project.epoching.bc_end.s*1000] },'itc','on','recompute','off'};
+                                               
+project.ersp.study_params.precompute_struct            = struct('interp','off' ,'allcomps','on','ersp' ,'on','erspparams' ,[],'itc','on','recompute','off');
 
+project.ersp.study_params.precompute_struct.erspparams = {'cycles' project.ersp.study_params.cycles,  'freqs', project.ersp.study_params.freqout_analysis_interval, 'timesout', project.ersp.study_params.timeout_analysis_interval.s*1000, ...
+                                                    'freqscale','linear','padratio',project.ersp.study_params.padratio, 'baseline',[project.epoching.bc_st.s*1000 project.epoching.bc_end.s*1000] };
+                                                   
+% project.ersp.study_params.precompute_struct.erspparams = struct('cycles', project.ersp.study_params.cycles,  'freqs', project.ersp.study_params.freqout_analysis_interval, 'timesout', project.ersp.study_params.timeout_analysis_interval.s*1000, ...
+%                                                    'freqscale','linear','padratio',project.ersp.study_params.padratio, 'baseline',[project.epoching.bc_st.s*1000 project.epoching.bc_end.s*1000] );
+                                               
+                                               
 project.ersp.postprocess.sel_extrema                            ='first_occurrence';%'avg_occurrences'
 
 project.ersp.postprocess.mode.continous                         = struct('time_resolution_mode', 'continuous', 'peak_type', 'off'          , 'align', 'off', 'tw_stat_estimator', 'tw_mean');
@@ -1324,16 +1332,16 @@ project.ersp.postprocess.emg.design(1).min_duration = 10;
 
 
 
-for ds=2:length(project.design)
+for ds=2:length(project.study.design)
     project.ersp.postprocess.design(ds) = project.ersp.postprocess.design(1);
 end
 
-for ds=2:length(project.design)
+for ds=2:length(project.study.design)
     project.ersp.postprocess.eog.design(ds) = project.ersp.postprocess.eog.design(1);
 end
 
 
-for ds=2:length(project.design)
+for ds=2:length(project.study.design)
     project.ersp.postprocess.emg.design(ds) = project.ersp.postprocess.emg.design(1);
 end
 
@@ -1375,8 +1383,8 @@ project.ersp.postprocess.design_factors_ordered_levels={...
 % ======================================================================================================
 
 % ERSP
-project.ersp.results_display.time_range.s                       = [project.ersp.study.tmin_analysis.s project.ersp.study.tmax_analysis.s];     % time range for erp representation
-project.ersp.results_display.frequency_range                    = [project.ersp.study.fmin_analysis project.ersp.study.fmax_analysis];         % frequency range for ersp representation
+project.ersp.results_display.time_range.s                       = [project.ersp.study_params.tmin_analysis.s project.ersp.study_params.tmax_analysis.s];     % time range for erp representation
+project.ersp.results_display.frequency_range                    = [project.ersp.study_params.fmin_analysis project.ersp.study_params.fmax_analysis];         % frequency range for ersp representation
 project.ersp.results_display.do_plots                           = 'on';        %
 project.ersp.results_display.show_text                          = 'on';         %
 project.ersp.results_display.z_transform                        = 'on';         % 'on'|'off' z-transform data data for each roi, band and tw to allow to plot all figures on the same scale
