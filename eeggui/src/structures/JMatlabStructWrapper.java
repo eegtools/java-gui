@@ -178,15 +178,13 @@ public class JMatlabStructWrapper
     
     public double getDouble(MLStructure struct, String field)
     {
-         return (double) ((MLDouble) struct.getField(field)).getArray()[0][0];
+        return (double) ((MLDouble) struct.getField(field)).getArray()[0][0];
     }   
     
     public double[] getDoubleArray(MLStructure struct, String field)
     {
-        if ((struct.getField(field)).isEmpty())
-        {
-            return null;
-        }
+        if ((struct.getField(field)).isEmpty()) return null;
+        
         else return ((MLDouble) struct.getField(field)).getArray()[0];
     }          
     
