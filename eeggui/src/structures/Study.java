@@ -21,7 +21,7 @@ public class Study  extends JMatlabStructWrapper{
     public Erp_st erp;
     public Ersp_st ersp;
     
-    public Factors_st[] factors;
+    // public Factors_st[] factors;
     
     
 
@@ -33,11 +33,11 @@ public class Study  extends JMatlabStructWrapper{
     {
         filename        = getString(study, "filename");
         
-        precompute      = getPrecompute(study, "precompute");
-        erp             = getErp(study, "erp");
-        ersp            = getErsp(study, "ersp");
+        precompute      = readPrecompute(study, "precompute");
+        erp             = readErp(study, "erp");
+        ersp            = readErsp(study, "ersp");
         
-        factors         = readFactors(study, "factors");
+        //factors         = readFactors(study, "factors");
     }    
     
     public MLStructure getJMatData()
@@ -55,28 +55,28 @@ public class Study  extends JMatlabStructWrapper{
         return study;
     }
   
-    public Precompute_st getPrecompute(MLStructure study, String field)
+    private Precompute_st readPrecompute(MLStructure study, String field)
     {
         MLStructure precomp = (MLStructure) study.getField(field);
         Precompute_st vec = new Precompute_st(precomp);
         return vec;
     }
     
-    public Erp_st getErp(MLStructure study, String field)
+    private Erp_st readErp(MLStructure study, String field)
     {
         MLStructure precomp = (MLStructure) study.getField(field);
         Erp_st vec = new Erp_st(precomp);
         return vec;
     }
     
-    public Ersp_st getErsp(MLStructure study, String field)
+    private Ersp_st readErsp(MLStructure study, String field)
     {
         MLStructure precomp = (MLStructure) study.getField(field);
         Ersp_st vec = new Ersp_st(precomp);
         return vec;
     }
     
-    public Factors_st[] readFactors(MLStructure study , String field)
+    private Factors_st[] readFactors(MLStructure study , String field)
     {
         MLStructure a           = (MLStructure) study.getField(field);
         int[] dim               = a.getDimensions();

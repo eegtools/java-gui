@@ -103,7 +103,7 @@ public class Project extends JMatlabStructWrapper{
             imp.setJMatData(simp);
 
             // ------------------------------------------------------------------------------------------------------------------------------------
-            // EEG DATA 
+            // EEG DATA - see if list are String or String[]
             MLStructure sdata = (MLStructure) prj.getField("eegdata");
             eegdata = new EEGdata();
             eegdata.setJMatData(sdata);
@@ -127,11 +127,55 @@ public class Project extends JMatlabStructWrapper{
             subjects.setJMatData(ssubjs);
             
             // ------------------------------------------------------------------------------------------------------------------------------------
-            // STUDY
+            // STUDY - Pbes in Precomput, change struct
             MLStructure sstudy = (MLStructure) prj.getField("study");
             study = new Study();
             study.setJMatData(sstudy);
             
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // DESIGN - Pbes, change struct
+            //MLStructure sdesign = (MLStructure) prj.getField("design");
+            //design = new Design();
+            //design.setJMatData(sdesign);
+            
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // STATS - Pbes in Precomput, change struct
+            MLStructure sstats = (MLStructure) prj.getField("stats");
+            stats = new Stats();
+            stats.setJMatData(sstats);
+            
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // POSTPROCESS - A remplir !!
+            MLStructure spostproc = (MLStructure) prj.getField("postprocess");
+            postprocess = new Postprocess();
+            postprocess.setJMatData(spostproc);
+            
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // RESULTS DISPLAY
+            MLStructure sresdisp = (MLStructure) prj.getField("results_display");
+            results_display = new ResultsDisplay();
+            results_display.setJMatData(sresdisp);
+            
+            /* -> doesn't exist anymore ??
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // EXPORT - Pbes pour instancier bands
+            MLStructure sexport = (MLStructure) prj.getField("export");
+            export = new Export();
+            export.setJMatData(sexport);
+            */
+            
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // CLUSTERING
+            MLStructure scluster = (MLStructure) prj.getField("clustering");
+            clustering = new Clustering();
+            clustering.setJMatData(scluster);
+            
+            // ------------------------------------------------------------------------------------------------------------------------------------
+            // BRAINSTORMING
+            MLStructure sbrainstorm = (MLStructure) prj.getField("brainstorm");
+            brainstorm = new Brainstorm();
+            brainstorm.setJMatData(sbrainstorm);
+
             int a = 1;
             
            
