@@ -15,45 +15,27 @@ import java.util.Map;
  */
 public class Design extends JMatlabStructWrapper{
     
-    public Designs_de[] design;
+    public String name;
+    public String factor1_name;
+    public String factor2_name;
+    
+    public String[] factor1_level;
+    public String[] factor2_level;
+    
+    public String factor1_pairing;
+    public String factor2_pairing;
     
     public Design(){}
-
-    public void setJMatData(MLStructure designd)
-    {
-        design = readDesign(designd, "design");
-    }
-  
-    public MLStructure getJMatData()
-    {
-        MLStructure design = new MLStructure("design",new int[] {1,1});
-        
-        return design;
-    }
-
-
-    public Designs_de[] readDesign(MLStructure des , String field)
-    {
-        MLStructure a           = (MLStructure) des.getField(field);
-        int[] dim               = a.getDimensions();
-        
-        Designs_de[] arr_des = new Designs_de[dim[1]];
-        for (int s=0; s < dim[1]; s++)
-        {
-            Map<String, MLArray>  des1 = a.getFields(s);
-            //MLStructure str_subj = (MLStructure) subj;//arr_subjs[s].name = getString(str_subj,    "name");
-
-            arr_des[s]                  = new Designs_de();
-            arr_des[s].name             = getString(des1, "name");
-            arr_des[s].factor1_name     = getString(des1, "factor1_name");
-            arr_des[s].factor2_name     = getString(des1, "factor2_name");
-            arr_des[s].factor1_pairing  = getString(des1, "factor1_pairing");
-            arr_des[s].factor2_pairing  = getString(des1, "factor2_pairing");
-            arr_des[s].factor1_level    = getStringCellArray(des1, "factor1_level");
-            arr_des[s].factor2_level    = getStringCellArray(des1, "factor2_level"); 
-
-        }  
-        return arr_des;
-    }
     
+    public Design(MLStructure dess)
+    {
+        name                = getString(dess, "name");
+        factor1_name        = getString(dess, "factor1_name");
+        factor2_name        = getString(dess, "factor2_name");
+        factor1_pairing     = getString(dess, "factor1_pairing");
+        factor2_pairing     = getString(dess, "factor2_pairing");
+
+        factor1_level       = getStringCellArray(dess, "factor1_level");
+        factor2_level       = getStringCellArray(dess, "factor2_level"); 
+    } 
 }

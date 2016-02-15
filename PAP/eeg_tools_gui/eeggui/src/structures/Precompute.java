@@ -11,7 +11,7 @@ import com.jmatio.types.*;
  *
  * @author PHilt
  */
-public class Precompute_st extends JMatlabStructWrapper{
+public class Precompute extends JMatlabStructWrapper{
     
     public String recompute;
     public String do_erp;
@@ -24,11 +24,11 @@ public class Precompute_st extends JMatlabStructWrapper{
     public String[] spec;
     public String[] ersp;
     
-    public Precompute_st()
+    public Precompute()
     {
     }
     
-    public Precompute_st(MLStructure precomp) 
+    public Precompute(MLStructure precomp) 
     {
         recompute = getString(precomp, "recompute");
         do_erp = getString(precomp, "do_erp");

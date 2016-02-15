@@ -16,10 +16,10 @@ public class Study  extends JMatlabStructWrapper{
    
     public String filename;
     
-    public Precompute_st precompute;
+    public Precompute precompute;
     
-    public Erp_st erp;
-    public Ersp_st ersp;
+    
+    public Design[] design;
     
     // public Factors_st[] factors;
     
@@ -34,15 +34,14 @@ public class Study  extends JMatlabStructWrapper{
         filename        = getString(study, "filename");
         
         precompute      = readPrecompute(study, "precompute");
-        erp             = readErp(study, "erp");
-        ersp            = readErsp(study, "ersp");
         
+        design          = readDesign(study, "design");
         //factors         = readFactors(study, "factors");
     }    
     
     public MLStructure getJMatData()
     {
-        MLStructure study = new MLStructure("study",new int[] {1,1});
+        MLStructure study = new MLStructure("XXX",new int[] {1,1});
         
         study.setField("filename",setString(filename));
         
@@ -55,10 +54,10 @@ public class Study  extends JMatlabStructWrapper{
         return study;
     }
   
-    private Precompute_st readPrecompute(MLStructure study, String field)
+    private Precompute readPrecompute(MLStructure study, String field)
     {
         MLStructure precomp = (MLStructure) study.getField(field);
-        Precompute_st vec = new Precompute_st(precomp);
+        Precompute vec = new Precompute(precomp);
         return vec;
     }
     
@@ -95,5 +94,27 @@ public class Study  extends JMatlabStructWrapper{
         return arr_facs;
     }
     
-    
+    public Design[] readDesign(MLStructure des , String field)
+    {
+        MLStructure a           = (MLStructure) des.getField(field);
+        int[] dim               = a.getDimensions();
+        
+        Design[] arr_des = new Design[dim[1]];
+        for (int s=0; s < dim[1]; s++)
+        {
+            Map<String, MLArray>  des1 = a.getFields(s);
+            //MLStructure str_subj = (MLStructure) subj;//arr_subjs[s].name = getString(str_subj,    "name");
+
+            arr_des[s]                  = new Design();
+            arr_des[s].name             = getString(des1, "name");
+            arr_des[s].factor1_name     = getString(des1, "factor1_name");
+            arr_des[s].factor2_name     = getString(des1, "factor2_name");
+            arr_des[s].factor1_pairing  = getString(des1, "factor1_pairing");
+            arr_des[s].factor2_pairing  = getString(des1, "factor2_pairing");
+            arr_des[s].factor1_level    = getStringCellArray(des1, "factor1_level");
+            arr_des[s].factor2_level    = getStringCellArray(des1, "factor2_level"); 
+
+        }  
+        return arr_des;
+    }    
 }
