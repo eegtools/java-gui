@@ -26,8 +26,7 @@ public class JTPMain extends javax.swing.JPanel {
         try{
          
         project = new Project();
-//        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_structure.mat");
-        project = project.loadMAT("G:\\behavior_lab_svn\\behaviourPlatform\\PAP\\eeg_tools_gui\\project_structure2.mat");
+        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_structure.mat");
   
         int verif = project.saveMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\atest.mat");
         }
