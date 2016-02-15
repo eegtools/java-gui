@@ -14,7 +14,6 @@ import com.jmatio.types.MLStructure;
 public class Paths  extends JMatlabStructWrapper{
     
     public String project;
-    public String scripts;
     public String original_data;
     public String input_epochs;
     public String output_epochs;
@@ -26,6 +25,9 @@ public class Paths  extends JMatlabStructWrapper{
     public String batches;
     public String spmsources;
     public String spmstats;
+    public String spm;
+    public String eeglab;
+    public String brainstorm;
     
     public Paths()
     {
@@ -35,7 +37,6 @@ public class Paths  extends JMatlabStructWrapper{
     {
         
         project  = getString(paths, "project");
-        scripts  = getString(paths, "scripts");
         original_data  = getString(paths, "original_data");
         input_epochs  = getString(paths, "input_epochs");
         output_epochs  = getString(paths, "output_epochs");
@@ -47,8 +48,10 @@ public class Paths  extends JMatlabStructWrapper{
         batches  = getString(paths, "batches");
         spmsources  = getString(paths, "spmsources");
         spmstats  = getString(paths, "spmstats");
-        
-        
+        spm  = getString(paths, "spm");
+        eeglab  = getString(paths, "eeglab");
+        brainstorm  = getString(paths, "brainstorm");
+
     }    
     
     public MLStructure getJMatData()
@@ -56,18 +59,20 @@ public class Paths  extends JMatlabStructWrapper{
         MLStructure paths = new MLStructure("paths",new int[] {1,1});
         
         paths.setField("project",setString(project));
-        paths.setField("scripts",setString(scripts));
         paths.setField("original_data",setString(original_data));
         paths.setField("input_epochs",setString(input_epochs));
         paths.setField("output_epochs",setString(output_epochs));
         paths.setField("results",setString(results));
         paths.setField("emg_epochs",setString(emg_epochs));
-        paths.setField("scripts",setString(emg_epochs_mat));
-        paths.setField("original_data",setString(tf));
-        paths.setField("input_epochs",setString(cluster_projection_erp));
-        paths.setField("output_epochs",setString(batches));
-        paths.setField("results",setString(spmsources));
-        paths.setField("emg_epochs",setString(spmstats));
+        paths.setField("emg_epochs_mat",setString(emg_epochs_mat));
+        paths.setField("tf",setString(tf));
+        paths.setField("cluster_projection_erp",setString(cluster_projection_erp));
+        paths.setField("batches",setString(batches));
+        paths.setField("spmsources",setString(spmsources));
+        paths.setField("spmstats",setString(spmstats));
+        paths.setField("spm",setString(spm));
+        paths.setField("eeglab",setString(eeglab));
+        paths.setField("brainstorm",setString(brainstorm));
  
         return paths;
     }

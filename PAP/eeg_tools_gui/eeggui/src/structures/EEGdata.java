@@ -25,8 +25,8 @@ public class EEGdata extends JMatlabStructWrapper{
     public double[] eog_channels_list;
     public double[] no_eeg_channels_list;
 
-    public String[] eog_channels_list_labels;
-    public String[] emg_channels_list_labels;
+    //public String[] eog_channels_list_labels;
+    //public String[] emg_channels_list_labels;
 
     public EEGdata()
     {
@@ -49,8 +49,8 @@ public class EEGdata extends JMatlabStructWrapper{
         eog_channels_list = getDoubleArray(eegdata,"eog_channels_list");
         no_eeg_channels_list = getDoubleArray(eegdata,"no_eeg_channels_list");
         
-        eog_channels_list_labels = getStringCellArray(eegdata,"eog_channels_list_labels");
-        emg_channels_list_labels = getStringCellArray(eegdata,"emg_channels_list_labels");
+        //eog_channels_list_labels = getStringCellArray(eegdata,"eog_channels_list_labels");
+        //emg_channels_list_labels = getStringCellArray(eegdata,"emg_channels_list_labels");
     }
   
     public MLStructure getJMatData()

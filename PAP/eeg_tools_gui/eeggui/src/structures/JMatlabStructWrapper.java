@@ -100,7 +100,7 @@ public class JMatlabStructWrapper
             second_dim_id = 1;
             second_dim = subdim[0];
         }
-        else                                        return null;
+        else return null;
                 
         String[][] cellarray  = new String[rows][second_dim];        
         
@@ -135,7 +135,10 @@ public class JMatlabStructWrapper
             MLCell a            = (MLCell) struct.getField(field);
             int nitem           = (a.cells()).size();
             String[] cellarray  = new String[nitem];
-            for (int m = 0; m < nitem; m++) cellarray[m] = ((MLChar) a.get(m)).getString(0);    
+            for (int m = 0; m < nitem; m++) 
+            {
+                cellarray[m] = ((MLChar) a.get(m)).getString(0);
+            }    
             return cellarray;
         }
     }  
