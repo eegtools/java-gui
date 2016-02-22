@@ -26,9 +26,10 @@ public class JTPMain extends javax.swing.JPanel {
         try{
          
         project = new Project();
-        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_structure.mat");
+        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_new_2.mat");
   
-        int verif = project.saveMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\atest.mat");
+        int verif = project.saveMAT("C:\\Users\\PHilt\\Desktop\\test_gui\\project_new_1.mat");
+        
         }
         catch(IOException e){
             e.printStackTrace();
@@ -68,6 +69,7 @@ public class JTPMain extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        import_cmb_system = new javax.swing.JComboBox();
         btNewProject = new javax.swing.JButton();
         btOpenProject = new javax.swing.JButton();
         btSaveProject = new javax.swing.JButton();
@@ -75,7 +77,6 @@ public class JTPMain extends javax.swing.JPanel {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPimport_data = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
         jLabel19 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -154,17 +155,26 @@ public class JTPMain extends javax.swing.JPanel {
         jLabel83 = new javax.swing.JLabel();
         jLabel84 = new javax.swing.JLabel();
         jPstats = new javax.swing.JPanel();
+        jPStats2 = new gui.JPStats();
         jPpostprocess = new javax.swing.JPanel();
         jPresults_display = new javax.swing.JPanel();
         jPbrainstorm = new javax.swing.JPanel();
         jPpaths = new javax.swing.JPanel();
         jPtask = new javax.swing.JPanel();
 
+        import_cmb_system.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        import_cmb_system.setName("acquisition_system"); // NOI18N
+        import_cmb_system.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                import_cmb_systemActionPerformed(evt);
+            }
+        });
+        import_cmb_system.getAccessibleContext().setAccessibleName("");
+
         setName("main_panel"); // NOI18N
 
         btNewProject.setText("New");
         btNewProject.setName("btNewProject"); // NOI18N
-        btNewProject.setOpaque(false);
         btNewProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNewProjectActionPerformed(evt);
@@ -200,14 +210,6 @@ public class JTPMain extends javax.swing.JPanel {
         jPimport_data.setName("import_data"); // NOI18N
 
         jLabel18.setText("system");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setName("acquisition_system"); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jLabel19.setText("data extension");
 
@@ -255,6 +257,11 @@ public class JTPMain extends javax.swing.JPanel {
 
         jTextField8.setText("jTextField1");
         jTextField8.setName("input_example_name"); // NOI18N
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -376,9 +383,7 @@ public class JTPMain extends javax.swing.JPanel {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(109, 109, 109)
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,7 +419,7 @@ public class JTPMain extends javax.swing.JPanel {
                                 .addComponent(jScrollPane1))
                             .addGroup(jPimport_dataLayout.createSequentialGroup()
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -439,7 +444,7 @@ public class JTPMain extends javax.swing.JPanel {
                 .addGroup(jPimport_dataLayout.createSequentialGroup()
                     .addGap(159, 159, 159)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(160, Short.MAX_VALUE)))
+                    .addContainerGap(202, Short.MAX_VALUE)))
         );
         jPimport_dataLayout.setVerticalGroup(
             jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +453,6 @@ public class JTPMain extends javax.swing.JPanel {
                 .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
@@ -509,8 +513,6 @@ public class JTPMain extends javax.swing.JPanel {
                     .addContainerGap(396, Short.MAX_VALUE)))
         );
 
-        jComboBox1.getAccessibleContext().setAccessibleName("");
-
         jTabbedPane2.addTab("Import & Data", jPimport_data);
 
         jPepoching.setName("epoching"); // NOI18N
@@ -569,7 +571,7 @@ public class JTPMain extends javax.swing.JPanel {
                     .addGroup(jPepochingLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(349, Short.MAX_VALUE))
         );
         jPepochingLayout.setVerticalGroup(
             jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -760,7 +762,7 @@ public class JTPMain extends javax.swing.JPanel {
                             .addGroup(jPstudy_designLayout.createSequentialGroup()
                                 .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE))
+                                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE))
                             .addGroup(jPstudy_designLayout.createSequentialGroup()
                                 .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -808,7 +810,7 @@ public class JTPMain extends javax.swing.JPanel {
                 .addGroup(jPstudy_designLayout.createSequentialGroup()
                     .addGap(20, 20, 20)
                     .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(989, Short.MAX_VALUE)))
+                    .addContainerGap(1031, Short.MAX_VALUE)))
         );
         jPstudy_designLayout.setVerticalGroup(
             jPstudy_designLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -872,11 +874,17 @@ public class JTPMain extends javax.swing.JPanel {
         jPstats.setLayout(jPstatsLayout);
         jPstatsLayout.setHorizontalGroup(
             jPstatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1096, Short.MAX_VALUE)
+            .addGroup(jPstatsLayout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(jPStats2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(594, Short.MAX_VALUE))
         );
         jPstatsLayout.setVerticalGroup(
             jPstatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 711, Short.MAX_VALUE)
+            .addGroup(jPstatsLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(jPStats2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(346, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Stats", jPstats);
@@ -885,7 +893,7 @@ public class JTPMain extends javax.swing.JPanel {
         jPpostprocess.setLayout(jPpostprocessLayout);
         jPpostprocessLayout.setHorizontalGroup(
             jPpostprocessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1096, Short.MAX_VALUE)
+            .addGap(0, 1138, Short.MAX_VALUE)
         );
         jPpostprocessLayout.setVerticalGroup(
             jPpostprocessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -905,7 +913,7 @@ public class JTPMain extends javax.swing.JPanel {
         jPresults_display.setLayout(jPresults_displayLayout);
         jPresults_displayLayout.setHorizontalGroup(
             jPresults_displayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1096, Short.MAX_VALUE)
+            .addGap(0, 1138, Short.MAX_VALUE)
         );
         jPresults_displayLayout.setVerticalGroup(
             jPresults_displayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -920,7 +928,7 @@ public class JTPMain extends javax.swing.JPanel {
         jPbrainstorm.setLayout(jPbrainstormLayout);
         jPbrainstormLayout.setHorizontalGroup(
             jPbrainstormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1096, Short.MAX_VALUE)
+            .addGap(0, 1138, Short.MAX_VALUE)
         );
         jPbrainstormLayout.setVerticalGroup(
             jPbrainstormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -935,7 +943,7 @@ public class JTPMain extends javax.swing.JPanel {
         jPpaths.setLayout(jPpathsLayout);
         jPpathsLayout.setHorizontalGroup(
             jPpathsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1096, Short.MAX_VALUE)
+            .addGap(0, 1138, Short.MAX_VALUE)
         );
         jPpathsLayout.setVerticalGroup(
             jPpathsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -950,7 +958,7 @@ public class JTPMain extends javax.swing.JPanel {
         jPtask.setLayout(jPtaskLayout);
         jPtaskLayout.setHorizontalGroup(
             jPtaskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1096, Short.MAX_VALUE)
+            .addGap(0, 1138, Short.MAX_VALUE)
         );
         jPtaskLayout.setVerticalGroup(
             jPtaskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -973,10 +981,7 @@ public class JTPMain extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSaveAsProject)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jTabbedPane2)
-                .addContainerGap())
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -986,15 +991,10 @@ public class JTPMain extends javax.swing.JPanel {
                     .addComponent(btOpenProject)
                     .addComponent(btSaveProject)
                     .addComponent(btSaveAsProject))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btNewProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNewProjectActionPerformed
-
-    }//GEN-LAST:event_btNewProjectActionPerformed
 
     private void btOpenProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOpenProjectActionPerformed
         // show OpenFile window, looking for .mat files and filling this variable
@@ -1070,10 +1070,12 @@ public class JTPMain extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    //=========================================================
+    // IMPORT
+    //=========================================================
+    private void import_cmb_systemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_import_cmb_systemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_import_cmb_systemActionPerformed
 
     private void btSaveAsProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveAsProjectActionPerformed
         // show SaveFile window, looking for .mat files and filling this variable
@@ -1083,6 +1085,14 @@ public class JTPMain extends javax.swing.JPanel {
         //project.saveMAT(s_project_mat_file);   
     }//GEN-LAST:event_btSaveAsProjectActionPerformed
 
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void btNewProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNewProjectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btNewProjectActionPerformed
+
     private String s_project_mat_file;
     private Project project;
     private JPPreprocessing pp;
@@ -1091,6 +1101,7 @@ public class JTPMain extends javax.swing.JPanel {
     private javax.swing.JButton btOpenProject;
     private javax.swing.JButton btSaveAsProject;
     private javax.swing.JButton btSaveProject;
+    private javax.swing.JComboBox import_cmb_system;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
@@ -1103,7 +1114,6 @@ public class JTPMain extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox5;
     private javax.swing.JComboBox jComboBox6;
@@ -1142,6 +1152,7 @@ public class JTPMain extends javax.swing.JPanel {
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
+    private gui.JPStats jPStats2;
     private javax.swing.JPanel jPbrainstorm;
     private javax.swing.JPanel jPepoching;
     private javax.swing.JPanel jPimport_data;

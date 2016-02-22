@@ -13,67 +13,50 @@ import com.jmatio.types.MLStructure;
  */
 public class Stats extends JMatlabStructWrapper{
     
-    public Erp_sta erp;
-    public Eeglab_sta eeglab;
-    public Ersp_sta ersp;
-    public Brainstorm_sta brainstorm;
-    public Spm_sta spm;
+    public double[] pvalue;
+    public double[] num_permutations;
+    public double[] num_tails;
     
-    public Stats()
+    public Eeglab eeglab;
+    
+    
+    public Stats(){}
+    
+    public void setJMatData(MLStructure struct)
     {
+        pvalue              = getDoubleArray(struct, "pvalue");
+        num_permutations    = getDoubleArray(struct, "num_permutations");
+        num_tails           = getDoubleArray(struct, "num_tails");
+        
+        eeglab              = readEeglab(struct, "eeglab");
+    }    
+     
+    private Eeglab readEeglab(MLStructure eeg, String field)
+    {
+        MLStructure eegs = (MLStructure) eeg.getField(field);
+        Eeglab vec_eeg = new Eeglab();
+        vec_eeg.setJMatData(eegs);
+        return vec_eeg;
     }
     
-    public void setJMatData(MLStructure stats)
-    {
-        erp         = readErp_sta(stats, "erp");
-        eeglab      = readEeglab_sta(stats, "eeglab");
-        ersp        = readErsp_sta(stats, "ersp");
-        brainstorm  = readBrainstorm_sta(stats, "brainstorm");
-        spm         = readSpm_sta(stats, "spm");
-    }    
     
     public MLStructure getJMatData()
     {
-        MLStructure stats = new MLStructure("stats",new int[] {1,1});
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
+        
+        struct.setField("pvalue", setDoubleColumnArray(pvalue));
+        struct.setField("num_permutations", setDoubleColumnArray(num_permutations));
+        struct.setField("num_tails", setDoubleColumnArray(num_tails));
+        
+        struct.setField("eeglab", writeEeglab(eeglab));
 
-        return stats;
+        return struct;
     }
-
     
-    public Erp_sta readErp_sta(MLStructure erpsta, String field)
+    private MLStructure writeEeglab(Eeglab eeglab)
     {
-        MLStructure erpstas = (MLStructure) erpsta.getField(field);
-        Erp_sta vec = new Erp_sta(erpstas);
-        return vec;
+        MLStructure struct = eeglab.getJMatData();
+        return struct;
     }
-    
-    public Eeglab_sta readEeglab_sta(MLStructure eegsta, String field)
-    {
-        MLStructure eegstas = (MLStructure) eegsta.getField(field);
-        Eeglab_sta vec = new Eeglab_sta(eegstas);
-        return vec;
-    }
-    
-    public Ersp_sta readErsp_sta(MLStructure erspsta, String field)
-    {
-        MLStructure erspstas = (MLStructure) erspsta.getField(field);
-        Ersp_sta vec = new Ersp_sta(erspstas);
-        return vec;
-    }
-    
-    public Brainstorm_sta readBrainstorm_sta(MLStructure brainsta, String field)
-    {
-        MLStructure brainstas = (MLStructure) brainsta.getField(field);
-        Brainstorm_sta vec = new Brainstorm_sta(brainstas);
-        return vec;
-    }
-    
-    public Spm_sta readSpm_sta(MLStructure spmsta, String field)
-    {
-        MLStructure spmstas = (MLStructure) spmsta.getField(field);
-        Spm_sta vec = new Spm_sta(spmstas);
-        return vec;
-    }
-    
 
 }

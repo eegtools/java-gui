@@ -13,27 +13,37 @@ import com.jmatio.types.MLStructure;
  */
 public class Latency extends JMatlabStructWrapper{
     
-    public double s;
-    public double ms;
+    public double[] s;
+    public double[] ms;
     
     public Latency(){}
-    
+
     public void setJMatDataS(MLStructure lat)
     {
-        s   = getDouble(lat, "s");
-        ms  = s*1000;
+        s   = getDoubleArray(lat, "s");
+        double[] tmp_ms = new double[s.length];
+        for (int m = 0; m < s.length; m++) 
+        {
+            tmp_ms[m]  = s[m]*1000;
+        }
+        ms = tmp_ms;
     } 
     public void setJMatDataMS(MLStructure lat)
     {
-        ms  = getDouble(lat, "ms");
-        s   = ms/1000;
+        ms  = getDoubleArray(lat, "ms");
+        double[] tmp_s = new double[ms.length];
+        for (int m = 0; m < ms.length; m++) 
+        {
+            tmp_s[m]  = ms[m]*1000;
+        }
+        s = tmp_s;
     } 
 
     public MLStructure getJMatData()
     {
         MLStructure struct = new MLStructure("XXX", new int[] {1,1});
-        struct.setField("s",  setDouble(s));
-        struct.setField("ms", setDouble(ms));
+        struct.setField("s",  setDoubleLineArray(s));
+        struct.setField("ms", setDoubleLineArray(ms));
         return struct;
     } 
     

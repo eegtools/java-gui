@@ -19,23 +19,40 @@ public class Design extends JMatlabStructWrapper{
     public String factor1_name;
     public String factor2_name;
     
-    public String[] factor1_level;
-    public String[] factor2_level;
+    public String[] factor1_levels;
+    public String[] factor2_levels;
     
     public String factor1_pairing;
     public String factor2_pairing;
     
     public Design(){}
     
-    public Design(MLStructure dess)
+    public void setJMatData(MLStructure struct)
     {
-        name                = getString(dess, "name");
-        factor1_name        = getString(dess, "factor1_name");
-        factor2_name        = getString(dess, "factor2_name");
-        factor1_pairing     = getString(dess, "factor1_pairing");
-        factor2_pairing     = getString(dess, "factor2_pairing");
+        name                = getString(struct, "name");
+        factor1_name        = getString(struct, "factor1_name");
+        factor2_name        = getString(struct, "factor2_name");
+        factor1_pairing     = getString(struct, "factor1_pairing");
+        factor2_pairing     = getString(struct, "factor2_pairing");
 
-        factor1_level       = getStringCellArray(dess, "factor1_level");
-        factor2_level       = getStringCellArray(dess, "factor2_level"); 
+        factor1_levels       = getStringCellArray(struct, "factor1_levels");
+        factor2_levels       = getStringCellArray(struct, "factor2_levels"); 
     } 
+    
+    public MLStructure getJMatData()
+    {
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
+        
+        struct.setField("name",setString(name));
+        struct.setField("factor1_name",setString(factor1_name));
+        struct.setField("factor2_name",setString(factor2_name));
+        struct.setField("factor1_pairing",setString(factor1_pairing));
+        struct.setField("factor2_pairing",setString(factor2_pairing));
+
+        struct.setField("factor1_levels",setStringLineArray(factor1_levels));
+        struct.setField("factor2_levels",setStringLineArray(factor2_levels));
+
+        return struct;
+    }
+    
 }
