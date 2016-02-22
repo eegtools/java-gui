@@ -13,9 +13,9 @@ import com.jmatio.types.*;
  */
 public class EEGdata extends JMatlabStructWrapper{
     
-    public int nch;
-    public int nch_eeg;
-    public int fs;
+    public double[] nch;         //int
+    public double[] nch_eeg;     //int
+    public double[] fs;          //int
     
     public String eeglab_channels_file_name;
     public String eeglab_channels_file_path;
@@ -25,40 +25,49 @@ public class EEGdata extends JMatlabStructWrapper{
     public double[] eog_channels_list;
     public double[] no_eeg_channels_list;
 
-    //public String[] eog_channels_list_labels;
-    //public String[] emg_channels_list_labels;
+    public String[] eog_channels_list_labels;
+    public String[] emg_channels_list_labels;
 
-    public EEGdata()
-    {
-        
-    }
+    public EEGdata(){}
     
     public void setJMatData(MLStructure eegdata)
     {
-        nch               = getInt(eegdata,"nch");
-        nch_eeg           = getInt(eegdata,"nch_eeg");
-        fs                = getInt(eegdata,"fs");
+        nch               = getDoubleArray(eegdata,"nch");
+        nch_eeg           = getDoubleArray(eegdata,"nch_eeg");
+        fs                = getDoubleArray(eegdata,"fs");
         
         eeglab_channels_file_name  = getString(eegdata, "eeglab_channels_file_name");
         eeglab_channels_file_path  = getString(eegdata, "eeglab_channels_file_path");
-        
-        
-        
+
         eeg_channels_list = getDoubleArray(eegdata,"eeg_channels_list");
         emg_channels_list = getDoubleArray(eegdata,"emg_channels_list");
         eog_channels_list = getDoubleArray(eegdata,"eog_channels_list");
         no_eeg_channels_list = getDoubleArray(eegdata,"no_eeg_channels_list");
         
-        //eog_channels_list_labels = getStringCellArray(eegdata,"eog_channels_list_labels");
-        //emg_channels_list_labels = getStringCellArray(eegdata,"emg_channels_list_labels");
+        eog_channels_list_labels = getStringCellArray(eegdata,"eog_channels_list_labels");
+        emg_channels_list_labels = getStringCellArray(eegdata,"emg_channels_list_labels");
     }
   
     public MLStructure getJMatData()
     {
         MLStructure eegdata = new MLStructure("eegdata",new int[] {1,1});
         
+        eegdata.setField("nch",setDoubleColumnArray(nch));
+        eegdata.setField("nch_eeg",setDoubleColumnArray(nch_eeg));
+        eegdata.setField("fs",setDoubleColumnArray(fs));
+        
+        eegdata.setField("eeglab_channels_file_name",setString(eeglab_channels_file_name));
+        eegdata.setField("eeglab_channels_file_path",setString(eeglab_channels_file_path));
+        
+        eegdata.setField("eeg_channels_list",setDoubleLineArray(eeg_channels_list));
+        eegdata.setField("emg_channels_list",setDoubleLineArray(emg_channels_list));
+        eegdata.setField("eog_channels_list",setDoubleLineArray(eog_channels_list));
+        eegdata.setField("no_eeg_channels_list",setDoubleLineArray(no_eeg_channels_list));
+        
+        eegdata.setField("eog_channels_list_labels",setStringLineArray(eog_channels_list_labels));
+        eegdata.setField("emg_channels_list_labels",setStringLineArray(emg_channels_list_labels));
+        
         return eegdata;
     }
-    
     
 }

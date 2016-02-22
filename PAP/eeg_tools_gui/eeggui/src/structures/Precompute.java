@@ -18,30 +18,67 @@ public class Precompute extends JMatlabStructWrapper{
     public String do_ersp;
     public String do_erpim;
     public String do_spec;
+
+    public Erpim erpim;
+    public Spec spec;
     
-    public String[] erp;
-    public String[] erpim;
-    public String[] spec;
-    public String[] ersp;
+    public Precompute(){}
     
-    public Precompute()
+     public void setJMatData(MLStructure struct)
     {
+        recompute   = getString(struct, "recompute");
+        do_erp      = getString(struct, "do_erp");
+        do_ersp     = getString(struct, "do_ersp");
+        do_erpim    = getString(struct, "do_erpim");
+        do_spec     = getString(struct, "do_spec");
+        
+        spec        = readSpec(struct, "spec");
+        erpim       = readErpim(struct, "erpim");
+    }    
+     
+    private Spec readSpec(MLStructure struct, String field)
+    {
+        MLCell cells = (MLCell) struct.getField(field);
+        Spec vec = new Spec();
+        vec.setJMatData(cells);
+        return vec;
     }
     
-    public Precompute(MLStructure precomp) 
+    private Erpim readErpim(MLStructure struct, String field)
     {
-        recompute = getString(precomp, "recompute");
-        do_erp = getString(precomp, "do_erp");
-        do_ersp = getString(precomp, "do_ersp");
-        do_erpim = getString(precomp, "do_erpim");
-        do_spec = getString(precomp, "do_spec");
+        MLCell cells = (MLCell) struct.getField(field);
+        Erpim vec = new Erpim();
+        vec.setJMatData(cells);
+        return vec;
+    }
+    
+    public MLStructure getJMatData()
+    {
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
         
-        //erp = getStringCellArray(precomp,"erp");
-        //erpim = getStringCellArray(precomp,"erpim");
-        //spec = getStringCellArray(precomp,"spec");
-        //ersp = getStringCellArray(precomp,"ersp");
+        struct.setField("recompute",setString(recompute));
+        struct.setField("do_erp",setString(do_erp));
+        struct.setField("do_ersp",setString(do_ersp));
+        struct.setField("do_erpim",setString(do_erpim));
+        struct.setField("do_spec",setString(do_spec));
         
-    } 
+        struct.setField("spec",writeSpec(spec));
+        struct.setField("erpim",writeErpim(erpim));
+
+        return struct;
+    }
+    
+    private MLCell writeSpec(Spec spec)
+    {
+        MLCell cell = spec.getJMatData(spec);
+        return cell;
+    }
+    
+    private MLCell writeErpim(Erpim erpim)
+    {
+        MLCell cell = erpim.getJMatData(erpim);
+        return cell;
+    }
 
     
 }

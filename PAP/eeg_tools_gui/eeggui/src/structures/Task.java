@@ -13,44 +13,35 @@ import com.jmatio.types.*;
  */
 public class Task extends JMatlabStructWrapper{
     
-    public Events_ta events;
+    public Events events;
     
-    public Task()
-    {
-        
-    }    
+    public Task(){}    
 
     public void setJMatData(MLStructure task)
     {
-        events = readEvents_ta(task,"events");
+        events = readEvents(task,"events");
     }
-  
-    /*
+    
+    private Events readEvents(MLStructure struct, String field)
+    {
+        MLStructure structs = (MLStructure) struct.getField(field);
+        Events vec = new Events();
+        vec.setJMatData(structs);
+        return vec;
+    }
+    
+
     public MLStructure getJMatData()
     {
-        MLStructure task = new MLStructure("task",new int[] {1,1});
-        task.setField("events",setEvents_ta());
-        return task;
-    }
-    */
-    
-    private Events_ta readEvents_ta(MLStructure event, String field)
-    {
-        MLStructure events_test = (MLStructure) event.getField(field);
-        Events_ta test = new Events_ta();
-        test.setJMatData(events_test);
-        return test;
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
+        struct.setField("events",writeEvents(events));
+        return struct;
     }
 
-
-    /*
-    private Events_ta setEvents_ta(MLStructure condvol, String field)
+    private MLStructure writeEvents(Events events)
     {
-        MLStructure sub_Events_ta = new MLStructure("sub_Events_ta",new int[] {1,1});
-        Events_ta struct = new Events_ta();
-        sub_Events_ta = struct.getJMatData();
-        return sub_Events_ta;
+        MLStructure struct = events.getJMatData();
+        return struct;
     }
-    */
     
 }

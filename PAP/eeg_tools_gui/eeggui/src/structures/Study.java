@@ -18,75 +18,42 @@ public class Study  extends JMatlabStructWrapper{
     
     public Precompute precompute;
     
-    
+    public Factors[] factors;
     public Design[] design;
-    
-    // public Factors_st[] factors;
-    
-    
 
-    public Study()
-    {
-    } 
+
+    public Study(){} 
     
-    public void setJMatData(MLStructure study)
+    public void setJMatData(MLStructure struct)
     {
-        filename        = getString(study, "filename");
+        filename        = getString(struct, "filename");
         
-        precompute      = readPrecompute(study, "precompute");
+        precompute      = readPrecompute(struct, "precompute");
         
-        design          = readDesign(study, "design");
-        //factors         = readFactors(study, "factors");
+        design          = readDesign(struct, "design");
+        factors         = readFactors(struct, "factors");
     }    
     
-    public MLStructure getJMatData()
+      
+    private Precompute readPrecompute(MLStructure struct, String field)
     {
-        MLStructure study = new MLStructure("XXX",new int[] {1,1});
-        
-        study.setField("filename",setString(filename));
-        
-        // precompute
-        // erp
-        // ersp
-        
-        // factors
- 
-        return study;
-    }
-  
-    private Precompute readPrecompute(MLStructure study, String field)
-    {
-        MLStructure precomp = (MLStructure) study.getField(field);
-        Precompute vec = new Precompute(precomp);
+        MLStructure structs = (MLStructure) struct.getField(field);
+        Precompute vec = new Precompute();
+        vec.setJMatData(structs);
         return vec;
     }
+
     
-    private Erp_st readErp(MLStructure study, String field)
-    {
-        MLStructure precomp = (MLStructure) study.getField(field);
-        Erp_st vec = new Erp_st(precomp);
-        return vec;
-    }
-    
-    private Ersp_st readErsp(MLStructure study, String field)
-    {
-        MLStructure precomp = (MLStructure) study.getField(field);
-        Ersp_st vec = new Ersp_st(precomp);
-        return vec;
-    }
-    
-    private Factors_st[] readFactors(MLStructure study , String field)
+    private Factors[] readFactors(MLStructure study , String field)
     {
         MLStructure a           = (MLStructure) study.getField(field);
         int[] dim               = a.getDimensions();
         
-        Factors_st[] arr_facs = new Factors_st[dim[1]];
+        Factors[] arr_facs = new Factors[dim[1]];
         for (int s=0; s < dim[1]; s++)
         {
             Map<String, MLArray>  fac = a.getFields(s);
-            //MLStructure str_subj = (MLStructure) subj;//arr_subjs[s].name = getString(str_subj,    "name");
-
-            arr_facs[s]             = new Factors_st();
+            arr_facs[s]             = new Factors();
             arr_facs[s].factor      = getString(fac, "factor");
             arr_facs[s].level       = getString(fac, "level");
             arr_facs[s].file_match  = getStringCellArray(fac, "file_match");
@@ -103,18 +70,69 @@ public class Study  extends JMatlabStructWrapper{
         for (int s=0; s < dim[1]; s++)
         {
             Map<String, MLArray>  des1 = a.getFields(s);
-            //MLStructure str_subj = (MLStructure) subj;//arr_subjs[s].name = getString(str_subj,    "name");
-
             arr_des[s]                  = new Design();
             arr_des[s].name             = getString(des1, "name");
             arr_des[s].factor1_name     = getString(des1, "factor1_name");
             arr_des[s].factor2_name     = getString(des1, "factor2_name");
             arr_des[s].factor1_pairing  = getString(des1, "factor1_pairing");
             arr_des[s].factor2_pairing  = getString(des1, "factor2_pairing");
-            arr_des[s].factor1_level    = getStringCellArray(des1, "factor1_level");
-            arr_des[s].factor2_level    = getStringCellArray(des1, "factor2_level"); 
-
+            arr_des[s].factor1_levels    = getStringCellArray(des1, "factor1_levels");
+            arr_des[s].factor2_levels    = getStringCellArray(des1, "factor2_levels"); 
         }  
         return arr_des;
-    }    
+    }   
+    
+    public MLStructure getJMatData()
+    {
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
+        
+        struct.setField("filename",setString(filename));
+        
+        struct.setField("precompute",writePrecompute(precompute));
+
+        struct.setField("factors",writeFactors(factors));
+        struct.setField("design",writeDesign(design));
+ 
+        return struct;
+    }
+    
+    private MLStructure writePrecompute(Precompute precompute)
+    {
+        MLStructure struct = precompute.getJMatData();
+        return struct;
+    }
+    
+    private MLStructure writeFactors(Factors[] factors)
+    {
+        int dim = factors.length;
+        MLStructure struct = new MLStructure("XXX",new int[] {1,dim});
+        
+        for (int s=0; s < dim; s++)
+        {
+            struct.setField("factor", setString(factors[s].factor), s);
+            struct.setField("level", setString(factors[s].level), s);
+            struct.setField("file_match", setStringLineArray(factors[s].file_match), s);
+        }
+        return struct;
+    }
+    
+    private MLStructure writeDesign(Design[] design)
+    {
+        int dim = design.length;
+        MLStructure struct = new MLStructure("XXX",new int[] {1,dim});
+        
+        for (int s=0; s < dim; s++)
+        {
+            struct.setField("name", setString(design[s].name), s);
+            struct.setField("factor1_name", setString(design[s].factor1_name), s);
+            struct.setField("factor2_name", setString(design[s].factor2_name), s);
+            struct.setField("factor1_pairing", setString(design[s].factor1_pairing), s);
+            struct.setField("factor2_pairing", setString(design[s].factor2_pairing), s);
+            
+            struct.setField("factor1_levels", setStringLineArray(design[s].factor1_levels), s);
+            struct.setField("factor2_levels", setStringLineArray(design[s].factor2_levels), s);
+        }
+        return struct;
+    }
+ 
 }

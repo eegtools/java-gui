@@ -16,108 +16,145 @@ public class Brainstorm extends JMatlabStructWrapper{
     public String db_name;
     public String default_anatomy;
     public String channels_file_name;
-    // public String channels_file_type;
+    public String channels_file_type;
     public String channels_file_path;
-    //public String average_file_name;
-    public String bem_file_name;
+    public String average_file_name;
         
-    // public ConductorVolume conductorvolume;
-    public Path_bs paths;
+    public ConductorVolume conductorvolume;
+    public PathBrains paths;
     public Sources sources;
-    // public Export_bs export;
-    // public Stats_bs stats;
+    public ExportBrains export;
+    public StatsBrains stats;
     
     public String[][] analysis_bands;
-    public String[][] analysis_times;
+    public String[][][] analysis_times; //matrix cell not vector
 
-    public int use_same_montage;
-    // public double std_loose_value;
+    public double[] use_same_montage;
+    public double[] std_loose_value;
 
     
-    public Brainstorm()
+    public Brainstorm(){}
+    
+    public void setJMatData(MLStructure struct)
     {
+        db_name             = getString(struct, "db_name");
+        default_anatomy     = getString(struct, "default_anatomy");
+        channels_file_name  = getString(struct, "channels_file_name");
+        channels_file_type  = getString(struct, "channels_file_type");
+        channels_file_path  = getString(struct, "channels_file_path");
+        average_file_name   = getString(struct, "average_file_name");
         
+        analysis_bands      = getStringCellMatrix(struct, "analysis_bands");
+        analysis_times      = getStringCellMatrix_nxm(struct, "analysis_times");
+        
+        use_same_montage    = getDoubleArray(struct, "use_same_montage");
+        std_loose_value     = getDoubleArray(struct, "std_loose_value");
+        
+        conductorvolume     = readConductorVolume(struct,"conductorvolume");
+        paths               = readPathBrains(struct,"paths");
+        sources             = readSources(struct,"sources");
+        export              = readExportBrains(struct,"export");
+        stats               = readStatsBrains(struct,"stats");
+    }    
+    
+    private ConductorVolume readConductorVolume(MLStructure struct, String field)
+    {
+        MLStructure structs = (MLStructure) struct.getField(field);
+        ConductorVolume vec = new ConductorVolume();
+        vec.setJMatData(structs);
+        return vec;
     }
     
-    public void setJMatData(MLStructure brains)
+    private PathBrains readPathBrains(MLStructure struct, String field)
     {
-        db_name             = getString(brains, "db_name");
-        default_anatomy     = getString(brains, "default_anatomy");
-        channels_file_name  = getString(brains, "channels_file_name");
-        //channels_file_type  = getString(brains, "channels_file_type");
-        channels_file_path  = getString(brains, "channels_file_path");
-        //average_file_name   = getString(brains, "average_file_name");
-        bem_file_name       = getString(brains, "bem_file_name");
-        
-        analysis_bands      = getStringCellMatrix(brains, "analysis_bands");
-        analysis_times      = getStringCellMatrix(brains, "analysis_times");
-        
-        use_same_montage    = getInt(brains, "use_same_montage");
-        //std_loose_value     = getDouble(brains, "std_loose_value");
-        
-        //conductorvolume     = readConductorVolume(brains,"conductorvolume");
-        paths               = readPath_bs(brains,"paths");
-        sources             = readSources(brains,"sources");
-        //export              = getExport_bs(brains,"export");
-        //stats               = getStats_bs(brains,"stats");
-    }    
+        MLStructure structs = (MLStructure) struct.getField(field);
+        PathBrains vec = new PathBrains();
+        vec.setJMatData(structs);
+        return vec;
+    }
+    
+    private Sources readSources(MLStructure struct, String field)
+    {
+        MLStructure structs = (MLStructure) struct.getField(field);
+        Sources vec = new Sources();
+        vec.setJMatData(structs);
+        return vec;
+    }
+    
+    private ExportBrains readExportBrains(MLStructure struct, String field)
+    {
+        MLStructure structs = (MLStructure) struct.getField(field);
+        ExportBrains vec = new ExportBrains();
+        vec.setJMatData(structs);
+        return vec;
+    }
+    
+    private StatsBrains readStatsBrains(MLStructure struct, String field)
+    {
+        MLStructure structs = (MLStructure) struct.getField(field);
+        StatsBrains vec = new StatsBrains();
+        vec.setJMatData(structs);
+        return vec;
+    }
+    
+    
     
     public MLStructure getJMatData()
     {
-        MLStructure brains = new MLStructure("brains",new int[] {1,1});
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
         
-        brains.setField("db_name",setString(db_name));
-        brains.setField("default_anatomy",setString(default_anatomy));
-        brains.setField("channels_file_name",setString(channels_file_name));
-        //brains.setField("channels_file_type",setString(channels_file_type));
-        brains.setField("channels_file_path",setString(channels_file_path));
-        //brains.setField("average_file_name",setString(average_file_name));
+        struct.setField("db_name",setString(db_name));
+        struct.setField("default_anatomy",setString(default_anatomy));
+        struct.setField("channels_file_name",setString(channels_file_name));
+        struct.setField("channels_file_type",setString(channels_file_type));
+        struct.setField("channels_file_path",setString(channels_file_path));
+        struct.setField("average_file_name",setString(average_file_name));
 
-        //brains.setField("analysis_bands",setStringColLineCell(analysis_bands));
-        //brains.setField("analysis_times",setStringColLineCell(analysis_times));
+        struct.setField("analysis_bands",setStringColLineCell(analysis_bands));
+        struct.setField("analysis_times",setStringCellMatrix_nxm(analysis_times)); 
 
-        brains.setField("use_same_montage",setInt(use_same_montage));
-        //brains.setField("std_loose_value",setDouble(std_loose_value));
+        struct.setField("use_same_montage",setDoubleColumnArray(use_same_montage));
+        struct.setField("std_loose_value",setDoubleColumnArray(std_loose_value));
+        
+        struct.setField("conductorvolume",writeConductorVolume(conductorvolume));
+        struct.setField("paths",writePathBrains(paths));
+        struct.setField("sources",writeSources(sources));
+        struct.setField("export",writeExportBrains(export));
+        struct.setField("stats",writeStatsBrains(stats));
  
-        return brains;
+        return struct;
     }
     
+    private MLStructure writeConductorVolume(ConductorVolume conductor)
+    {
+        MLStructure struct = conductor.getJMatData();
+        return struct;
+    }
+    
+    private MLStructure writePathBrains(PathBrains pathb)
+    {
+        MLStructure struct = pathb.getJMatData();
+        return struct;
+    }
+    
+    private MLStructure writeSources(Sources sources)
+    {
+        MLStructure struct = sources.getJMatData();
+        return struct;
+    }
+    
+    private MLStructure writeExportBrains(ExportBrains exportb)
+    {
+        MLStructure struct = exportb.getJMatData();
+        return struct;
+    }
+    
+    private MLStructure writeStatsBrains(StatsBrains statsb)
+    {
+        MLStructure struct = statsb.getJMatData();
+        return struct;
+    }
 
-    private ConductorVolume readConductorVolume(MLStructure condvol, String field)
-    {
-        MLStructure condvols = (MLStructure) condvol.getField(field);
-        ConductorVolume vec = new ConductorVolume(condvols);
-        return vec;
-    }
-    
-    private Path_bs readPath_bs(MLStructure path_bs, String field)
-    {
-        MLStructure path_bss = (MLStructure) path_bs.getField(field);
-        Path_bs vec = new Path_bs(path_bss);
-        return vec;
-    }
-    
-    private Sources readSources(MLStructure sour, String field)
-    {
-        MLStructure sours = (MLStructure) sour.getField(field);
-        Sources vec = new Sources(sours);
-        return vec;
-    }
-    
-    private Export_bs readExport_bs(MLStructure exp_bs, String field)
-    {
-        MLStructure exp_bss = (MLStructure) exp_bs.getField(field);
-        Export_bs vec = new Export_bs(exp_bss);
-        return vec;
-    }
-    
-    private Stats_bs readStats_bs(MLStructure stats_bs, String field)
-    {
-        MLStructure stats_bss = (MLStructure) stats_bs.getField(field);
-        Stats_bs vec = new Stats_bs(stats_bss);
-        return vec;
-    }
-    
 
     
 }

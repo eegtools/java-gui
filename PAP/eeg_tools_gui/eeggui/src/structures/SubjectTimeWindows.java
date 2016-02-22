@@ -14,14 +14,25 @@ package structures;
 import com.jmatio.types.MLStructure;
 
 public class SubjectTimeWindows extends JMatlabStructWrapper{
-    
-    int min;
-    int max;
+
+    double[] min;
+    double[] max;
     
     public SubjectTimeWindows(){}
     
-    public SubjectTimeWindows(MLStructure stw)
+    public void setJMatData(MLStructure struct)
     {
-    
+        min     = getDoubleArray(struct, "min");
+        max     = getDoubleArray(struct, "max");
     }    
+    
+    public MLStructure getJMatData()
+    {
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
+
+        struct.setField("min",setDoubleColumnArray(min));
+        struct.setField("max",setDoubleColumnArray(max));
+
+        return struct;
+    }  
 }

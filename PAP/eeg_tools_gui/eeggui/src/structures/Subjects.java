@@ -12,73 +12,104 @@ import java.util.Map;
  *
  * @author alba
  */
-public class Subjects extends JMatlabStructWrapper
-{
+public class Subjects extends JMatlabStructWrapper{
 
-    //public String baseline_file;
-    //public String baseline_file_interval_s;
-    public String[] list;
-    public int numsubj;
+    public String narrowband_file;
+    public String baseline_file;
+    public String baseline_file_interval_s;
     
+    public Data[] data;
+    
+    public String[] list;
     public String[] group_names;
     public String[][] groups;
     
-    public Subject_su[] data;
+    public double[] numsubj; //int
+
     
     public Subjects(){}
     
-    public void setJMatData(MLStructure subjs)
+    public void setJMatData(MLStructure struct)
     {
-        //baseline_file               = getString(subjs, "baseline_file");
-        //baseline_file_interval_s    = getString(subjs, "baseline_file_interval_s");
-        list                        = getStringCellArray(subjs, "list");
-        numsubj                     = getInt(subjs, "numsubj");
-        group_names                 = getStringCellArray(subjs, "group_names");
-        groups                      = getStringCellMatrix(subjs, "groups");
+        narrowband_file             = getString(struct, "narrowband_file");
+        baseline_file               = getString(struct, "baseline_file");
+        baseline_file_interval_s    = getString(struct, "baseline_file_interval_s");
+                
+        data                        = readData(struct, "data");
         
-        data                        = readData(subjs, "data");
+        numsubj                     = getDoubleArray(struct, "numsubj");
+        
+        list                        = getStringCellArray(struct, "list");
+        group_names                 = getStringCellArray(struct, "group_names");
+        groups                      = getStringCellMatrix(struct, "groups");
     }    
+    
+    public Data[] readData(MLStructure struct , String field)
+    {
+        MLStructure a           = (MLStructure) struct.getField(field);
+        int[] dim               = a.getDimensions();
+        
+        Data[] arr = new Data[dim[1]];
+        for (int s=0; s < dim[1]; s++)
+        {
+            Map<String, MLArray>  dataa = a.getFields(s);
+
+            arr[s]            = new Data();
+            arr[s].name       = getString(dataa, "name");
+            arr[s].handedness = getString(dataa, "handedness");
+            arr[s].gender     = getString(dataa, "gender");
+            arr[s].group      = getString(dataa, "group");
+            
+            arr[s].age        = getDoubleArray(dataa, "age");
+            
+            arr[s].bad_ch                      = getStringCellArray(dataa, "bad_ch");
+            arr[s].baseline_file               = getStringCellArray(dataa, "baseline_file");
+            arr[s].baseline_file_interval_s    = getStringCellArray(dataa, "baseline_file_interval_s");
+            arr[s].frequency_bands_list        = getStringCellArray(dataa, "frequency_bands_list");
+
+        }  
+        return arr;
+    }
     
     public MLStructure getJMatData()
     {
-        MLStructure subjs = new MLStructure("subjs",new int[] {1,1});
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
         
-        //subjs.setField("baseline_file",setString(baseline_file));
-        //subjs.setField("baseline_file_interval_s",setString(baseline_file_interval_s));
-        subjs.setField("list",setStringLineArray(list));
-        subjs.setField("numsubj",setInt(numsubj));
-        subjs.setField("group_names",setStringLineArray(group_names));
-        subjs.setField("groups",setStringLineCell(groups));
+        struct.setField("narrowband_file",setString(narrowband_file));
+        struct.setField("baseline_file",setString(baseline_file));
+        struct.setField("baseline_file_interval_s",setString(baseline_file_interval_s));
         
-        // data
+        struct.setField("list",setStringLineArray(list));
+        struct.setField("group_names",setStringLineArray(group_names));
+        struct.setField("groups",setStringColLineCell(groups));
+
+        struct.setField("numsubj",setDoubleColumnArray(numsubj));
+        
+        struct.setField("data",writeData(data));
  
-        return subjs;
+        return struct;
     }
-
-
-    public Subject_su[] readData(MLStructure subjs , String field)
+    
+    private MLStructure writeData(Data[] data)
     {
-        MLStructure a           = (MLStructure) subjs.getField(field);
-        int[] dim               = a.getDimensions();
+        int dim = data.length;
+        MLStructure struct = new MLStructure("XXX",new int[] {1,dim});
         
-        Subject_su[] arr_subjs = new Subject_su[dim[1]];
-        for (int s=0; s < dim[1]; s++)
+        for (int s=0; s < dim; s++)
         {
-            Map<String, MLArray>  subj = a.getFields(s);
-            //MLStructure str_subj = (MLStructure) subj;//arr_subjs[s].name = getString(str_subj,    "name");
-
-            arr_subjs[s]            = new Subject_su();
-            arr_subjs[s].name       = getString(subj, "name");
-            arr_subjs[s].handedness = getString(subj, "handedness");
-            arr_subjs[s].gender     = getString(subj, "gender");
-            arr_subjs[s].group      = getString(subj, "group");
-            arr_subjs[s].age        = getInt(subj, "age");
-
-            MLArray ch              = (MLArray) subj.get("bad_ch");
-            if(ch.isEmpty())        arr_subjs[s].bad_ch     = null;
-            else                    arr_subjs[s].bad_ch     = getStringCellArray(subj, "bad_ch");
-        }  
-        return arr_subjs;
+            struct.setField("name", setString(data[s].name), s);
+            struct.setField("group", setString(data[s].group), s);
+            struct.setField("gender", setString(data[s].gender), s);
+            struct.setField("handedness", setString(data[s].handedness), s);
+            
+            struct.setField("age", setDoubleColumnArray(data[s].age), s);
+            
+            struct.setField("bad_ch", setStringLineArray(data[s].bad_ch), s);
+            struct.setField("baseline_file", setStringLineArray(data[s].baseline_file), s);
+            struct.setField("baseline_file_interval_s", setStringLineArray(data[s].baseline_file_interval_s), s);
+            struct.setField("frequency_bands_list", setStringLineArray(data[s].frequency_bands_list), s);
+        }
+        return struct;
     }
     
 }

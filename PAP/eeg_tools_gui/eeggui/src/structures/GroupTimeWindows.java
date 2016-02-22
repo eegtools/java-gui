@@ -14,13 +14,26 @@ import com.jmatio.types.MLStructure;
 public class GroupTimeWindows extends JMatlabStructWrapper{
     
     String name;
-    int min;
-    int max;
+    double[] min;
+    double[] max;
     
     public GroupTimeWindows(){}
     
-    public GroupTimeWindows(MLStructure gtw)
+    public void setJMatData(MLStructure struct)
     {
-    
+        name    = getString(struct, "name");
+        min     = getDoubleArray(struct, "min");
+        max     = getDoubleArray(struct, "max");
     }    
+    
+    public MLStructure getJMatData()
+    {
+        MLStructure struct = new MLStructure("XXX",new int[] {1,1});
+        
+        struct.setField("name",setString(name));
+        struct.setField("min",setDoubleColumnArray(min));
+        struct.setField("max",setDoubleColumnArray(max));
+
+        return struct;
+    }   
 }
