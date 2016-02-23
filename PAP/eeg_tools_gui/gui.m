@@ -1,22 +1,24 @@
-function [] = gui()
+function gg = gui()
 
     % MATLAB_JAVA
 
+    ...javaj_jar_path = '/data/behavior_lab_svn/behaviourPlatform/PAP/eeg_tools_gui/eeggui/dist/eeggui.jar';
+    javaj_jar_path = '/home/inuggi/NetBeansProjects/eeg_tools2/dist/eeg_tools2.jar';
+    ...javaj_jar_path = '\\VBOXSVR\data\behavior_lab_svn\behaviourPlatform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
     ...javaj_jar_path = '/data/behavior_lab_svn/behaviourPlatform/CommonScript/eeg/eeg_tools/gui/eeggui/dist/eeggui.jar';
-    javaj_jar_path = 'C:\Users\PHilt\Desktop\behaviour_platform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
+    ...javaj_jar_path = 'C:\Users\PHilt\Desktop\behaviour_platform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
     
     
     javaaddpath(javaj_jar_path);
-    global gg  % Make the handle to the main panel global
 
     fig = figure('visible', 'on', 'units','normalized','outerposition',[0 0 1 1]);
     ...drawnow
-    gg = GImport(fig, gui.JTPMain());
+    gg = GImport(fig, gui.JPMain(), true); ..., 'nolayout');
 
     handles = gg.getHandles();
     newButton = gg.getHandles().btNewProject;  % this is the NAME in Properties, not VARIABLE NAME in code
     gg.setCallback(newButton, 'ActionPerformedCallback', @print_string, 'marcello')
-
+    handles.main_tab.stats.stats_pane.stats_pane.setLayout(java.awt.FlowLayout);
     
 %      if exist('gg', 'var')
 %         javarmpath(javaj_jar_path)
