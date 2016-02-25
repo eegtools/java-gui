@@ -15,11 +15,11 @@ function gg = gui()
     ...drawnow
     
     frame = GXJFrame( fig, 'EEG TOOLS'); ..., gui.JTPMain()) ;
-    gg = GImport(frame, gui.JTPMain(), true); ..., 'nolayout');
+    gg = GImport(frame, gui.JTPMain(), false); ..., 'nolayout');
 
     handles = gg.getHandles();
-    newButton = gg.getHandles().btNewProject;  % this is the NAME in Properties, not VARIABLE NAME in code
-    gg.setCallback(newButton, 'ActionPerformedCallback', @print_string, 'marcello')
+    StartButton = gg.getHandles().Start;  % this is the NAME in Properties, not VARIABLE NAME in code
+    gg.setCallback(StartButton, 'ActionPerformedCallback', @start_analysis, 'project.mat full path')
     ...handles.main_tab.stats.stats_pane.stats_pane.setLayout(java.awt.FlowLayout);
     ...handles.main_tab.stats.stats_pane.stats_pane.setLayout(javax.swing.SpringLayout);
     ...handles.main_tab.JPPreprocessing.preproc.preproc.setLayout(java.awt.FlowLayout);
