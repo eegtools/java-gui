@@ -18,7 +18,7 @@ public class Subjects extends JMatlabStructWrapper{
     public String baseline_file;
     public String baseline_file_interval_s;
     
-    public Data[] data;
+    public SubjectsData[] data;
     
     public String[] list;
     public String[] group_names;
@@ -44,17 +44,17 @@ public class Subjects extends JMatlabStructWrapper{
         groups                      = getStringCellMatrix(struct, "groups");
     }    
     
-    public Data[] readData(MLStructure struct , String field)
+    public SubjectsData[] readData(MLStructure struct , String field)
     {
         MLStructure a           = (MLStructure) struct.getField(field);
         int[] dim               = a.getDimensions();
         
-        Data[] arr = new Data[dim[1]];
+        SubjectsData[] arr = new SubjectsData[dim[1]];
         for (int s=0; s < dim[1]; s++)
         {
             Map<String, MLArray>  dataa = a.getFields(s);
 
-            arr[s]            = new Data();
+            arr[s]            = new SubjectsData();
             arr[s].name       = getString(dataa, "name");
             arr[s].handedness = getString(dataa, "handedness");
             arr[s].gender     = getString(dataa, "gender");
@@ -90,7 +90,7 @@ public class Subjects extends JMatlabStructWrapper{
         return struct;
     }
     
-    private MLStructure writeData(Data[] data)
+    private MLStructure writeData(SubjectsData[] data)
     {
         int dim = data.length;
         MLStructure struct = new MLStructure("XXX",new int[] {1,dim});
