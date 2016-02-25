@@ -73,10 +73,10 @@ project.paths.brainstorm='';                        % B23:  folder containing br
 %% ======================================================================================================
 % C:    TASK
 % ======================================================================================================
-project.task.events.start_experiment_trigger_value  = 1;    % C1:   signal experiment start
-project.task.events.pause_trigger_value             = 2;    % C2:   start: pause, feedback and rest period
-project.task.events.resume_trigger_value            = 3;    % C3:   end: pause, feedback and rest period
-project.task.events.end_experiment_trigger_value    = 4;    % C4:   signal experiment end
+project.task.events.start_experiment_trigger_value  = '1';    % C1:   signal experiment start
+project.task.events.pause_trigger_value             = '2';    % C2:   start: pause, feedback and rest period
+project.task.events.resume_trigger_value            = '3';    % C3:   end: pause, feedback and rest period
+project.task.events.end_experiment_trigger_value    = '4';    % C4:   signal experiment end
 
 project.task.events.baseline_start_trigger_value    = '9';
 project.task.events.baseline_end_trigger_value      = '10';
@@ -91,7 +91,7 @@ project.task.events.mrkcode_cond                    = { ...
                                                      };
                                                  
 project.task.events.valid_marker                    = [project.task.events.mrkcode_cond{1:length(project.task.events.mrkcode_cond)}];
-project.task.events.import_marker                   = [{'1' '2' '3' '4' '5' '6' '7' '8' '9' '10'} project.task.events.valid_marker];  
+project.task.events.import_marker                   = [{'1' '2' '3' '4' '5' '6' '7' '8' '9' '10'} project.task.events.valid_marker];  ... is the sum of existing markers for in events
                                                  
 %% ======================================================================================================
 % D:    IMPORT
@@ -443,16 +443,6 @@ if isfield(project, 'study')
     end
 end
 
-project.study.factors(1)                        = struct('factor', 'motion', 'file_match', [], 'level', 'translating');
-project.study.factors(2)                        = struct('factor', 'motion', 'file_match', [], 'level', 'centered');
-project.study.factors(3)                        = struct('factor', 'shape' , 'file_match', [], 'level', 'walker');
-project.study.factors(4)                        = struct('factor', 'shape' , 'file_match', [], 'level', 'scrambled');
-
-project.study.factors(1).file_match             = {'twalker', 'tscrambled'};
-project.study.factors(2).file_match             = {'cwalker', 'cscrambled'};
-project.study.factors(3).file_match             = {'twalker', 'cwalker'};
-project.study.factors(4).file_match             = {'tscrambled', 'cscrambled'};
-
 project.study.precompute.recompute              = 'on';
 project.study.precompute.do_erp                 = 'on';
 project.study.precompute.do_ersp                = 'on';
@@ -468,38 +458,21 @@ if isfield(project.study, 'design')
     project = rmfield(project.study, 'design');
 end
 
-project.study.design(2)                   = struct('name',  'ao_control_ungrouped'   , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(3)                   = struct('name',  'aocs_control_ungrouped' , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(4)                   = struct('name',  'aocs_ao_ungrouped'      , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(5)                   = struct('name',  'aois_ao_ungrouped'      , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(6)                   = struct('name',  'aocs_aois_ungrouped'    , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(7)                   = struct('name',  'sound_effect_ungrouped' , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''       , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(8)                   = struct('name',  'ao_control'             , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(9)                   = struct('name',  'aocs_control'           , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(10)                  = struct('name', 'aocs_ao'                 , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(11)                  = struct('name', 'aois_ao'                 , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(12)                  = struct('name', 'aocs_aois'               , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
-project.study.design(13)                  = struct('name', 'sound_effect'            , 'factor1_name', 'condition', 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'group'  , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.factors(1) = struct('factor', 'motion', 'file_match', [], 'level', 'translating');
+project.study.factors(2) = struct('factor', 'motion', 'file_match', [], 'level', 'centered');
+project.study.factors(3) = struct('factor', 'shape' , 'file_match', [], 'level', 'walker');
+project.study.factors(4) = struct('factor', 'shape' , 'file_match', [], 'level', 'scrambled');
 
-project.study.design(2).factor1_levels    = {'AO','control'};
-project.study.design(3).factor1_levels    = {'AOCS','control'};
-project.study.design(4).factor1_levels    = {'AOCS','AO'};
-project.study.design(5).factor1_levels    = {'AOIS','AO'};
-project.study.design(6).factor1_levels    = {'AOCS','AOIS'};
-project.study.design(7).factor1_levels    = {'AOCS','AOIS','AO'};
-project.study.design(8).factor1_levels    = {'AO','control'};
-project.study.design(9).factor1_levels    = {'AOCS','control'};
-project.study.design(10).factor1_levels   = {'AOCS','AO'};
-project.study.design(11).factor1_levels   = {'AOIS','AO'};
-project.study.design(12).factor1_levels   = {'AOCS','AOIS'};
-project.study.design(13).factor1_levels   = {'AOCS','AOIS','AO'};
+project.study.factors(1).file_match = {'twalker', 'tscrambled'};
+project.study.factors(2).file_match = {'cwalker', 'cscrambled'};
+project.study.factors(3).file_match = {'twalker', 'cwalker'};
+project.study.factors(4).file_match = {'tscrambled', 'cscrambled'};
 
-project.study.design(8).factor2_levels    = {'CC','CP'};
-project.study.design(9).factor2_levels    = {'CC','CP'};
-project.study.design(10).factor2_levels   = {'CC','CP'};
-project.study.design(11).factor2_levels   = {'CC','CP'};
-project.study.design(12).factor2_levels   = {'CC','CP'};
-project.study.design(13).factor2_levels   = {'CC','CP'};
+
+project.study.design(1)=struct('name', 'all'          , 'factor1_name', 'condition'   , 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''        , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(2)=struct('name', 'motion'       , 'factor1_name', 'motion'      , 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''        , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(3)=struct('name', 'shape'        , 'factor1_name', 'shape'       , 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', ''        , 'factor2_levels', [], 'factor2_pairing', 'off');
+project.study.design(4)=struct('name', 'shape_motion' , 'factor1_name', 'shape'       , 'factor1_levels', [] , 'factor1_pairing', 'on', 'factor2_name', 'motion'  , 'factor2_levels', [], 'factor2_pairing', 'on');
 
 project.study.design(1).factor1_levels    = {'cwalker' 'twalker' 'cscrambled' 'tscrambled'};
 project.study.design(2).factor1_levels    = {'centered','translating'};

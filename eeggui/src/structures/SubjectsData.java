@@ -11,7 +11,7 @@ import com.jmatio.types.MLStructure;
  *
  * @author alba
  */
-public class Data extends JMatlabStructWrapper{
+public class SubjectsData extends JMatlabStructWrapper{
     
     public String name;
     public String group;
@@ -25,7 +25,7 @@ public class Data extends JMatlabStructWrapper{
     public String[] baseline_file_interval_s;
     public String[] frequency_bands_list;
     
-    public Data(){}
+    public SubjectsData(){}
     
     public void setJMatData(MLStructure data)
     {
