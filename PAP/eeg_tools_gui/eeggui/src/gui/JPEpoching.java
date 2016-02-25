@@ -35,6 +35,9 @@ public class JPEpoching extends javax.swing.JPanel {
         jComboBox5 = new javax.swing.JComboBox();
         jLabel69 = new javax.swing.JLabel();
         jComboBox6 = new javax.swing.JComboBox();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jLabel78 = new javax.swing.JLabel();
 
         jPepoching.setName("epoching"); // NOI18N
 
@@ -70,6 +73,27 @@ public class JPEpoching extends javax.swing.JPanel {
             }
         });
 
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "triggers codes"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable6.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(jTable6);
+
+        jLabel78.setText("CONDITIONS");
+
         javax.swing.GroupLayout jPepochingLayout = new javax.swing.GroupLayout(jPepoching);
         jPepoching.setLayout(jPepochingLayout);
         jPepochingLayout.setHorizontalGroup(
@@ -77,7 +101,7 @@ public class JPEpoching extends javax.swing.JPanel {
             .addGroup(jPepochingLayout.createSequentialGroup()
                 .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPepochingLayout.createSequentialGroup()
-                        .addGap(176, 176, 176)
+                        .addGap(67, 67, 67)
                         .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,8 +115,13 @@ public class JPEpoching extends javax.swing.JPanel {
                         .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPepochingLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(349, Short.MAX_VALUE))
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPepochingLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
         jPepochingLayout.setVerticalGroup(
             jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +139,11 @@ public class JPEpoching extends javax.swing.JPanel {
                     .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel57)
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(635, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addComponent(jLabel78)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(408, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -156,6 +189,9 @@ public class JPEpoching extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel78;
     private javax.swing.JPanel jPepoching;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JTable jTable6;
     // End of variables declaration//GEN-END:variables
 }
