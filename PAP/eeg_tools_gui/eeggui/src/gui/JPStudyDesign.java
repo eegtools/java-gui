@@ -11,10 +11,11 @@ package gui;
  */
 public class JPStudyDesign extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPStudyDesign
-     */
-    public JPStudyDesign() {
+    private JTPMain controller;
+    
+    public JPStudyDesign(JTPMain ctrl) 
+    {
+        controller = ctrl;
         initComponents();
     }
 

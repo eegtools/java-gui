@@ -53,6 +53,12 @@ public class JTPMain extends javax.swing.JPanel {
         main_tab.add(ppreproc);
         ppreproc.setVisible(true);        
         main_tab.setTitleAt(1, "Preprocessing");
+        
+        study_design = new JPStudyDesign(this);
+        main_tab.add(study_design);
+        study_design.setVisible(true);        
+        main_tab.setTitleAt(2, "Study Design");
+        
     }
     
     public void setGUI(Project proj)
@@ -204,6 +210,7 @@ public class JTPMain extends javax.swing.JPanel {
     
     private JPImport pimp;
     private JPPreprocessing ppreproc;
+    private JPStudyDesign study_design;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btNewProject;
