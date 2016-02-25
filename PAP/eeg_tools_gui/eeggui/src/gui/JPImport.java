@@ -5,6 +5,17 @@
  */
 package gui;
 
+import java.awt.Dimension;
+import java.util.Vector;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableModel;
+import structures.Import;
+import structures.Preproc;
+import structures.Project;
+
 /**
  *
  * @author alba
@@ -16,7 +27,30 @@ public class JPImport extends javax.swing.JPanel {
      */
     public JPImport() {
         initComponents();
+        initChannelsTable();
     }
+    
+    public JPImport(JTPMain ctrl) 
+    {
+        initComponents();
+        initChannelsTable();
+        controller = ctrl;
+    }
+    
+    public void setGUI(Project proj)
+    {
+        project = proj;
+        imp = project.imp;
+        // fill GUI
+    }
+    
+    public Project getGUI()
+    {
+        // fill the preproc instance
+        //project.preproc = this;
+        return project;
+    }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,19 +61,538 @@ public class JPImport extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPimport_data = new javax.swing.JPanel();
+        jLabel_System = new javax.swing.JLabel();
+        jLabel_DataExtension = new javax.swing.JLabel();
+        jTextField_DataExtension = new javax.swing.JTextField();
+        jLabel_DataFolder = new javax.swing.JLabel();
+        jLabel_OriginalDataInfo = new javax.swing.JLabel();
+        jTextField_DataFolder = new javax.swing.JTextField();
+        jLabel_NamePrefix = new javax.swing.JLabel();
+        jTextField_NamePrefix = new javax.swing.JTextField();
+        jLabel_NameSuffix = new javax.swing.JLabel();
+        jTextField_NameSuffix = new javax.swing.JTextField();
+        jLabel_ExampleS01 = new javax.swing.JLabel();
+        jTextField_InputExample = new javax.swing.JTextField();
+        jLabel_OutputDataInfo = new javax.swing.JLabel();
+        jLabel_DataFolderOutput = new javax.swing.JLabel();
+        jLabel_NameSuffixOutput = new javax.swing.JLabel();
+        jTextField_NameSuffixOutput = new javax.swing.JTextField();
+        jLabel_InputExample = new javax.swing.JLabel();
+        jLabel_OutputExample = new javax.swing.JLabel();
+        jTextField_OutputExample = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_FinalChannels = new javax.swing.JTable();
+        jButton_ChannelsTransfNew = new javax.swing.JButton();
+        jButton_ChannelsTransfRemove = new javax.swing.JButton();
+        jLabel_ValidMarker = new javax.swing.JLabel();
+        jTextField_ValidMarker = new javax.swing.JTextField();
+        jLabel_ChannelsTransf = new javax.swing.JLabel();
+        jLabel_TotChannels = new javax.swing.JLabel();
+        jTextField_TotChannels = new javax.swing.JTextField();
+        jLabel_EEGChannels = new javax.swing.JLabel();
+        jTextField_EEGChannels = new javax.swing.JTextField();
+        jLabel_fs = new javax.swing.JLabel();
+        jTextField_fs = new javax.swing.JTextField();
+        jLabel_ChannelsFileName = new javax.swing.JLabel();
+        jTextField_ChannelsFileName = new javax.swing.JTextField();
+        jLabel_EEGData = new javax.swing.JLabel();
+        jLabel_FinalChannels = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_ChannelsTransf = new javax.swing.JTable();
+        jTextField_System = new javax.swing.JTextField();
+        jTextField_System1 = new javax.swing.JTextField();
+
+        setPreferredSize(new java.awt.Dimension(1150, 750));
+
+        jPimport_data.setName("import_data"); // NOI18N
+        jPimport_data.setPreferredSize(new java.awt.Dimension(1150, 750));
+
+        jLabel_System.setText("system");
+
+        jLabel_DataExtension.setText("data extension");
+
+        jTextField_DataExtension.setText("jTextField1");
+        jTextField_DataExtension.setName("original_data_extension"); // NOI18N
+        jTextField_DataExtension.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_DataExtensionActionPerformed(evt);
+            }
+        });
+
+        jLabel_DataFolder.setText("data folder");
+
+        jLabel_OriginalDataInfo.setText("ORIGINAL DATA INFO");
+
+        jTextField_DataFolder.setText("jTextField1");
+        jTextField_DataFolder.setName("original_data_folder"); // NOI18N
+
+        jLabel_NamePrefix.setText("name prefix");
+
+        jTextField_NamePrefix.setText("jTextField1");
+        jTextField_NamePrefix.setName("original_data_prefix"); // NOI18N
+
+        jLabel_NameSuffix.setText("name suffix");
+
+        jTextField_NameSuffix.setText("jTextField1");
+        jTextField_NameSuffix.setName("original_data_suffix"); // NOI18N
+
+        jLabel_ExampleS01.setText("example S_01");
+
+        jTextField_InputExample.setText("jTextField1");
+        jTextField_InputExample.setName("input_example_name"); // NOI18N
+
+        jLabel_OutputDataInfo.setText("OUTPUT DATA INFO");
+
+        jLabel_DataFolderOutput.setText("data folder");
+
+        jLabel_NameSuffixOutput.setText("name suffix");
+
+        jTextField_NameSuffixOutput.setText("jTextField1");
+        jTextField_NameSuffixOutput.setName("output_suffix"); // NOI18N
+
+        jLabel_InputExample.setText("INPUT");
+
+        jLabel_OutputExample.setText("OUTPUT");
+        jLabel_OutputExample.setName(""); // NOI18N
+
+        jTextField_OutputExample.setText("jTextField1");
+        jTextField_OutputExample.setName("input_example_name"); // NOI18N
+        jTextField_OutputExample.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_OutputExampleActionPerformed(evt);
+            }
+        });
+
+        jTable_FinalChannels.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTable_FinalChannels.setColumnSelectionAllowed(true);
+        jTable_FinalChannels.setName("final_channels_list"); // NOI18N
+        jTable_FinalChannels.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable_FinalChannels);
+
+        jButton_ChannelsTransfNew.setText("new");
+        jButton_ChannelsTransfNew.setName("ch2transform_btNew"); // NOI18N
+        jButton_ChannelsTransfNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ChannelsTransfNewActionPerformed(evt);
+            }
+        });
+
+        jButton_ChannelsTransfRemove.setText("remove");
+        jButton_ChannelsTransfRemove.setName("ch2transform_btRemove"); // NOI18N
+        jButton_ChannelsTransfRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ChannelsTransfRemoveActionPerformed(evt);
+            }
+        });
+
+        jLabel_ValidMarker.setText("valid marker");
+
+        jTextField_ValidMarker.setText("jTextField1");
+        jTextField_ValidMarker.setName("valid_marker"); // NOI18N
+
+        jLabel_ChannelsTransf.setText("Channels Transformation");
+
+        jLabel_TotChannels.setText("tot channels");
+
+        jTextField_TotChannels.setText("jTextField1");
+        jTextField_TotChannels.setName("nch"); // NOI18N
+        jTextField_TotChannels.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_TotChannelsActionPerformed(evt);
+            }
+        });
+
+        jLabel_EEGChannels.setText("eeg channels");
+
+        jTextField_EEGChannels.setText("jTextField1");
+        jTextField_EEGChannels.setName("nch_eeg"); // NOI18N
+
+        jLabel_fs.setText("fs");
+
+        jTextField_fs.setText("jTextField1");
+        jTextField_fs.setName("fs"); // NOI18N
+
+        jLabel_ChannelsFileName.setText("channels file name");
+
+        jTextField_ChannelsFileName.setText("jTextField1");
+        jTextField_ChannelsFileName.setName("eeglab_channels_file_name"); // NOI18N
+
+        jLabel_EEGData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_EEGData.setText("EEG DATA");
+
+        jLabel_FinalChannels.setText("Final Channels ");
+
+        jTable_ChannelsTransf.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTable_ChannelsTransf.setName("ch2transform"); // NOI18N
+        jTable_ChannelsTransf.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(jTable_ChannelsTransf);
+
+        jTextField_System.setText("jTextField1");
+        jTextField_System.setName("original_data_extension"); // NOI18N
+        jTextField_System.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_SystemActionPerformed(evt);
+            }
+        });
+
+        jTextField_System1.setText("jTextField1");
+        jTextField_System1.setName("original_data_extension"); // NOI18N
+        jTextField_System1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_System1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPimport_dataLayout = new javax.swing.GroupLayout(jPimport_data);
+        jPimport_data.setLayout(jPimport_dataLayout);
+        jPimport_dataLayout.setHorizontalGroup(
+            jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPimport_dataLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPimport_dataLayout.createSequentialGroup()
+                        .addComponent(jLabel_TotChannels, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_TotChannels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel_EEGChannels, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_EEGChannels, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel_fs, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField_fs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(317, 317, 317)
+                        .addComponent(jLabel_ChannelsFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_ChannelsFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPimport_dataLayout.createSequentialGroup()
+                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPimport_dataLayout.createSequentialGroup()
+                                .addComponent(jLabel_ExampleS01, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_InputExample, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_InputExample, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPimport_dataLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel_OutputExample, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_OutputExample, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPimport_dataLayout.createSequentialGroup()
+                                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPimport_dataLayout.createSequentialGroup()
+                                        .addComponent(jLabel_ChannelsTransf, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton_ChannelsTransfRemove)
+                                            .addComponent(jButton_ChannelsTransfNew, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPimport_dataLayout.createSequentialGroup()
+                                        .addComponent(jLabel_FinalChannels, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPimport_dataLayout.createSequentialGroup()
+                                        .addComponent(jLabel_ValidMarker, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_ValidMarker, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 27, Short.MAX_VALUE)))
+                        .addGap(20, 20, 20))
+                    .addGroup(jPimport_dataLayout.createSequentialGroup()
+                        .addComponent(jLabel_EEGData, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPimport_dataLayout.createSequentialGroup()
+                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel_OriginalDataInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_OutputDataInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_System, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_DataFolderOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_System1)
+                            .addComponent(jTextField_System, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel_DataExtension, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(jLabel_NameSuffixOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_DataExtension)
+                            .addComponent(jTextField_NameSuffixOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel_DataFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_DataFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel_NamePrefix, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField_NamePrefix, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel_NameSuffix, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField_NameSuffix, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))))
+        );
+        jPimport_dataLayout.setVerticalGroup(
+            jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPimport_dataLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_OriginalDataInfo)
+                    .addComponent(jLabel_System)
+                    .addComponent(jLabel_DataExtension)
+                    .addComponent(jTextField_DataExtension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_DataFolder)
+                    .addComponent(jTextField_DataFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_NamePrefix)
+                    .addComponent(jTextField_NamePrefix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_NameSuffix)
+                    .addComponent(jTextField_NameSuffix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_System, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_OutputDataInfo)
+                    .addComponent(jLabel_DataFolderOutput)
+                    .addComponent(jLabel_NameSuffixOutput)
+                    .addComponent(jTextField_NameSuffixOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_System1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_ExampleS01)
+                    .addComponent(jTextField_InputExample, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_InputExample))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_OutputExample, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_OutputExample))
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPimport_dataLayout.createSequentialGroup()
+                        .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPimport_dataLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel_ChannelsTransf)
+                                .addGap(46, 46, 46))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPimport_dataLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_ChannelsTransfNew)
+                                .addGap(18, 18, 18)))
+                        .addComponent(jButton_ChannelsTransfRemove)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPimport_dataLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_ValidMarker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_ValidMarker))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_EEGData)
+                .addGap(18, 18, 18)
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_TotChannels)
+                    .addComponent(jTextField_TotChannels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_EEGChannels)
+                    .addComponent(jTextField_EEGChannels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_fs)
+                    .addComponent(jTextField_fs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_ChannelsFileName)
+                    .addComponent(jTextField_ChannelsFileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPimport_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_FinalChannels)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(169, 169, 169))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1150, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPimport_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPimport_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initChannelsTable()
+    {
+        Object[] columnName = {"new_label","type","ch1","ch2",};          
+        jTableDM_ChannelsTransf = new DefaultTableModel(columnName, 0);
+        jTable_ChannelsTransf.setModel(jTableDM_ChannelsTransf);        
+        
+        Object[] cmbinitvalues = {"eeg", "emg", "eog", "others"};
+        JComboBox comboBox = new JComboBox(cmbinitvalues);
+        comboBox.setMaximumRowCount(4);
+        TableCellEditor editor = new DefaultCellEditor(comboBox);        
+        jTable_ChannelsTransf.getColumnModel().getColumn(1).setCellEditor(editor);
+        
+      
+        
+        //jTableDM_ChannelsTransf.
+    }
+    private void jTextField_OutputExampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_OutputExampleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_OutputExampleActionPerformed
 
+    private void jButton_ChannelsTransfNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ChannelsTransfNewActionPerformed
+        // TODO add your handling code here:
+
+        Object[] obj=null;
+        jTableDM_ChannelsTransf.addRow(obj);
+        jTable_ChannelsTransf.setModel(jTableDM_ChannelsTransf);
+        
+   /*     
+        final JFSubImportChannels aa = new JFSubImportChannels();
+        String[] channels = new String[4];
+        
+        aa.setVisible(true);
+        
+        aa.addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosed(java.awt.event.WindowEvent e) {
+           
+                String[] channels = new String[4]; 
+                channels = aa.getData();
+                
+                TableModel table_model = jTable_ChannelsTransf.getModel();
+
+                table_model.setValueAt("aa", 0, 1);
+                table_model.setValueAt("bb", 0, 2);
+                table_model.setValueAt(0, 0, 3);
+                table_model.setValueAt(2, 0, 4);
+                table_model.setValueAt("cc", 0, 5);
+
+                //javax.swing.JTable jTable1 = new javax.swing.JTable( 
+                
+                //Dimension a = jTable_ChannelsTransf.getSize();
+                
+                //jTable_ChannelsTransf.setValueAt(1, 1, 1);
+                //jScrollPane1.setViewportView(jTable_ChannelsTransf);
+                
+               //jTable_ChannelsTransf.getCellEditor(5, 2);
+                
+                //jTable_ChannelsTransf.setEditingColumn(4);
+                //jTable_ChannelsTransf.setEditingRow(1);
+
+                //aa.getComponents();
+             
+                String[] new_ch = new String[4];      
+                new_ch[0] = jTextField_Type.getText();
+              
+                new_ch[1] = jTextField_Ch1.getText();
+                new_ch[2] = jTextField_Ch2.getText();
+                new_ch[3] = jTextField_NewLabel.getText();
+        
+                
+            }
+        });
+*/
+      //  System.out.print(channels[0]);
+//        aa.isVisible();
+//        aa.setVisible(true);
+        
+        //String[] new_ch = aa.getData();
+        //System.out.println(new_ch[1]);
+    }//GEN-LAST:event_jButton_ChannelsTransfNewActionPerformed
+
+    private void jTextField_TotChannelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_TotChannelsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_TotChannelsActionPerformed
+
+    private void jTextField_SystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_SystemActionPerformed
+        String acquisition_system = jTextField_System.getText();
+        System.out.println(acquisition_system);
+    }//GEN-LAST:event_jTextField_SystemActionPerformed
+
+    private void jButton_ChannelsTransfRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ChannelsTransfRemoveActionPerformed
+        jTableDM_ChannelsTransf.removeRow(jTable_ChannelsTransf.getSelectedRow());
+    }//GEN-LAST:event_jButton_ChannelsTransfRemoveActionPerformed
+
+    private void jTextField_System1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_System1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_System1ActionPerformed
+
+    private void jTextField_DataExtensionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_DataExtensionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_DataExtensionActionPerformed
+
+    private Import imp;
+    private Project project;
+    private JTPMain controller;
+    DefaultTableModel jTableDM_ChannelsTransf;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_ChannelsTransfNew;
+    private javax.swing.JButton jButton_ChannelsTransfRemove;
+    private javax.swing.JLabel jLabel_ChannelsFileName;
+    private javax.swing.JLabel jLabel_ChannelsTransf;
+    private javax.swing.JLabel jLabel_DataExtension;
+    private javax.swing.JLabel jLabel_DataFolder;
+    private javax.swing.JLabel jLabel_DataFolderOutput;
+    private javax.swing.JLabel jLabel_EEGChannels;
+    private javax.swing.JLabel jLabel_EEGData;
+    private javax.swing.JLabel jLabel_ExampleS01;
+    private javax.swing.JLabel jLabel_FinalChannels;
+    private javax.swing.JLabel jLabel_InputExample;
+    private javax.swing.JLabel jLabel_NamePrefix;
+    private javax.swing.JLabel jLabel_NameSuffix;
+    private javax.swing.JLabel jLabel_NameSuffixOutput;
+    private javax.swing.JLabel jLabel_OriginalDataInfo;
+    private javax.swing.JLabel jLabel_OutputDataInfo;
+    private javax.swing.JLabel jLabel_OutputExample;
+    private javax.swing.JLabel jLabel_System;
+    private javax.swing.JLabel jLabel_TotChannels;
+    private javax.swing.JLabel jLabel_ValidMarker;
+    private javax.swing.JLabel jLabel_fs;
+    private javax.swing.JPanel jPimport_data;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable_ChannelsTransf;
+    private javax.swing.JTable jTable_FinalChannels;
+    private javax.swing.JTextField jTextField_ChannelsFileName;
+    private javax.swing.JTextField jTextField_DataExtension;
+    private javax.swing.JTextField jTextField_DataFolder;
+    private javax.swing.JTextField jTextField_EEGChannels;
+    private javax.swing.JTextField jTextField_InputExample;
+    private javax.swing.JTextField jTextField_NamePrefix;
+    private javax.swing.JTextField jTextField_NameSuffix;
+    private javax.swing.JTextField jTextField_NameSuffixOutput;
+    private javax.swing.JTextField jTextField_OutputExample;
+    private javax.swing.JTextField jTextField_System;
+    private javax.swing.JTextField jTextField_System1;
+    private javax.swing.JTextField jTextField_TotChannels;
+    private javax.swing.JTextField jTextField_ValidMarker;
+    private javax.swing.JTextField jTextField_fs;
     // End of variables declaration//GEN-END:variables
 }
