@@ -5,17 +5,86 @@
  */
 package gui;
 
+import java.awt.Dimension;
+import javax.swing.DefaultListModel;
+import javax.swing.table.*;
+import structures.*;
+
 /**
  *
  * @author inuggi
  */
 public class JPTask extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPTask
-     */
-    public JPTask() {
+    private JTPMain controller;
+    public Task task;
+    public Project project;
+    DefaultTableModel jTableDM_Triggers;
+    DefaultTableModel jTableDM_ConditionMarkers;
+    
+    public JPTask(JTPMain ctrl) {
         initComponents();
+        controller = ctrl;
+        initTriggersTable();
+        initConditionMarkersTable();
+    }
+    
+    public void setGUI(Project proj)
+    {
+        project = proj;
+        task = project.task;
+    }
+    
+    public Project getGUI(Project proj)
+    {
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(0,1);
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(1,1);
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(2,1);
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(3,1);
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(4,1);
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(5,1);
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(6,1);
+        proj.task.events.trial_start_trigger_value = (String) jTable_Triggers.getModel().getValueAt(7,1);
+                
+        proj.task.events.import_marker[0] = (String) jTable_Triggers.getModel().getValueAt(0,1);
+        proj.task.events.import_marker[1] = (String) jTable_Triggers.getModel().getValueAt(1,1);
+        proj.task.events.import_marker[2] = (String) jTable_Triggers.getModel().getValueAt(2,1);
+        proj.task.events.import_marker[3] = (String) jTable_Triggers.getModel().getValueAt(3,1);
+        proj.task.events.import_marker[4] = (String) jTable_Triggers.getModel().getValueAt(4,1);
+        proj.task.events.import_marker[5] = (String) jTable_Triggers.getModel().getValueAt(5,1);
+        proj.task.events.import_marker[6] = (String) jTable_Triggers.getModel().getValueAt(6,1);
+        proj.task.events.import_marker[7] = (String) jTable_Triggers.getModel().getValueAt(7,1);
+        
+        // Pbe if user add a row to set a new field   
+        /*
+        if (jTableDM_Triggers.getRowCount()>8)
+        {
+            MLStructure struct = new MLStructure("XXX",new int[] {1,1});
+            for (int i = 0; i < jTableDM_Triggers.getColumnCount(); i++) 
+            {
+                String name_field = (String) jTable_Triggers.getModel().getValueAt(i,0);
+                String value = (String) jTable_Triggers.getModel().getValueAt(i,1); 
+                MLArray arr_value = new MLChar("XXX", value);
+                struct.setField(name_field,arr_value);
+            }
+        }
+        */
+        
+        // Get mrkcode_cond table values
+        proj.task.events.mrkcode_cond = new String[jTableDM_ConditionMarkers.getRowCount()][jTableDM_ConditionMarkers.getColumnCount()];
+        int compt = 1;
+        for (int i = 0; i < jTableDM_ConditionMarkers.getRowCount(); i++) 
+        {
+            for (int j = 0; j < jTableDM_ConditionMarkers.getColumnCount(); j++) 
+            {
+                proj.task.events.mrkcode_cond[i][j] = (String) jTable_ConditionMarkers.getModel().getValueAt(i,j);
+                proj.task.events.valid_marker[compt] = (String) jTable_ConditionMarkers.getModel().getValueAt(i,j);
+                proj.task.events.import_marker[compt+7] = (String) jTable_ConditionMarkers.getModel().getValueAt(i,j);
+                compt++;
+            }
+        }
+        
+        return proj;
     }
 
     /**
@@ -28,83 +97,330 @@ public class JPTask extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable_Triggers = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable_ConditionMarkers = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jButton_NewTrigger = new javax.swing.JButton();
+        jButton_RemoveTrigger = new javax.swing.JButton();
+        jButton_AddRow = new javax.swing.JButton();
+        jButton_RemoveRow = new javax.swing.JButton();
+        jLabel_Rows = new javax.swing.JLabel();
+        jButton_AddCol = new javax.swing.JButton();
+        jButton_RemoveCol = new javax.swing.JButton();
+        jLabel_Columns = new javax.swing.JLabel();
+        jLabel_import_marker = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList_import_marker = new javax.swing.JList();
+        jButton_Remove_import_marker = new javax.swing.JButton();
+        jLabel_Triggers1 = new javax.swing.JLabel();
+        jButton_Update_import_marker = new javax.swing.JButton();
+        jButton_ClearConditionMarkers = new javax.swing.JButton();
+        jButton_ClearTrigger = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Triggers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "name", "value"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        ));
+        jTable_Triggers.setName("JTab_Triggers"); // NOI18N
+        jScrollPane1.setViewportView(jTable_Triggers);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_ConditionMarkers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
-        jScrollPane2.setViewportView(jTable2);
+        ));
+        jScrollPane2.setViewportView(jTable_ConditionMarkers);
 
         jLabel1.setText("Condition markers");
+
+        jButton_NewTrigger.setText("New");
+        jButton_NewTrigger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_NewTriggerActionPerformed(evt);
+            }
+        });
+
+        jButton_RemoveTrigger.setText("Remove");
+        jButton_RemoveTrigger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_RemoveTriggerActionPerformed(evt);
+            }
+        });
+
+        jButton_AddRow.setText("Add");
+        jButton_AddRow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_AddRowActionPerformed(evt);
+            }
+        });
+
+        jButton_RemoveRow.setText("Remove (selected)");
+        jButton_RemoveRow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_RemoveRowActionPerformed(evt);
+            }
+        });
+
+        jLabel_Rows.setText("Rows");
+
+        jButton_AddCol.setText("Add");
+        jButton_AddCol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_AddColActionPerformed(evt);
+            }
+        });
+
+        jButton_RemoveCol.setText("Remove (last)");
+        jButton_RemoveCol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_RemoveColActionPerformed(evt);
+            }
+        });
+
+        jLabel_Columns.setText("Columns");
+
+        jLabel_import_marker.setText("Import markers");
+
+        jScrollPane3.setViewportView(jList_import_marker);
+
+        jButton_Remove_import_marker.setText("Remove");
+        jButton_Remove_import_marker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Remove_import_markerActionPerformed(evt);
+            }
+        });
+
+        jLabel_Triggers1.setText("Triggers");
+
+        jButton_Update_import_marker.setText("Update");
+        jButton_Update_import_marker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Update_import_markerActionPerformed(evt);
+            }
+        });
+
+        jButton_ClearConditionMarkers.setText("Clear");
+        jButton_ClearConditionMarkers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ClearConditionMarkersActionPerformed(evt);
+            }
+        });
+
+        jButton_ClearTrigger.setText("Clear");
+        jButton_ClearTrigger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ClearTriggerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton_NewTrigger)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_RemoveTrigger)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_ClearTrigger))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_Columns, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_AddCol)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_RemoveCol)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel_Rows, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_AddRow)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_RemoveRow, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_ClearConditionMarkers))
+                    .addComponent(jLabel_Triggers1))
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jLabel_import_marker, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_Update_import_marker)
+                            .addComponent(jButton_Remove_import_marker))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_import_marker)
+                    .addComponent(jLabel_Triggers1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton_NewTrigger)
+                                    .addComponent(jButton_RemoveTrigger)
+                                    .addComponent(jButton_ClearTrigger))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jButton_ClearConditionMarkers))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3))
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_Columns)
+                            .addComponent(jButton_AddCol)
+                            .addComponent(jButton_RemoveCol)
+                            .addComponent(jLabel_Rows)
+                            .addComponent(jButton_AddRow)
+                            .addComponent(jButton_RemoveRow)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton_Update_import_marker)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_Remove_import_marker)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_RemoveRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RemoveRowActionPerformed
+        jTableDM_ConditionMarkers.removeRow(jTable_ConditionMarkers.getSelectedRow());
+    }//GEN-LAST:event_jButton_RemoveRowActionPerformed
 
+    private void jButton_NewTriggerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewTriggerActionPerformed
+        Object[] obj=null;
+        jTableDM_Triggers.addRow(obj);
+        jTable_Triggers.setModel(jTableDM_Triggers);
+    }//GEN-LAST:event_jButton_NewTriggerActionPerformed
+
+    private void jButton_RemoveTriggerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RemoveTriggerActionPerformed
+        jTableDM_Triggers.removeRow(jTable_Triggers.getSelectedRow());
+    }//GEN-LAST:event_jButton_RemoveTriggerActionPerformed
+
+    private void jButton_AddRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddRowActionPerformed
+        Object[] obj=null;
+        jTableDM_ConditionMarkers.addRow(obj);
+    }//GEN-LAST:event_jButton_AddRowActionPerformed
+
+    private void jButton_AddColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddColActionPerformed
+        Object[] obj=null;
+        jTableDM_ConditionMarkers.addColumn(obj);
+    }//GEN-LAST:event_jButton_AddColActionPerformed
+
+    private void jButton_RemoveColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RemoveColActionPerformed
+        int nb_col = jTableDM_ConditionMarkers.getColumnCount();
+        jTableDM_ConditionMarkers.setColumnCount(nb_col-1);
+    }//GEN-LAST:event_jButton_RemoveColActionPerformed
+
+    private void jButton_Remove_import_markerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Remove_import_markerActionPerformed
+        DefaultListModel ListMD_import_marker = new DefaultListModel();
+        ListMD_import_marker = (DefaultListModel) jList_import_marker.getModel();
+        int index = jList_import_marker.getSelectedIndex();
+        ListMD_import_marker.remove(index);
+        jList_import_marker.setModel(ListMD_import_marker);
+    }//GEN-LAST:event_jButton_Remove_import_markerActionPerformed
+
+    private void jButton_Update_import_markerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Update_import_markerActionPerformed
+        DefaultListModel ListMD_import_marker = new DefaultListModel();
+        for (int i1 = 0; i1 < jTable_Triggers.getRowCount(); i1++) 
+        {
+            ListMD_import_marker.addElement(jTable_Triggers.getModel().getValueAt(i1,1));
+        }
+        for (int i2 = 0; i2 < jTable_ConditionMarkers.getRowCount(); i2++) 
+        {
+            for (int j2 = 0; j2 < jTable_ConditionMarkers.getColumnCount(); j2++) 
+            {
+            ListMD_import_marker.addElement(jTable_ConditionMarkers.getModel().getValueAt(i2,j2));
+            }
+        }
+        jList_import_marker.setModel(ListMD_import_marker); 
+    }//GEN-LAST:event_jButton_Update_import_markerActionPerformed
+
+    private void jButton_ClearTriggerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearTriggerActionPerformed
+        initTriggersTable();
+    }//GEN-LAST:event_jButton_ClearTriggerActionPerformed
+
+    private void jButton_ClearConditionMarkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearConditionMarkersActionPerformed
+        initConditionMarkersTable();
+    }//GEN-LAST:event_jButton_ClearConditionMarkersActionPerformed
+
+    private void initTriggersTable()
+    {
+        Object[] columnName = {"name","value"};          
+        jTableDM_Triggers = new DefaultTableModel(columnName, 8);  
+        
+        jTable_Triggers.setModel(jTableDM_Triggers);  
+        //jTable_Triggers.setEnabled(false);
+
+        jTableDM_Triggers.setValueAt("start experiment", 0, 0);
+        jTableDM_Triggers.setValueAt("pause experiment", 1, 0);
+        jTableDM_Triggers.setValueAt("resume experiment", 2, 0);
+        jTableDM_Triggers.setValueAt("end experiment", 3, 0);
+        jTableDM_Triggers.setValueAt("start baseline", 4, 0);
+        jTableDM_Triggers.setValueAt("end baseline", 5, 0);
+        jTableDM_Triggers.setValueAt("start trial", 6, 0);
+        jTableDM_Triggers.setValueAt("end trial", 7, 0);
+        
+        jTableDM_Triggers.setValueAt("1", 0, 1);
+        jTableDM_Triggers.setValueAt("2", 1, 1);
+        jTableDM_Triggers.setValueAt("3", 2, 1);
+        jTableDM_Triggers.setValueAt("4", 3, 1);
+        jTableDM_Triggers.setValueAt("9", 4, 1);
+        jTableDM_Triggers.setValueAt("10", 5, 1);
+        jTableDM_Triggers.setValueAt("9", 6, 1);
+        jTableDM_Triggers.setValueAt("5", 7, 1);
+    }
+    
+    private void initConditionMarkersTable()
+    {     
+        jTableDM_ConditionMarkers = new DefaultTableModel(1,1); 
+        jTable_ConditionMarkers.setModel(jTableDM_ConditionMarkers);    
+    }
+    
+    //DefaultListModel ListMD_import_marker;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_AddCol;
+    private javax.swing.JButton jButton_AddRow;
+    private javax.swing.JButton jButton_ClearConditionMarkers;
+    private javax.swing.JButton jButton_ClearTrigger;
+    private javax.swing.JButton jButton_NewTrigger;
+    private javax.swing.JButton jButton_RemoveCol;
+    private javax.swing.JButton jButton_RemoveRow;
+    private javax.swing.JButton jButton_RemoveTrigger;
+    private javax.swing.JButton jButton_Remove_import_marker;
+    private javax.swing.JButton jButton_Update_import_marker;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel_Columns;
+    private javax.swing.JLabel jLabel_Rows;
+    private javax.swing.JLabel jLabel_Triggers1;
+    private javax.swing.JLabel jLabel_import_marker;
+    private javax.swing.JList jList_import_marker;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable_ConditionMarkers;
+    private javax.swing.JTable jTable_Triggers;
     // End of variables declaration//GEN-END:variables
 }

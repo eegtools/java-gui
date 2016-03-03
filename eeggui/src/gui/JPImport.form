@@ -21,25 +21,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1150" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPimport_data" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jPimport_data" pref="1140" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="750" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPimport_data" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPimport_data" min="-2" pref="707" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,114 +49,137 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel_TotChannels" min="-2" pref="79" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_TotChannels" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="jLabel_EEGChannels" min="-2" pref="75" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_EEGChannels" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="jLabel_fs" min="-2" pref="18" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextField_fs" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
-                          <Component id="jLabel_ChannelsFileName" min="-2" pref="124" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_ChannelsFileName" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel_ExampleS01" min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel_InputExample" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="jLabel_OutputExample" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel_ExampleS01" min="-2" pref="82" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel_InputExample" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField_InputExample" min="-2" pref="770" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel_OutputExample" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField_OutputExample" min="-2" pref="770" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel_ChannelsTransf" min="-2" pref="129" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane3" min="-2" pref="777" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jButton_ChannelsTransfRemove" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jButton_ChannelsTransfNew" min="-2" pref="69" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTextField_OutputExample" min="-2" pref="770" max="-2" attributes="0"/>
+                          <Component id="jTextField_InputExample" min="-2" pref="770" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="590" max="-2" attributes="0"/>
+                                      <Component id="jLabel_ChannelsFileName1" min="-2" pref="124" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel_RefChannels" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <Component id="jComboBox_RefChannels" min="-2" pref="88" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextField_RefChannel" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel_TotChannels" min="-2" pref="79" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jTextField_TotChannels" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jLabel_EEGChannels" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jTextField_EEGChannels" min="-2" pref="80" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="jLabel_fs" min="-2" pref="18" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jTextField_fs" min="-2" pref="80" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel_FinalChannels" min="-2" pref="115" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel_ValidMarker" min="-2" pref="114" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_ValidMarker" min="-2" pref="975" max="-2" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabel_ChannelsFileName" min="-2" pref="124" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel_FinalChannels" min="-2" pref="92" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel_ChannelsTransf" min="-2" pref="129" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jButton_ChannelsTransfNew" min="-2" pref="69" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jButton_ChannelsTransfRemove" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jButton_ChannelsTransfApply" min="-2" pref="69" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jButton_ChannelsTransfClear" min="-2" pref="69" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jScrollPane3" min="-2" pref="528" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel_EEGData" min="-2" pref="108" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jTextField_ChannelsFilePath" min="-2" pref="331" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton_channels_file_path_select" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jTextField_ChannelsFileName" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel_OriginalDataInfo" max="32767" attributes="0"/>
-                              <Component id="jLabel_OutputDataInfo" min="-2" pref="128" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel_System" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="jLabel_DataFolderOutput" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField_System1" max="32767" attributes="0"/>
-                              <Component id="jTextField_System" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel_DataExtension" pref="81" max="32767" attributes="0"/>
-                              <Component id="jLabel_NameSuffixOutput" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField_DataExtension" max="32767" attributes="0"/>
-                              <Component id="jTextField_NameSuffixOutput" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel_DataFolder" min="-2" pref="67" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_DataFolder" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jLabel_NamePrefix" min="-2" pref="69" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextField_NamePrefix" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jLabel_NameSuffix" min="-2" pref="66" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextField_NameSuffix" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="1001" pref="1001" max="-2" attributes="0"/>
                   </Group>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel_OriginalDataInfo" max="32767" attributes="0"/>
+                      <Component id="jLabel_OutputDataInfo" min="-2" pref="128" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel_System" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="jLabel_DataFolderOutput" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jTextField_OutputDataFolder" pref="80" max="32767" attributes="0"/>
+                      <Component id="jComboBox_acquisition_system" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel_DataExtension" pref="81" max="32767" attributes="0"/>
+                      <Component id="jLabel_NameSuffixOutput" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jTextField_OutputNameSuffix" pref="80" max="32767" attributes="0"/>
+                      <Component id="jTextField_DataExtension" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                  <Component id="jLabel_DataFolder" min="-2" pref="67" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTextField_DataFolder" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="jLabel_NamePrefix" min="-2" pref="69" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTextField_NamePrefix" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="jLabel_NameSuffix" min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTextField_NameSuffix" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -175,22 +191,22 @@
                       <Component id="jLabel_OriginalDataInfo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_System" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_DataExtension" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_DataExtension" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_DataFolder" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_DataFolder" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_NamePrefix" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_NamePrefix" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_NameSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_NameSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_System" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_DataExtension" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox_acquisition_system" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel_OutputDataInfo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_DataFolderOutput" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_NameSuffixOutput" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_NameSuffixOutput" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_System1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_OutputNameSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_OutputDataFolder" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -200,39 +216,10 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField_OutputExample" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_OutputExample" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_OutputExample" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="jLabel_ChannelsTransf" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton_ChannelsTransfNew" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jButton_ChannelsTransfRemove" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="50" max="32767" attributes="0"/>
-                          <Component id="jScrollPane3" min="-2" pref="141" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="81" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField_ValidMarker" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel_ValidMarker" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel_EEGData" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel_TotChannels" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_TotChannels" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -243,12 +230,37 @@
                       <Component id="jLabel_ChannelsFileName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_ChannelsFileName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel_FinalChannels" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel_ChannelsFileName1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_ChannelsFilePath" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_channels_file_path_select" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="359" max="-2" attributes="0"/>
+                          <Component id="jLabel_FinalChannels" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_RefChannels" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox_RefChannels" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_RefChannel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButton_ChannelsTransfClear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_ChannelsTransf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_ChannelsTransfRemove" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_ChannelsTransfApply" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_ChannelsTransfNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" pref="290" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -264,15 +276,6 @@
             <Property name="text" type="java.lang.String" value="data extension"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_DataExtension">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="original_data_extension" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_DataExtensionActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel_DataFolder">
           <Properties>
             <Property name="text" type="java.lang.String" value="data folder"/>
@@ -285,7 +288,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_DataFolder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="original_data_folder" noResource="true"/>
           </Properties>
         </Component>
@@ -296,7 +298,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_NamePrefix">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="original_data_prefix" noResource="true"/>
           </Properties>
         </Component>
@@ -307,7 +308,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_NameSuffix">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="original_data_suffix" noResource="true"/>
           </Properties>
         </Component>
@@ -318,7 +318,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_InputExample">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="input_example_name" noResource="true"/>
           </Properties>
         </Component>
@@ -334,13 +334,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_NameSuffixOutput">
           <Properties>
-            <Property name="text" type="java.lang.String" value="name suffix"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_NameSuffixOutput">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="output_suffix" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="output suffix"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_InputExample">
@@ -348,49 +343,21 @@
             <Property name="text" type="java.lang.String" value="INPUT"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_OutputExample">
+        <Component class="javax.swing.JTextField" name="jTextField_OutputNameSuffix">
           <Properties>
-            <Property name="text" type="java.lang.String" value="OUTPUT"/>
-            <Property name="name" type="java.lang.String" value="" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_OutputExample">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="input_example_name" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="output_suffix" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_OutputExampleActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_OutputNameSuffixKeyTyped"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable_FinalChannels">
-              <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="0" rowCount="2"/>
-                </Property>
-                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="final_channels_list" noResource="true"/>
-                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JButton" name="jButton_ChannelsTransfNew">
+        <Component class="javax.swing.JButton" name="jButton_ChannelsTransfClear">
           <Properties>
-            <Property name="text" type="java.lang.String" value="new"/>
+            <Property name="text" type="java.lang.String" value="clear"/>
             <Property name="name" type="java.lang.String" value="ch2transform_btNew" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ChannelsTransfNewActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ChannelsTransfClearActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_ChannelsTransfRemove">
@@ -402,80 +369,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ChannelsTransfRemoveActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_ValidMarker">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="valid marker"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_ValidMarker">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="valid_marker" noResource="true"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel_ChannelsTransf">
           <Properties>
             <Property name="text" type="java.lang.String" value="Channels Transformation"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TotChannels">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="tot channels"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TotChannels">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="nch" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_TotChannelsActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EEGChannels">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="eeg channels"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_EEGChannels">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="nch_eeg" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_fs">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="fs"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_fs">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="fs" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_ChannelsFileName">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="channels file name"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_ChannelsFileName">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="eeglab_channels_file_name" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EEGData">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="EEG DATA"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_FinalChannels">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Final Channels "/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -527,22 +423,176 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="jTextField_System">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="original_data_extension" noResource="true"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_OutputDataFolder">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_SystemActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_OutputDataFolderKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_System1">
+        <Component class="javax.swing.JTextField" name="jTextField_DataExtension">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_RefChannels">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reference Channel"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Reference Channels"/>
+          </AccessibilityProperties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_RefChannel">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="original_data_extension" noResource="true"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox_acquisition_system">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_System1ActionPerformed"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jComboBox_acquisition_systemFocusLost"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_fs">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="fs" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_ChannelsFileName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="channels file name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_ChannelsFileName">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="eeglab_channels_file_name" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_FinalChannels">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Final Channels "/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable_FinalChannels">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="3" rowCount="1">
+                    <Column editable="true" title="Id" type="java.lang.Integer"/>
+                    <Column editable="true" title="Label" type="java.lang.String"/>
+                    <Column editable="true" title="Type" type="java.lang.String"/>
+                  </Table>
+                </Property>
+                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                <Property name="name" type="java.lang.String" value="final_channels_list" noResource="true"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel_TotChannels">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="tot channels"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_TotChannels">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="nch" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_ChannelsFileName1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="channels file path"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_EEGChannels">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="eeg channels"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_ChannelsFilePath">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="name" type="java.lang.String" value="eeglab_channels_file_name" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_EEGChannels">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="name" type="java.lang.String" value="nch_eeg" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_channels_file_path_select">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Select"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_channels_file_path_selectActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_fs">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="fs"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox_RefChannels">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jComboBox_RefChannelsFocusLost"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_OutputExample">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="OUTPUT"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_OutputExample">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="name" type="java.lang.String" value="input_example_name" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_ChannelsTransfApply">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="apply"/>
+            <Property name="name" type="java.lang.String" value="ch2transform_btNew" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ChannelsTransfApplyActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_ChannelsTransfNew">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="new"/>
+            <Property name="name" type="java.lang.String" value="ch2transform_btNew" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ChannelsTransfNewActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

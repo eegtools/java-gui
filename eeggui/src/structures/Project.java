@@ -38,7 +38,6 @@ public class Project extends JMatlabStructWrapper{
     public Paths paths;  
     public Task task;    
     public Import imp;
-    public EEGdata eegdata;
     public Preproc preproc;
     public Epoching epoching;
     public Subjects subjects;
@@ -99,12 +98,6 @@ public class Project extends JMatlabStructWrapper{
             MLStructure simp = (MLStructure) prj.getField("import");
             imp = new Import();
             imp.setJMatData(simp);
-
-            // ------------------------------------------------------------------------------------------------------------------------------------
-            // EEG DATA
-            MLStructure sdata = (MLStructure) prj.getField("eegdata");
-            eegdata = new EEGdata();
-            eegdata.setJMatData(sdata);
 
             // ------------------------------------------------------------------------------------------------------------------------------------
             // PREPROC
@@ -201,10 +194,6 @@ public class Project extends JMatlabStructWrapper{
             // ------------------------------------------------------------------------------------------------------------------------------------
             // IMPORT
             project.setField("import",imp.getJMatData());
-            
-            // ------------------------------------------------------------------------------------------------------------------------------------
-            // EEG DATA
-            project.setField("eegdata",eegdata.getJMatData());
 
             // ------------------------------------------------------------------------------------------------------------------------------------
             // PREPROC 

@@ -27,6 +27,20 @@ public class Import extends JMatlabStructWrapper{
     
     public Ch2transform[] ch2transform;
     
+    public double[] nch;         //int
+    public double[] nch_eeg;     //int
+    public double[] fs;          //int
+    
+    public String eeglab_channels_file_name;
+    public String eeglab_channels_file_path;
+    
+    public double[] eeg_channels_list;
+    public double[] emg_channels_list;
+    public double[] eog_channels_list;
+    public double[] no_eeg_channels_list;
+
+    public String[] eog_channels_list_labels;
+    public String[] emg_channels_list_labels;
     
     public Import(){}
     
@@ -45,6 +59,21 @@ public class Import extends JMatlabStructWrapper{
         valid_marker                = getStringCellArray(struct, "valid_marker");
         
         ch2transform                = readCh2transform(struct, "ch2transform");
+        
+        nch               = getDoubleArray(struct,"nch");
+        nch_eeg           = getDoubleArray(struct,"nch_eeg");
+        fs                = getDoubleArray(struct,"fs");
+        
+        eeglab_channels_file_name  = getString(struct, "eeglab_channels_file_name");
+        eeglab_channels_file_path  = getString(struct, "eeglab_channels_file_path");
+
+        eeg_channels_list = getDoubleArray(struct,"eeg_channels_list");
+        emg_channels_list = getDoubleArray(struct,"emg_channels_list");
+        eog_channels_list = getDoubleArray(struct,"eog_channels_list");
+        no_eeg_channels_list = getDoubleArray(struct,"no_eeg_channels_list");
+        
+        eog_channels_list_labels = getStringCellArray(struct,"eog_channels_list_labels");
+        emg_channels_list_labels = getStringCellArray(struct,"emg_channels_list_labels");        
     }
     
     private Ch2transform[] readCh2transform(MLStructure ch2transf , String field)
@@ -84,6 +113,21 @@ public class Import extends JMatlabStructWrapper{
         struct.setField("valid_marker",setStringLineArray(valid_marker));
 
         struct.setField("ch2transform",writeCh2transform(ch2transform));
+        
+        struct.setField("nch",setDoubleColumnArray(nch));
+        struct.setField("nch_eeg",setDoubleColumnArray(nch_eeg));
+        struct.setField("fs",setDoubleColumnArray(fs));
+        
+        struct.setField("eeglab_channels_file_name",setString(eeglab_channels_file_name));
+        struct.setField("eeglab_channels_file_path",setString(eeglab_channels_file_path));
+        
+        struct.setField("eeg_channels_list",setDoubleLineArray(eeg_channels_list));
+        struct.setField("emg_channels_list",setDoubleLineArray(emg_channels_list));
+        struct.setField("eog_channels_list",setDoubleLineArray(eog_channels_list));
+        struct.setField("no_eeg_channels_list",setDoubleLineArray(no_eeg_channels_list));
+        
+        struct.setField("eog_channels_list_labels",setStringLineArray(eog_channels_list_labels));
+        struct.setField("emg_channels_list_labels",setStringLineArray(emg_channels_list_labels));        
 
         return struct;
     }

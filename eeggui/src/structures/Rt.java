@@ -15,7 +15,7 @@ public class Rt extends JMatlabStructWrapper{
 
     public String eve1_type;
     public String eve2_type;
-    public double[] output_folder;
+    public String output_folder;
     public AllowedTwMs allowed_tw_ms;
     
     public Rt(){}
@@ -24,7 +24,7 @@ public class Rt extends JMatlabStructWrapper{
     {
         eve1_type       = getString(srt, "eve1_type");
         eve2_type       = getString(srt, "eve2_type");
-        output_folder   = getDoubleArray(srt, "output_folder");
+        output_folder   = getString(srt, "output_folder");
         allowed_tw_ms   = readAllowedTwMs(srt, "allowed_tw_ms");
     } 
     
@@ -42,7 +42,7 @@ public class Rt extends JMatlabStructWrapper{
         MLStructure srt = new MLStructure("XXX", new int[] {1,1});
         srt.setField("eve1_type", setString(eve1_type));
         srt.setField("eve2_type", setString(eve2_type));
-        srt.setField("output_folder", setDoubleColumnArray(output_folder));
+        srt.setField("output_folder", setString(output_folder));
         srt.setField("allowed_tw_ms",writeAllowedTwMs(allowed_tw_ms));
         return srt;
     } 

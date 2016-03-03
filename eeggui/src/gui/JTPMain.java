@@ -29,7 +29,7 @@ public class JTPMain extends javax.swing.JPanel {
         //try{
          
         project = new Project();
-        //project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_new_2.mat");
+        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_new_2.mat");
   
         //int verif = project.saveMAT("C:\\Users\\PHilt\\Desktop\\test_gui\\project_new_1.mat");
 
@@ -44,20 +44,60 @@ public class JTPMain extends javax.swing.JPanel {
 
     private void initGui()
     {
-        pimp = new JPImport();
+        ptask = new JPTask(this);
+        main_tab.add(ptask);
+        ptask.setVisible(true);        
+        main_tab.setTitleAt(0, "Task");
+        
+        pimp = new JPImport(this);
         main_tab.add(pimp);
         pimp.setVisible(true);        
-        main_tab.setTitleAt(0, "Import & Data");
+        main_tab.setTitleAt(1, "Import");
         
         ppreproc = new JPPreprocessing(this);
         main_tab.add(ppreproc);
         ppreproc.setVisible(true);        
-        main_tab.setTitleAt(1, "Preprocessing");
+        main_tab.setTitleAt(2, "Preprocessing");
         
-        study_design = new JPStudyDesign(this);
-        main_tab.add(study_design);
-        study_design.setVisible(true);        
-        main_tab.setTitleAt(2, "Study Design");
+        pepoching = new JPEpoching(this);
+        main_tab.add(pepoching);
+        pepoching.setVisible(true);        
+        main_tab.setTitleAt(3, "Epoching");
+        
+        psubjects = new JPSubjects(this);
+        main_tab.add(psubjects);
+        psubjects.setVisible(true);        
+        main_tab.setTitleAt(4, "Subjects");
+        
+        pstudy = new JPStudyDesign(this);
+        main_tab.add(pstudy);
+        pstudy.setVisible(true);        
+        main_tab.setTitleAt(5, "Study Design");
+        
+        perp = new JPErp(this);
+        main_tab.add(perp);
+        perp.setVisible(true);        
+        main_tab.setTitleAt(6, "Erp");
+        
+        persp = new JPErsp(this);
+        main_tab.add(persp);
+        persp.setVisible(true);        
+        main_tab.setTitleAt(7, "Ersp");
+        
+        pbrainstorm = new JPBrainstorm(this);
+        main_tab.add(pbrainstorm);
+        pbrainstorm.setVisible(true);        
+        main_tab.setTitleAt(8, "Brainstorm");
+        
+        poperations = new JPOperations(this);
+        main_tab.add(poperations);
+        poperations.setVisible(true);        
+        main_tab.setTitleAt(9, "Operations");
+        
+        ppaths = new JPPaths(this);
+        main_tab.add(ppaths);
+        ppaths.setVisible(true);        
+        main_tab.setTitleAt(10, "Paths");
         
     }
     
@@ -65,19 +105,28 @@ public class JTPMain extends javax.swing.JPanel {
     {
         project = proj; 
         
+        ptask.setGUI(project); 
         pimp.setGUI(project); 
         ppreproc.setGUI(project);
         
     }    
     
-    public Project getGUI(){
-        
-        project = pimp.getGUI(); 
-        project = ppreproc.getGUI(); 
+    public Project getGUI()
+    {
+        project = ptask.getGUI(project); 
+        project = pimp.getGUI(project);  
+        project = ppreproc.getGUI(project);
+        project = pepoching.getGUI(project); 
+        project = psubjects.getGUI(project); 
+        project = pstudy.getGUI(project);
+        //project = perp.getGUI(project); 
+        //project = persp.getGUI(project);
+        project = pbrainstorm.getGUI(project); 
+        project = poperations.getGUI(project); 
+        project = ppaths.getGUI(project); 
         
         return project;
     }  
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,6 +142,7 @@ public class JTPMain extends javax.swing.JPanel {
         btSaveProject = new javax.swing.JButton();
         btSaveAsProject = new javax.swing.JButton();
         main_tab = new javax.swing.JTabbedPane();
+        jLab_project_path = new javax.swing.JLabel();
 
         setName("main_panel"); // NOI18N
 
@@ -130,6 +180,10 @@ public class JTPMain extends javax.swing.JPanel {
 
         main_tab.setName("main_tab"); // NOI18N
 
+        jLab_project_path.setText("Current file");
+        jLab_project_path.setName("$project_path"); // NOI18N
+        jLab_project_path.setRequestFocusEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,17 +200,20 @@ public class JTPMain extends javax.swing.JPanel {
                         .addComponent(btSaveProject)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btSaveAsProject)
-                        .addGap(0, 862, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLab_project_path, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btNewProject)
-                    .addComponent(btOpenProject)
-                    .addComponent(btSaveProject)
-                    .addComponent(btSaveAsProject))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLab_project_path, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btNewProject)
+                        .addComponent(btOpenProject)
+                        .addComponent(btSaveProject)
+                        .addComponent(btSaveAsProject)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(main_tab, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
                 .addContainerGap())
@@ -164,15 +221,18 @@ public class JTPMain extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btOpenProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOpenProjectActionPerformed
-        
-        JFileChooser fc = new JFileChooser(); fc.showOpenDialog(null);
+        JFileChooser fc = new JFileChooser("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui"); 
+        fc.showOpenDialog(null);
         s_project_mat_file = fc.getSelectedFile().getAbsolutePath();
         System.out.println("loading : " + s_project_mat_file);
 
         project.loadMAT(s_project_mat_file);
+        jLab_project_path.setText(s_project_mat_file);
     }//GEN-LAST:event_btOpenProjectActionPerformed
 
     private void btSaveProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveProjectActionPerformed
+        project = getGUI();
+        
         try
         {
         project.saveMAT(s_project_mat_file);
@@ -180,10 +240,11 @@ public class JTPMain extends javax.swing.JPanel {
         catch(IOException e){
             e.printStackTrace();
         }
+        jLab_project_path.setText(s_project_mat_file);
+        
     }//GEN-LAST:event_btSaveProjectActionPerformed
  
     private void btSaveAsProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveAsProjectActionPerformed
-        
         JFileChooser fc = new JFileChooser(); fc.showOpenDialog(null);
         s_project_mat_file = fc.getSelectedFile().getAbsolutePath();
         System.out.println("saving : " + s_project_mat_file);
@@ -195,28 +256,37 @@ public class JTPMain extends javax.swing.JPanel {
         catch(IOException e){
             e.printStackTrace();
         }
-        
+        jLab_project_path.setText(s_project_mat_file);
     }//GEN-LAST:event_btSaveAsProjectActionPerformed
 
     private void btNewProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNewProjectActionPerformed
-        // TODO add your handling code here:
         //project.loadMAT(s_project_mat_file);
         //initGui();
         System.out.println("Stop do that, please");
     }//GEN-LAST:event_btNewProjectActionPerformed
 
-    private String s_project_mat_file;
-    private Project project;
+    public String s_project_mat_file;
+    public Project project;
     
+    private JTPMain pmain;
+    private JPTask ptask;
     private JPImport pimp;
     private JPPreprocessing ppreproc;
-    private JPStudyDesign study_design;
+    private JPEpoching pepoching;
+    private JPSubjects psubjects;
+    private JPStudyDesign pstudy;
+    private JPErp perp;
+    private JPErsp persp;
+    private JPBrainstorm pbrainstorm;
+    private JPOperations poperations;
+    private JPPaths ppaths;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btNewProject;
     private javax.swing.JButton btOpenProject;
     private javax.swing.JButton btSaveAsProject;
     private javax.swing.JButton btSaveProject;
+    private javax.swing.JLabel jLab_project_path;
     private javax.swing.JTabbedPane main_tab;
     // End of variables declaration//GEN-END:variables
 }

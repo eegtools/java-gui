@@ -5,17 +5,64 @@
  */
 package gui;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import structures.Epoching;
+import structures.Project;
+import structures.Task;
+
 /**
  *
  * @author alba
  */
 public class JPEpoching extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPEpoching
-     */
-    public JPEpoching() {
+    private JTPMain controller;
+    public Epoching epoching;
+    public Project project;
+    
+    
+    public JPEpoching(JTPMain ctrl) {
         initComponents();
+        controller = ctrl;
+    }
+    
+    public void setGUI(Project proj)
+    {
+        project = proj;
+        epoching = project.epoching;
+        
+        initConditionTriggersTable();
+    }
+    
+    public Project getGUI(Project proj)
+    {
+        proj.epoching.baseline_replace.mode                         = (String) jComboBox_BaselineReplaceMode.getSelectedItem();
+        proj.epoching.baseline_replace.baseline_originalposition    = (String) jComboBox_BaselineReplaceOriginalPos.getSelectedItem();
+        proj.epoching.baseline_replace.baseline_finalposition       = (String) jComboBox_BaselineReplaceFinalPos.getSelectedItem();
+        proj.epoching.baseline_replace.replace                      = (String) jComboBox_BaselineReplaceReplace.getSelectedItem();
+
+        return proj;
+    }
+    
+    private void initConditionTriggersTable()
+    {
+        Object[] columnName = {"Name","Triggers codes"};       
+        int l_mrkcode = project.epoching.mrkcode_cond.length;
+        jTableDM_ConditionTriggers = new DefaultTableModel(columnName, l_mrkcode);
+        jTable_ConditionTriggers.setModel(jTableDM_ConditionTriggers);        
+        
+        for (int i = 0; i < project.epoching.mrkcode_cond.length; i++) 
+        {
+            String str_mrkcode = new String("");
+            for (int j = 0; j < project.epoching.mrkcode_cond[0].length; j++) 
+            {
+                str_mrkcode = str_mrkcode + "," + project.epoching.mrkcode_cond[i][j];
+            }
+            jTable_ConditionTriggers.setValueAt("str_mrkcode", i, 1);
+        }
     }
 
     /**
@@ -28,52 +75,39 @@ public class JPEpoching extends javax.swing.JPanel {
     private void initComponents() {
 
         jPepoching = new javax.swing.JPanel();
-        jLabel57 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox();
-        jLabel69 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox();
+        jLabel_BaselineReplaceMode = new javax.swing.JLabel();
+        jComboBox_BaselineReplaceMode = new javax.swing.JComboBox();
+        jLabel_BaselineReplace = new javax.swing.JLabel();
+        jLabel_BaselineReplaceOriginalPos = new javax.swing.JLabel();
+        jComboBox_BaselineReplaceOriginalPos = new javax.swing.JComboBox();
+        jLabel_BaselineReplaceFinalPos = new javax.swing.JLabel();
+        jComboBox_BaselineReplaceFinalPos = new javax.swing.JComboBox();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
-        jLabel78 = new javax.swing.JLabel();
+        jTable_ConditionTriggers = new javax.swing.JTable();
+        jLabel_Conditions = new javax.swing.JLabel();
+        jLabel_BaselineReplaceReplace = new javax.swing.JLabel();
+        jComboBox_BaselineReplaceReplace = new javax.swing.JComboBox();
 
         jPepoching.setName("epoching"); // NOI18N
 
-        jLabel57.setText("mode");
+        jLabel_BaselineReplaceMode.setText("mode");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox4.setName(""); // NOI18N
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
-            }
-        });
+        jComboBox_BaselineReplaceMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_BaselineReplaceMode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jComboBox_BaselineReplaceMode.setName(""); // NOI18N
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Baseline Replace");
+        jLabel_BaselineReplace.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_BaselineReplace.setText("Baseline Replace");
 
-        jLabel68.setText("original position");
+        jLabel_BaselineReplaceOriginalPos.setText("original position");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox5ActionPerformed(evt);
-            }
-        });
+        jComboBox_BaselineReplaceOriginalPos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel69.setText("final position");
+        jLabel_BaselineReplaceFinalPos.setText("final position");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox6ActionPerformed(evt);
-            }
-        });
+        jComboBox_BaselineReplaceFinalPos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_ConditionTriggers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -89,61 +123,72 @@ public class JPEpoching extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable6.getTableHeader().setReorderingAllowed(false);
-        jScrollPane10.setViewportView(jTable6);
+        jTable_ConditionTriggers.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(jTable_ConditionTriggers);
 
-        jLabel78.setText("CONDITIONS");
+        jLabel_Conditions.setText("CONDITIONS");
+
+        jLabel_BaselineReplaceReplace.setText("replace");
+
+        jComboBox_BaselineReplaceReplace.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPepochingLayout = new javax.swing.GroupLayout(jPepoching);
         jPepoching.setLayout(jPepochingLayout);
         jPepochingLayout.setHorizontalGroup(
             jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPepochingLayout.createSequentialGroup()
-                .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPepochingLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPepochingLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPepochingLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 844, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPepochingLayout.createSequentialGroup()
+                            .addGap(67, 67, 67)
+                            .addComponent(jLabel_BaselineReplaceMode, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jComboBox_BaselineReplaceMode, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(31, 31, 31)
+                            .addComponent(jLabel_BaselineReplaceOriginalPos, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jComboBox_BaselineReplaceOriginalPos, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel_BaselineReplaceFinalPos, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jComboBox_BaselineReplaceFinalPos, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(44, 44, 44)
+                            .addComponent(jLabel_BaselineReplaceReplace, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jComboBox_BaselineReplaceReplace, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPepochingLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel_BaselineReplace, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPepochingLayout.createSequentialGroup()
+                            .addGap(68, 68, 68)
+                            .addComponent(jLabel_Conditions, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         jPepochingLayout.setVerticalGroup(
             jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPepochingLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel_BaselineReplace)
+                .addGap(18, 18, 18)
                 .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel69)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel_BaselineReplaceReplace)
+                        .addComponent(jComboBox_BaselineReplaceReplace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel68)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel_BaselineReplaceFinalPos)
+                        .addComponent(jComboBox_BaselineReplaceFinalPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel57)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel_BaselineReplaceOriginalPos)
+                        .addComponent(jComboBox_BaselineReplaceOriginalPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPepochingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel_BaselineReplaceMode)
+                        .addComponent(jComboBox_BaselineReplaceMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(73, 73, 73)
-                .addComponent(jLabel78)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(408, Short.MAX_VALUE))
+                .addComponent(jLabel_Conditions)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -168,30 +213,20 @@ public class JPEpoching extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
-
-    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5ActionPerformed
-
-    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox6ActionPerformed
-
-
+    DefaultTableModel jTableDM_ConditionTriggers;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel78;
+    private javax.swing.JComboBox jComboBox_BaselineReplaceFinalPos;
+    private javax.swing.JComboBox jComboBox_BaselineReplaceMode;
+    private javax.swing.JComboBox jComboBox_BaselineReplaceOriginalPos;
+    private javax.swing.JComboBox jComboBox_BaselineReplaceReplace;
+    private javax.swing.JLabel jLabel_BaselineReplace;
+    private javax.swing.JLabel jLabel_BaselineReplaceFinalPos;
+    private javax.swing.JLabel jLabel_BaselineReplaceMode;
+    private javax.swing.JLabel jLabel_BaselineReplaceOriginalPos;
+    private javax.swing.JLabel jLabel_BaselineReplaceReplace;
+    private javax.swing.JLabel jLabel_Conditions;
     private javax.swing.JPanel jPepoching;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable_ConditionTriggers;
     // End of variables declaration//GEN-END:variables
 }
