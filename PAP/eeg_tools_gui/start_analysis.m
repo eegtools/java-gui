@@ -1,10 +1,11 @@
 function start_analysis(varargin)
 
 	if nargin > 2
-	    project_mat_file = varargin{3};
-	end
-
-	load(project_mat_file);
+	    handles = varargin{3};
+    end
+    
+    load(get(handles.project_path,'Text'))
+	%load(handles.project_path.getText());
 	disp(['loading ' project_mat_file ' file' ]);
 
 end

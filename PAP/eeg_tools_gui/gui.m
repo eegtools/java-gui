@@ -2,11 +2,11 @@ function gg = gui()
 
     % MATLAB_JAVA
 
-    javaj_jar_path = '/data/behavior_lab_svn/behaviourPlatform/PAP/eeg_tools_gui/eeggui/dist/eeggui.jar';
+    ...javaj_jar_path = '/data/behavior_lab_svn/behaviourPlatform/PAP/eeg_tools_gui/eeggui/dist/eeggui.jar';
     ...javaj_jar_path = '/home/inuggi/NetBeansProjects/eeg_tools2/dist/eeg_tools2.jar';
     ...javaj_jar_path = '\\VBOXSVR\data\behavior_lab_svn\behaviourPlatform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
     ...javaj_jar_path = '/data/behavior_lab_svn/behaviourPlatform/CommonScript/eeg/eeg_tools/gui/eeggui/dist/eeggui.jar';
-    ...javaj_jar_path = 'C:\Users\PHilt\Desktop\behaviour_platform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
+    javaj_jar_path = 'C:\Users\PHilt\Desktop\behaviour_platform\PAP\eeg_tools_gui\eeggui\dist\eeggui.jar';
     
     
     javaaddpath(javaj_jar_path);
@@ -18,8 +18,8 @@ function gg = gui()
     gg = GImport(frame, gui.JTPMain(), false); ..., 'nolayout');
 
     handles = gg.getHandles();
-    StartButton = gg.getHandles().Start;  % this is the NAME in Properties, not VARIABLE NAME in code
-    gg.setCallback(StartButton, 'ActionPerformedCallback', @start_analysis, 'project.mat full path')
+    StartButton = handles.Start;  % this is the NAME in Properties, not VARIABLE NAME in code
+    gg.setCallback(StartButton, 'ActionPerformedCallback', @start_analysis, handles)
     ...handles.main_tab.stats.stats_pane.stats_pane.setLayout(java.awt.FlowLayout);
     ...handles.main_tab.stats.stats_pane.stats_pane.setLayout(javax.swing.SpringLayout);
     ...handles.main_tab.JPPreprocessing.preproc.preproc.setLayout(java.awt.FlowLayout);
