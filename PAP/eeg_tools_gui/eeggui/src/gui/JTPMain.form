@@ -31,7 +31,8 @@
                       <Component id="btSaveProject" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btSaveAsProject" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="862" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLab_project_path" pref="844" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -41,11 +42,14 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btNewProject" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btOpenProject" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btSaveProject" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btSaveAsProject" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLab_project_path" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btNewProject" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btOpenProject" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btSaveProject" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btSaveAsProject" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="main_tab" pref="705" max="32767" attributes="0"/>
@@ -98,5 +102,12 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLab_project_path">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Current file"/>
+        <Property name="name" type="java.lang.String" value="$project_path" noResource="true"/>
+        <Property name="requestFocusEnabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

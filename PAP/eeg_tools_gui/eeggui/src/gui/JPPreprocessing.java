@@ -30,11 +30,52 @@ public class JPPreprocessing extends javax.swing.JPanel {
         // fill GUI
     }
     
-    public Project getGUI()
+    public Project getGUI(Project proj)
     {
-        // fill the preproc instance
-        //project.preproc = this;
-        return project;
+        proj.preproc.output_folder          = jTextField_OutputFolder.getText();
+        proj.preproc.filter_algorithm       =  (String) JComboBox_FilterAlgo.getSelectedItem();
+        
+        boolean do_notch = jCheckBox_NotchFilter.isSelected();
+        proj.preproc.do_notch[0]            = do_notch? 1 : 0;
+        proj.preproc.notch_remove_armonics  = (String) jComboBox_RemoveArmonics.getSelectedItem();
+        
+        proj.preproc.notch_fcenter[0]       = Double.parseDouble(jTextField_NotchFilterCenter.getText());
+        proj.preproc.notch_fspan[0]         = Double.parseDouble(jTextField__NotchFilterSpan.getText());
+        
+        proj.preproc.ff1_global[0]          = Double.parseDouble(jTextField_GlobalFilterLow.getText());
+        proj.preproc.ff2_global[0]          = Double.parseDouble(jTextField_GlobalFilterHigh.getText());
+        proj.preproc.ff1_eeg[0]             = Double.parseDouble(jTextField_EEGFilterLow.getText());
+        proj.preproc.ff2_eeg[0]             = Double.parseDouble(jTextField_EEGFilterHigh.getText());
+        proj.preproc.ff1_eog[0]             = Double.parseDouble(jTextField_EOGFilterLow.getText());
+        proj.preproc.ff2_eog[0]             = Double.parseDouble(jTextField_EOGFilterHigh.getText());
+        proj.preproc.ff1_emg[0]             = Double.parseDouble(jTextField_EMGFilterLow.getText());
+        proj.preproc.ff2_emg[0]             = Double.parseDouble(jTextField_EMGFilterHigh.getText());
+        
+        proj.preproc.rt.eve1_type               = jTextField_Evt1Type.getText();
+        proj.preproc.rt.eve2_type               = jTextField_Evt2Type.getText();
+        proj.preproc.rt.allowed_tw_ms.min[0]    = Double.parseDouble(jTextField_AllowTwMin.getText());
+        proj.preproc.rt.allowed_tw_ms.max[0]    = Double.parseDouble(jTextField_AllowTwMax.getText());
+        proj.preproc.rt.output_folder           = jTextField_ReacTimesOutputFolder.getText();
+        
+        proj.preproc.marker_type.begin_trial    = jTextField_TrialMarkersBeginType.getText(); 
+        proj.preproc.marker_type.end_trial      = jTextField_TrialMarkersEndType.getText(); 
+        proj.preproc.marker_type.begin_baseline = jTextField_BaselineBeginType.getText(); 
+        proj.preproc.marker_type.end_baseline   = jTextField_BaselineEndType.getText(); 
+
+        proj.preproc.insert_begin_trial.target_event_types[0]       = jTextField_TrialMarkersBeginEvtTypes.getText(); 
+        proj.preproc.insert_begin_trial.delay.s[0]                  = Double.parseDouble(jTextField_TrialMarkersBeginDelay.getText()); 
+        proj.preproc.insert_end_trial.target_event_types[0]         = jTextField_TrialMarkersEndEvtTypes.getText(); 
+        proj.preproc.insert_end_trial.delay.s[0]                    = Double.parseDouble(jTextField_TrialMarkersEndDelay.getText()); 
+        proj.preproc.insert_begin_baseline.target_event_types[0]    = jTextField_BaselineBeginEvtTypes.getText(); 
+        proj.preproc.insert_begin_baseline.delay.s[0]               = Double.parseDouble(jTextField_BaselineBeginDelay.getText()); 
+        proj.preproc.insert_end_baseline.target_event_types[0]      = jTextField_BaselineEndEvtTypes.getText(); 
+        proj.preproc.insert_end_baseline.delay.s[0]                 = Double.parseDouble(jTextField_BaselineEndDelay.getText()); 
+        
+        proj.preproc.insert_block.trials_per_block[0]               = Double.parseDouble(jTextField_BlockMarkers.getText()); 
+        
+        // montage_list ??
+
+        return proj;
     }
     
     /**
@@ -47,493 +88,511 @@ public class JPPreprocessing extends javax.swing.JPanel {
     private void initComponents() {
 
         jPpreproc = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        filter_algoritm = new javax.swing.JComboBox();
-        jLabel36 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jLabel37 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel38 = new javax.swing.JLabel();
-        output_folder = new javax.swing.JTextField();
-        jLabel39 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel40 = new javax.swing.JLabel();
-        txtNotchSpan = new javax.swing.JTextField();
-        jLabel41 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
-        jLabel43 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
-        jLabel45 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
-        jLabel47 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jTextField25 = new javax.swing.JTextField();
-        jLabel49 = new javax.swing.JLabel();
-        jTextField26 = new javax.swing.JTextField();
-        jLabel50 = new javax.swing.JLabel();
-        jTextField27 = new javax.swing.JTextField();
-        jLabel51 = new javax.swing.JLabel();
-        jTextField28 = new javax.swing.JTextField();
-        jLabel52 = new javax.swing.JLabel();
-        jTextField29 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jTextField30 = new javax.swing.JTextField();
-        jLabel54 = new javax.swing.JLabel();
-        jTextField31 = new javax.swing.JTextField();
-        jLabel55 = new javax.swing.JLabel();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jTextField35 = new javax.swing.JTextField();
-        jLabel59 = new javax.swing.JLabel();
-        jTextField36 = new javax.swing.JTextField();
-        jLabel60 = new javax.swing.JLabel();
-        jTextField37 = new javax.swing.JTextField();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jTextField33 = new javax.swing.JTextField();
-        jLabel62 = new javax.swing.JLabel();
-        jTextField38 = new javax.swing.JTextField();
-        jLabel63 = new javax.swing.JLabel();
-        jTextField39 = new javax.swing.JTextField();
-        jLabel64 = new javax.swing.JLabel();
-        jTextField40 = new javax.swing.JTextField();
-        jLabel65 = new javax.swing.JLabel();
-        jTextField41 = new javax.swing.JTextField();
-        jLabel66 = new javax.swing.JLabel();
-        jTextField42 = new javax.swing.JTextField();
-        jLabel67 = new javax.swing.JLabel();
-        jTextField43 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField44 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        jLabel_GlobalFilter = new javax.swing.JLabel();
+        jLabel_FilterAlgo = new javax.swing.JLabel();
+        JComboBox_FilterAlgo = new javax.swing.JComboBox();
+        jLabel_GlobalFilterLow = new javax.swing.JLabel();
+        jTextField_GlobalFilterLow = new javax.swing.JTextField();
+        jLabel_GlobalFilterHigh = new javax.swing.JLabel();
+        jTextField_GlobalFilterHigh = new javax.swing.JTextField();
+        jLabel_OutputFolder = new javax.swing.JLabel();
+        jTextField_OutputFolder = new javax.swing.JTextField();
+        jLabel_NotchFilterCenter = new javax.swing.JLabel();
+        jTextField_NotchFilterCenter = new javax.swing.JTextField();
+        jLabel_NotchFilter = new javax.swing.JLabel();
+        jCheckBox_NotchFilter = new javax.swing.JCheckBox();
+        jLabel_NotchFilterSpan = new javax.swing.JLabel();
+        jTextField__NotchFilterSpan = new javax.swing.JTextField();
+        jLabel_RemoveArmonics = new javax.swing.JLabel();
+        jComboBox_RemoveArmonics = new javax.swing.JComboBox();
+        jLabel_EEGFilter = new javax.swing.JLabel();
+        jLabel_EEGFilterLow = new javax.swing.JLabel();
+        jTextField_EEGFilterLow = new javax.swing.JTextField();
+        jLabel_EEGFilterHigh = new javax.swing.JLabel();
+        jTextField_EEGFilterHigh = new javax.swing.JTextField();
+        jLabel_EOGFilter = new javax.swing.JLabel();
+        jLabel_EOGFilterLow = new javax.swing.JLabel();
+        jTextField_EOGFilterLow = new javax.swing.JTextField();
+        jLabel_EOGFilterHigh = new javax.swing.JLabel();
+        jTextField_EOGFilterHigh = new javax.swing.JTextField();
+        jLabel_EMGFilter = new javax.swing.JLabel();
+        jLabel_EMGFilterLow = new javax.swing.JLabel();
+        jTextField_EMGFilterLow = new javax.swing.JTextField();
+        jLabel_EMGFilterHigh = new javax.swing.JLabel();
+        jTextField_EMGFilterHigh = new javax.swing.JTextField();
+        jLabel_ReactionTimes = new javax.swing.JLabel();
+        jLabel_Evt1Type = new javax.swing.JLabel();
+        jTextField_Evt1Type = new javax.swing.JTextField();
+        jLabel_Evt2Type = new javax.swing.JLabel();
+        jTextField_Evt2Type = new javax.swing.JTextField();
+        jLabel_AllowTwMin = new javax.swing.JLabel();
+        jTextField_AllowTwMin = new javax.swing.JTextField();
+        jLabel_AllowTwMax = new javax.swing.JLabel();
+        jTextField_AllowTwMax = new javax.swing.JTextField();
+        jLabel_ReacTimesOutputFolder = new javax.swing.JLabel();
+        jTextField_ReacTimesOutputFolder = new javax.swing.JTextField();
+        jLabel_BaselineTrialsMarkers = new javax.swing.JLabel();
+        jLabel_TrialMarkersBegin = new javax.swing.JLabel();
+        jTextField_TrialMarkersBegin = new javax.swing.JTextField();
+        jLabel_BaselineBeginType = new javax.swing.JLabel();
+        jTextField_BaselineBeginType = new javax.swing.JTextField();
+        jTextField_TrialMarkersBeginEvtTypes = new javax.swing.JTextField();
+        jLabel_Trial = new javax.swing.JLabel();
+        jLabel_Baseline = new javax.swing.JLabel();
+        jLabel_TrialMarkersBeginDelay = new javax.swing.JLabel();
+        jTextField_TrialMarkersBeginDelay = new javax.swing.JTextField();
+        jLabel_TrialMarkersBeginEvtTypes = new javax.swing.JLabel();
+        jLabel_BlockMarkers = new javax.swing.JLabel();
+        jTextField_BlockMarkers = new javax.swing.JTextField();
+        jLabel_Montage = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextArea_Montage2 = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jTextArea_Montage1 = new javax.swing.JTextArea();
+        jLabel_TrialMarkersEnd = new javax.swing.JLabel();
+        jTextField_TrialMarkersEnd = new javax.swing.JTextField();
+        jLabel_BaselineEndType = new javax.swing.JLabel();
+        jTextField_BaselineEndType = new javax.swing.JTextField();
+        jTextField_TrialMarkersEndEvtTypes = new javax.swing.JTextField();
+        jLabel_TrialMarkersEndDelay = new javax.swing.JLabel();
+        jTextField_TrialMarkersEndDelay = new javax.swing.JTextField();
+        jLabel_TrialMarkersEndEvtTypes = new javax.swing.JLabel();
+        jLabel_BaselineBegin = new javax.swing.JLabel();
+        jTextField_BaselineBegin = new javax.swing.JTextField();
+        jLabel_BaselineEnd = new javax.swing.JLabel();
+        jTextField_BaselineEnd = new javax.swing.JTextField();
+        jTextField_BaselineEndEvtTypes = new javax.swing.JTextField();
+        jTextField_BaselineBeginEvtTypes = new javax.swing.JTextField();
+        jLabel_BaselineEndDelay = new javax.swing.JLabel();
+        jTextField_BaselineEndDelay = new javax.swing.JTextField();
+        jLabel_BaselineEndEvtTypes = new javax.swing.JLabel();
+        jLabel_BaselineBeginDelay = new javax.swing.JLabel();
+        jTextField_BaselineBeginDelay = new javax.swing.JTextField();
+        jLabel_BaselineBeginEvtTypes = new javax.swing.JLabel();
+        jTextField_TrialMarkersBeginType = new javax.swing.JTextField();
+        jLabel_TrialMarkersBeginType = new javax.swing.JLabel();
+        jLabel_TrialMarkersEndType = new javax.swing.JLabel();
+        jTextField_TrialMarkersEndType = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(1143, 779));
 
         jPpreproc.setName("preproc"); // NOI18N
         jPpreproc.setPreferredSize(new java.awt.Dimension(1150, 750));
 
-        jLabel5.setText("GLOBAL FILTER");
+        jLabel_GlobalFilter.setText("GLOBAL FILTER");
 
-        jLabel35.setText("filter algorythm");
+        jLabel_FilterAlgo.setText("filter algorythm");
 
-        filter_algoritm.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        filter_algoritm.setName("filter_algorithm"); // NOI18N
-        filter_algoritm.addActionListener(new java.awt.event.ActionListener() {
+        JComboBox_FilterAlgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JComboBox_FilterAlgo.setName("filter_algorithm"); // NOI18N
+        JComboBox_FilterAlgo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filter_algoritmActionPerformed(evt);
+                JComboBox_FilterAlgoActionPerformed(evt);
             }
         });
 
-        jLabel36.setText("low");
+        jLabel_GlobalFilterLow.setText("low");
 
-        jTextField14.setText("jTextField1");
-        jTextField14.setName("ff1_global"); // NOI18N
+        jTextField_GlobalFilterLow.setText("jTextField1");
+        jTextField_GlobalFilterLow.setName("ff1_global"); // NOI18N
 
-        jLabel37.setText("high");
+        jLabel_GlobalFilterHigh.setText("high");
 
-        jTextField15.setText("jTextField1");
-        jTextField15.setName("ff2_global"); // NOI18N
+        jTextField_GlobalFilterHigh.setText("jTextField1");
+        jTextField_GlobalFilterHigh.setName("ff2_global"); // NOI18N
 
-        jLabel38.setText("output folder");
+        jLabel_OutputFolder.setText("output folder");
 
-        output_folder.setText("jTextField1");
-        output_folder.setName("output_folder"); // NOI18N
+        jTextField_OutputFolder.setText("jTextField1");
+        jTextField_OutputFolder.setName("jTextField_OutputFolder"); // NOI18N
 
-        jLabel39.setText("center");
+        jLabel_NotchFilterCenter.setText("center");
 
-        jTextField17.setText("jTextField1");
-        jTextField17.setName("notch_fcenter"); // NOI18N
+        jTextField_NotchFilterCenter.setText("jTextField1");
+        jTextField_NotchFilterCenter.setName("notch_fcenter"); // NOI18N
 
-        jLabel6.setText("NOTCH FILTER");
+        jLabel_NotchFilter.setText("NOTCH FILTER");
 
-        jCheckBox1.setName("do_notch"); // NOI18N
+        jCheckBox_NotchFilter.setName("do_notch"); // NOI18N
 
-        jLabel40.setText("span");
+        jLabel_NotchFilterSpan.setText("span");
 
-        txtNotchSpan.setText("jTextField1");
-        txtNotchSpan.setName("notch_fspan"); // NOI18N
-        txtNotchSpan.addActionListener(new java.awt.event.ActionListener() {
+        jTextField__NotchFilterSpan.setText("jTextField1");
+        jTextField__NotchFilterSpan.setName("notch_fspan"); // NOI18N
+        jTextField__NotchFilterSpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNotchSpanActionPerformed(evt);
+                jTextField__NotchFilterSpanActionPerformed(evt);
             }
         });
 
-        jLabel41.setText("remove armonics");
+        jLabel_RemoveArmonics.setText("remove armonics");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.setName("notch_remove_armonics"); // NOI18N
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox_RemoveArmonics.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_RemoveArmonics.setName("notch_remove_armonics"); // NOI18N
+        jComboBox_RemoveArmonics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                jComboBox_RemoveArmonicsActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("EEG FILTER");
+        jLabel_EEGFilter.setText("EEG FILTER");
 
-        jLabel42.setText("low");
+        jLabel_EEGFilterLow.setText("low");
 
-        jTextField19.setText("jTextField1");
-        jTextField19.setName("ff1_eeg"); // NOI18N
+        jTextField_EEGFilterLow.setText("jTextField1");
+        jTextField_EEGFilterLow.setName("ff1_eeg"); // NOI18N
 
-        jLabel43.setText("high");
+        jLabel_EEGFilterHigh.setText("high");
 
-        jTextField20.setText("jTextField1");
-        jTextField20.setName("ff2_eeg"); // NOI18N
+        jTextField_EEGFilterHigh.setText("jTextField1");
+        jTextField_EEGFilterHigh.setName("ff2_eeg"); // NOI18N
 
-        jLabel8.setText("EOG FILTER");
+        jLabel_EOGFilter.setText("EOG FILTER");
 
-        jLabel44.setText("low");
+        jLabel_EOGFilterLow.setText("low");
 
-        jTextField21.setText("jTextField1");
-        jTextField21.setName("ff1_eog"); // NOI18N
+        jTextField_EOGFilterLow.setText("jTextField1");
+        jTextField_EOGFilterLow.setName("ff1_eog"); // NOI18N
 
-        jLabel45.setText("high");
+        jLabel_EOGFilterHigh.setText("high");
 
-        jTextField22.setText("jTextField1");
-        jTextField22.setName("ff2_eog"); // NOI18N
-        jTextField22.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_EOGFilterHigh.setText("jTextField1");
+        jTextField_EOGFilterHigh.setName("ff2_eog"); // NOI18N
+        jTextField_EOGFilterHigh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField22ActionPerformed(evt);
+                jTextField_EOGFilterHighActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("EMG FILTER");
+        jLabel_EMGFilter.setText("EMG FILTER");
 
-        jLabel46.setText("low");
+        jLabel_EMGFilterLow.setText("low");
 
-        jTextField23.setText("jTextField1");
-        jTextField23.setName("ff1_emg"); // NOI18N
+        jTextField_EMGFilterLow.setText("jTextField1");
+        jTextField_EMGFilterLow.setName("ff1_emg"); // NOI18N
 
-        jLabel47.setText("high");
+        jLabel_EMGFilterHigh.setText("high");
 
-        jTextField24.setText("jTextField1");
-        jTextField24.setName("ff2_emg"); // NOI18N
+        jTextField_EMGFilterHigh.setText("jTextField1");
+        jTextField_EMGFilterHigh.setName("ff2_emg"); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Reaction Times");
+        jLabel_ReactionTimes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_ReactionTimes.setText("Reaction Times");
 
-        jLabel48.setText("eve1 type");
+        jLabel_Evt1Type.setText("eve1 type");
 
-        jTextField25.setText("jTextField1");
-        jTextField25.setName("eve1_type"); // NOI18N
+        jTextField_Evt1Type.setText("jTextField1");
+        jTextField_Evt1Type.setName("eve1_type"); // NOI18N
 
-        jLabel49.setText("eve 2 type");
+        jLabel_Evt2Type.setText("eve 2 type");
 
-        jTextField26.setText("jTextField1");
-        jTextField26.setName("eve2_type"); // NOI18N
+        jTextField_Evt2Type.setText("jTextField1");
+        jTextField_Evt2Type.setName("eve2_type"); // NOI18N
 
-        jLabel50.setText("allowed tw MIN [ms]");
+        jLabel_AllowTwMin.setText("allowed tw MIN [ms]");
 
-        jTextField27.setText("jTextField1");
-        jTextField27.setName("allowed_tw_ms_min"); // NOI18N
+        jTextField_AllowTwMin.setText("jTextField1");
+        jTextField_AllowTwMin.setName("allowed_tw_ms_min"); // NOI18N
 
-        jLabel51.setText("allowed tw MAX [ms]");
+        jLabel_AllowTwMax.setText("allowed tw MAX [ms]");
 
-        jTextField28.setText("jTextField1");
-        jTextField28.setName("allowed_tw_ms_max"); // NOI18N
+        jTextField_AllowTwMax.setText("jTextField1");
+        jTextField_AllowTwMax.setName("allowed_tw_ms_max"); // NOI18N
 
-        jLabel52.setText("output folder");
+        jLabel_ReacTimesOutputFolder.setText("output folder");
 
-        jTextField29.setText("jTextField1");
-        jTextField29.setName("output_folder"); // NOI18N
+        jTextField_ReacTimesOutputFolder.setText("jTextField1");
+        jTextField_ReacTimesOutputFolder.setName("output_folder"); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setText("Baseline and Trials Markers");
+        jLabel_BaselineTrialsMarkers.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_BaselineTrialsMarkers.setText("Baseline and Trials Markers");
 
-        jLabel53.setText("begin");
+        jLabel_TrialMarkersBegin.setText("begin");
 
-        jTextField30.setText("jTextField1");
-        jTextField30.setName("begin_trial"); // NOI18N
+        jTextField_TrialMarkersBegin.setText("jTextField1");
+        jTextField_TrialMarkersBegin.setName("begin_trial"); // NOI18N
 
-        jLabel54.setText("end");
+        jLabel_BaselineBeginType.setText("type");
 
-        jTextField31.setText("jTextField1");
-        jTextField31.setName("end_trial"); // NOI18N
+        jTextField_BaselineBeginType.setText("jTextField1");
 
-        jLabel55.setText("type");
+        jTextField_TrialMarkersBeginEvtTypes.setText("jTextField1");
 
-        jTextField32.setText("jTextField1");
+        jLabel_Trial.setText("Trial");
 
-        jTextField34.setText("jTextField1");
+        jLabel_Baseline.setText("Baseline");
 
-        jLabel12.setText("Trial");
+        jLabel_TrialMarkersBeginDelay.setText("delay");
 
-        jLabel13.setText("Baseline");
+        jTextField_TrialMarkersBeginDelay.setText("jTextField1");
 
-        jLabel58.setText("begin");
+        jLabel_TrialMarkersBeginEvtTypes.setText("event types");
 
-        jTextField35.setText("jTextField1");
-        jTextField35.setName("begin_baseline"); // NOI18N
+        jLabel_BlockMarkers.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_BlockMarkers.setText("Block markers");
 
-        jLabel59.setText("end");
+        jTextField_BlockMarkers.setText("jTextField1");
 
-        jTextField36.setText("jTextField1");
-        jTextField36.setName("end_baseline"); // NOI18N
+        jLabel_Montage.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Montage.setText("Montages");
 
-        jLabel60.setText("delay");
+        jTextArea_Montage2.setColumns(20);
+        jTextArea_Montage2.setRows(5);
+        jScrollPane4.setViewportView(jTextArea_Montage2);
 
-        jTextField37.setText("jTextField1");
+        jTextArea_Montage1.setColumns(20);
+        jTextArea_Montage1.setRows(5);
+        jScrollPane5.setViewportView(jTextArea_Montage1);
 
-        jLabel61.setText("event types");
+        jLabel_TrialMarkersEnd.setText("end");
 
-        jLabel56.setText("type");
+        jTextField_TrialMarkersEnd.setText("jTextField1");
+        jTextField_TrialMarkersEnd.setName("begin_trial"); // NOI18N
 
-        jTextField33.setText("jTextField1");
+        jLabel_BaselineEndType.setText("type");
 
-        jLabel62.setText("delay");
+        jTextField_BaselineEndType.setText("jTextField1");
 
-        jTextField38.setText("jTextField1");
+        jTextField_TrialMarkersEndEvtTypes.setText("jTextField1");
 
-        jLabel63.setText("event types");
+        jLabel_TrialMarkersEndDelay.setText("delay");
 
-        jTextField39.setText("jTextField1");
+        jTextField_TrialMarkersEndDelay.setText("jTextField1");
 
-        jLabel64.setText("delay");
+        jLabel_TrialMarkersEndEvtTypes.setText("event types");
 
-        jTextField40.setText("jTextField1");
+        jLabel_BaselineBegin.setText("begin");
 
-        jLabel65.setText("event types");
+        jTextField_BaselineBegin.setText("jTextField1");
+        jTextField_BaselineBegin.setName("begin_trial"); // NOI18N
 
-        jTextField41.setText("jTextField1");
+        jLabel_BaselineEnd.setText("end");
 
-        jLabel66.setText("delay");
+        jTextField_BaselineEnd.setText("jTextField1");
+        jTextField_BaselineEnd.setName("begin_trial"); // NOI18N
 
-        jTextField42.setText("jTextField1");
+        jTextField_BaselineEndEvtTypes.setText("jTextField1");
 
-        jLabel67.setText("event types");
+        jTextField_BaselineBeginEvtTypes.setText("jTextField1");
 
-        jTextField43.setText("jTextField1");
+        jLabel_BaselineEndDelay.setText("delay");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Block markers");
+        jTextField_BaselineEndDelay.setText("jTextField1");
 
-        jTextField44.setText("jTextField1");
+        jLabel_BaselineEndEvtTypes.setText("event types");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Montages");
+        jLabel_BaselineBeginDelay.setText("delay");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        jTextField_BaselineBeginDelay.setText("jTextField1");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane5.setViewportView(jTextArea2);
+        jLabel_BaselineBeginEvtTypes.setText("event types");
+
+        jTextField_TrialMarkersBeginType.setText("jTextField1");
+
+        jLabel_TrialMarkersBeginType.setText("type");
+
+        jLabel_TrialMarkersEndType.setText("type");
+
+        jTextField_TrialMarkersEndType.setText("jTextField1");
 
         javax.swing.GroupLayout jPpreprocLayout = new javax.swing.GroupLayout(jPpreproc);
         jPpreproc.setLayout(jPpreprocLayout);
         jPpreprocLayout.setHorizontalGroup(
             jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPpreprocLayout.createSequentialGroup()
-                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel_Montage, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createSequentialGroup()
+                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPpreprocLayout.createSequentialGroup()
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel59, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel58))
-                        .addGap(9, 9, 9)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPpreprocLayout.createSequentialGroup()
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel53)
-                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField31)
-                            .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel_Trial, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Baseline, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPpreprocLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPpreprocLayout.createSequentialGroup()
-                                    .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPpreprocLayout.createSequentialGroup()
-                                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPpreprocLayout.createSequentialGroup()
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5))
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addGroup(jPpreprocLayout.createSequentialGroup()
-                    .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
                                 .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPpreprocLayout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_TrialMarkersBegin)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField_TrialMarkersBegin, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField_BlockMarkers, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(262, 262, 262))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createSequentialGroup()
+                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                                .addComponent(jLabel_BaselineBegin)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jTextField_BaselineBegin, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createSequentialGroup()
+                                                .addComponent(jLabel_BaselineEnd)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextField_BaselineEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(25, 25, 25)
+                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                                .addComponent(jLabel_TrialMarkersBeginType, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_TrialMarkersBeginType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                                .addComponent(jLabel_TrialMarkersEndType, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_TrialMarkersEndType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel_BaselineBeginType, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel_BaselineEndType, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jTextField_BaselineEndType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jTextField_BaselineBeginType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(32, 32, 32)
+                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel_BaselineEndDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel_BaselineBeginDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBox1)))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPpreprocLayout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(jLabel38)
+                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                                .addComponent(jTextField_BaselineEndDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(52, 52, 52)
+                                                .addComponent(jLabel_BaselineEndEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_BaselineEndEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                                .addComponent(jTextField_BaselineBeginDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(52, 52, 52)
+                                                .addComponent(jLabel_BaselineBeginEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField_BaselineBeginEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createSequentialGroup()
+                                        .addComponent(jLabel_TrialMarkersEnd)
                                         .addGap(18, 18, 18)
-                                        .addComponent(output_folder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(62, 62, 62)
-                                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField_TrialMarkersEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(153, 153, 153)
+                                        .addComponent(jLabel_TrialMarkersEndDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(filter_algoritm, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPpreprocLayout.createSequentialGroup()
-                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addGap(4, 4, 4)
-                                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(42, 42, 42)
-                                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(145, 145, 145)
-                                        .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField_TrialMarkersEndDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(52, 52, 52)
+                                        .addComponent(jLabel_TrialMarkersEndEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jTextField_TrialMarkersEndEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addComponent(jLabel_ReactionTimes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_BaselineTrialsMarkers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_BlockMarkers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPpreprocLayout.createSequentialGroup()
+                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_GlobalFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPpreprocLayout.createSequentialGroup()
-                                .addGap(134, 134, 134)
-                                .addComponent(jLabel48)
+                                .addComponent(jLabel_NotchFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox_NotchFilter)))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel_OutputFolder)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_OutputFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel_FilterAlgo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JComboBox_FilterAlgo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPpreprocLayout.createSequentialGroup()
                                 .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPpreprocLayout.createSequentialGroup()
-                                        .addGap(367, 367, 367)
-                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addGap(74, 74, 74)
-                                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                        .addGap(1, 1, 1)
-                                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jLabel_GlobalFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_GlobalFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_GlobalFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel_NotchFilterCenter, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(145, 145, 145)
+                                .addComponent(jLabel_RemoveArmonics, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox_RemoveArmonics, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPpreprocLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel_Evt1Type)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(jLabel_TrialMarkersBeginDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_TrialMarkersBeginDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel_TrialMarkersBeginEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_TrialMarkersBeginEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPpreprocLayout.createSequentialGroup()
+                                        .addComponent(jTextField_Evt1Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_Evt2Type, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_Evt2Type, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_AllowTwMin, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField_AllowTwMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel_AllowTwMax, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPpreprocLayout.createSequentialGroup()
+                                        .addComponent(jTextField_NotchFilterCenter, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_NotchFilterSpan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1)
                                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(1, 1, 1)
-                                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtNotchSpan, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(2, 2, 2)
-                                                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(2, 2, 2)
-                                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(2, 2, 2)
-                                                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPpreprocLayout.createSequentialGroup()
-                                                .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel52)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                    .addGap(322, 322, 322)))
+                                            .addComponent(jTextField_GlobalFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField__NotchFilterSpan, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPpreprocLayout.createSequentialGroup()
+                                        .addComponent(jLabel_EEGFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_EEGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jTextField_EEGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_EEGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_EEGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPpreprocLayout.createSequentialGroup()
+                                        .addComponent(jLabel_EOGFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_EOGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jTextField_EOGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_EOGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_EOGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPpreprocLayout.createSequentialGroup()
+                                        .addComponent(jLabel_EMGFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_EMGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jTextField_EMGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_EMGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_EMGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPpreprocLayout.createSequentialGroup()
+                                        .addComponent(jTextField_AllowTwMax, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_ReacTimesOutputFolder)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField_ReacTimesOutputFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(322, 322, 322))
         );
         jPpreprocLayout.setVerticalGroup(
             jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,135 +603,145 @@ public class JPPreprocessing extends javax.swing.JPanel {
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPpreprocLayout.createSequentialGroup()
                                 .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel35)
-                                    .addComponent(filter_algoritm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel38)
-                                    .addComponent(output_folder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel_FilterAlgo)
+                                    .addComponent(JComboBox_FilterAlgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel_OutputFolder)
+                                    .addComponent(jTextField_OutputFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel36)
-                                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel37)
-                                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLabel_GlobalFilterLow)
+                                    .addComponent(jTextField_GlobalFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel_GlobalFilterHigh)
+                                    .addComponent(jTextField_GlobalFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel_GlobalFilter))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel39)
-                                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel40)
-                                    .addComponent(txtNotchSpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel41)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel_NotchFilterCenter)
+                                    .addComponent(jTextField_NotchFilterCenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel_NotchFilter)
+                                    .addComponent(jLabel_NotchFilterSpan)
+                                    .addComponent(jTextField__NotchFilterSpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel_RemoveArmonics)
+                                    .addComponent(jComboBox_RemoveArmonics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jCheckBox_NotchFilter, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(49, 49, 49)
-                        .addComponent(jLabel10)
+                        .addComponent(jLabel_ReactionTimes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel48)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel49)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel50)
-                            .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel51)))
+                            .addComponent(jLabel_Evt1Type)
+                            .addComponent(jTextField_Evt1Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Evt2Type)
+                            .addComponent(jTextField_Evt2Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_AllowTwMin)
+                            .addComponent(jTextField_AllowTwMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_AllowTwMax)))
                     .addGroup(jPpreprocLayout.createSequentialGroup()
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel42)
-                            .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel43)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel_EEGFilterLow)
+                            .addComponent(jTextField_EEGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_EEGFilterHigh)
+                            .addComponent(jTextField_EEGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_EEGFilter))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel44)
-                            .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel45)
-                            .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel_EOGFilterLow)
+                            .addComponent(jTextField_EOGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_EOGFilterHigh)
+                            .addComponent(jTextField_EOGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_EOGFilter))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel46)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel47)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel_EMGFilterLow)
+                            .addComponent(jTextField_EMGFilterLow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_EMGFilterHigh)
+                            .addComponent(jTextField_EMGFilterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_EMGFilter))
                         .addGap(77, 77, 77)
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel52)
-                            .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField_AllowTwMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_ReacTimesOutputFolder)
+                            .addComponent(jTextField_ReacTimesOutputFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(55, 55, 55)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel_BaselineTrialsMarkers)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPpreprocLayout.createSequentialGroup()
+                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel_TrialMarkersBegin)
+                                .addComponent(jTextField_TrialMarkersBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel_Trial)
+                                .addComponent(jLabel_TrialMarkersBeginDelay)
+                                .addComponent(jTextField_TrialMarkersBeginDelay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField_TrialMarkersBeginEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel_TrialMarkersBeginEvtTypes)))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel_TrialMarkersEnd)
+                                .addComponent(jTextField_TrialMarkersEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel_TrialMarkersEndDelay)
+                                .addComponent(jTextField_TrialMarkersEndDelay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField_TrialMarkersEndEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel_TrialMarkersEndEvtTypes)))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_Baseline)
+                            .addGroup(jPpreprocLayout.createSequentialGroup()
+                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel_BaselineBegin)
+                                        .addComponent(jTextField_BaselineBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_BaselineBeginDelay)
+                                        .addComponent(jTextField_BaselineBeginDelay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_BaselineBeginType)
+                                        .addComponent(jTextField_BaselineBeginType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField_BaselineBeginEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_BaselineBeginEvtTypes)))
+                                .addGap(5, 5, 5)
+                                .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel_BaselineEnd)
+                                        .addComponent(jTextField_BaselineEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_BaselineEndDelay)
+                                        .addComponent(jTextField_BaselineEndDelay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField_BaselineEndType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_BaselineEndType))
+                                    .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField_BaselineEndEvtTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_BaselineEndEvtTypes))))))
                     .addGroup(jPpreprocLayout.createSequentialGroup()
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel53)
-                            .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel55)
-                            .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel60)
-                            .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel_TrialMarkersBeginType)
+                            .addComponent(jTextField_TrialMarkersBeginType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
                         .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel54)
-                            .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel56)
-                            .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel62)
-                            .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel58)
-                            .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel64)
-                            .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel59)
-                            .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel66)
-                            .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPpreprocLayout.createSequentialGroup()
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel61))
-                        .addGap(5, 5, 5)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel63))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel65))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel67))))
-                .addGap(26, 26, 26)
+                            .addComponent(jLabel_TrialMarkersEndType)
+                            .addComponent(jTextField_TrialMarkersEndType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(24, 24, 24)
                 .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_BlockMarkers)
+                    .addComponent(jTextField_BlockMarkers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPpreprocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
+                    .addComponent(jLabel_Montage)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPpreproc, javax.swing.GroupLayout.PREFERRED_SIZE, 1151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,107 +752,111 @@ public class JPPreprocessing extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
+    private void jTextField_EOGFilterHighActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_EOGFilterHighActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField22ActionPerformed
+    }//GEN-LAST:event_jTextField_EOGFilterHighActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void jComboBox_RemoveArmonicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_RemoveArmonicsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_jComboBox_RemoveArmonicsActionPerformed
 
-    private void txtNotchSpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNotchSpanActionPerformed
+    private void jTextField__NotchFilterSpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField__NotchFilterSpanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNotchSpanActionPerformed
+    }//GEN-LAST:event_jTextField__NotchFilterSpanActionPerformed
 
-    private void filter_algoritmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_algoritmActionPerformed
+    private void JComboBox_FilterAlgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBox_FilterAlgoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_filter_algoritmActionPerformed
+    }//GEN-LAST:event_JComboBox_FilterAlgoActionPerformed
     
     private JTPMain controller;
     private Project project;
     private Preproc preproc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox filter_algoritm;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox JComboBox_FilterAlgo;
+    private javax.swing.JCheckBox jCheckBox_NotchFilter;
+    private javax.swing.JComboBox jComboBox_RemoveArmonics;
+    private javax.swing.JLabel jLabel_AllowTwMax;
+    private javax.swing.JLabel jLabel_AllowTwMin;
+    private javax.swing.JLabel jLabel_Baseline;
+    private javax.swing.JLabel jLabel_BaselineBegin;
+    private javax.swing.JLabel jLabel_BaselineBeginDelay;
+    private javax.swing.JLabel jLabel_BaselineBeginEvtTypes;
+    private javax.swing.JLabel jLabel_BaselineBeginType;
+    private javax.swing.JLabel jLabel_BaselineEnd;
+    private javax.swing.JLabel jLabel_BaselineEndDelay;
+    private javax.swing.JLabel jLabel_BaselineEndEvtTypes;
+    private javax.swing.JLabel jLabel_BaselineEndType;
+    private javax.swing.JLabel jLabel_BaselineTrialsMarkers;
+    private javax.swing.JLabel jLabel_BlockMarkers;
+    private javax.swing.JLabel jLabel_EEGFilter;
+    private javax.swing.JLabel jLabel_EEGFilterHigh;
+    private javax.swing.JLabel jLabel_EEGFilterLow;
+    private javax.swing.JLabel jLabel_EMGFilter;
+    private javax.swing.JLabel jLabel_EMGFilterHigh;
+    private javax.swing.JLabel jLabel_EMGFilterLow;
+    private javax.swing.JLabel jLabel_EOGFilter;
+    private javax.swing.JLabel jLabel_EOGFilterHigh;
+    private javax.swing.JLabel jLabel_EOGFilterLow;
+    private javax.swing.JLabel jLabel_Evt1Type;
+    private javax.swing.JLabel jLabel_Evt2Type;
+    private javax.swing.JLabel jLabel_FilterAlgo;
+    private javax.swing.JLabel jLabel_GlobalFilter;
+    private javax.swing.JLabel jLabel_GlobalFilterHigh;
+    private javax.swing.JLabel jLabel_GlobalFilterLow;
+    private javax.swing.JLabel jLabel_Montage;
+    private javax.swing.JLabel jLabel_NotchFilter;
+    private javax.swing.JLabel jLabel_NotchFilterCenter;
+    private javax.swing.JLabel jLabel_NotchFilterSpan;
+    private javax.swing.JLabel jLabel_OutputFolder;
+    private javax.swing.JLabel jLabel_ReacTimesOutputFolder;
+    private javax.swing.JLabel jLabel_ReactionTimes;
+    private javax.swing.JLabel jLabel_RemoveArmonics;
+    private javax.swing.JLabel jLabel_Trial;
+    private javax.swing.JLabel jLabel_TrialMarkersBegin;
+    private javax.swing.JLabel jLabel_TrialMarkersBeginDelay;
+    private javax.swing.JLabel jLabel_TrialMarkersBeginEvtTypes;
+    private javax.swing.JLabel jLabel_TrialMarkersBeginType;
+    private javax.swing.JLabel jLabel_TrialMarkersEnd;
+    private javax.swing.JLabel jLabel_TrialMarkersEndDelay;
+    private javax.swing.JLabel jLabel_TrialMarkersEndEvtTypes;
+    private javax.swing.JLabel jLabel_TrialMarkersEndType;
     private javax.swing.JPanel jPpreproc;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField output_folder;
-    private javax.swing.JTextField txtNotchSpan;
+    private javax.swing.JTextArea jTextArea_Montage1;
+    private javax.swing.JTextArea jTextArea_Montage2;
+    private javax.swing.JTextField jTextField_AllowTwMax;
+    private javax.swing.JTextField jTextField_AllowTwMin;
+    private javax.swing.JTextField jTextField_BaselineBegin;
+    private javax.swing.JTextField jTextField_BaselineBeginDelay;
+    private javax.swing.JTextField jTextField_BaselineBeginEvtTypes;
+    private javax.swing.JTextField jTextField_BaselineBeginType;
+    private javax.swing.JTextField jTextField_BaselineEnd;
+    private javax.swing.JTextField jTextField_BaselineEndDelay;
+    private javax.swing.JTextField jTextField_BaselineEndEvtTypes;
+    private javax.swing.JTextField jTextField_BaselineEndType;
+    private javax.swing.JTextField jTextField_BlockMarkers;
+    private javax.swing.JTextField jTextField_EEGFilterHigh;
+    private javax.swing.JTextField jTextField_EEGFilterLow;
+    private javax.swing.JTextField jTextField_EMGFilterHigh;
+    private javax.swing.JTextField jTextField_EMGFilterLow;
+    private javax.swing.JTextField jTextField_EOGFilterHigh;
+    private javax.swing.JTextField jTextField_EOGFilterLow;
+    private javax.swing.JTextField jTextField_Evt1Type;
+    private javax.swing.JTextField jTextField_Evt2Type;
+    private javax.swing.JTextField jTextField_GlobalFilterHigh;
+    private javax.swing.JTextField jTextField_GlobalFilterLow;
+    private javax.swing.JTextField jTextField_NotchFilterCenter;
+    private javax.swing.JTextField jTextField_OutputFolder;
+    private javax.swing.JTextField jTextField_ReacTimesOutputFolder;
+    private javax.swing.JTextField jTextField_TrialMarkersBegin;
+    private javax.swing.JTextField jTextField_TrialMarkersBeginDelay;
+    private javax.swing.JTextField jTextField_TrialMarkersBeginEvtTypes;
+    private javax.swing.JTextField jTextField_TrialMarkersBeginType;
+    private javax.swing.JTextField jTextField_TrialMarkersEnd;
+    private javax.swing.JTextField jTextField_TrialMarkersEndDelay;
+    private javax.swing.JTextField jTextField_TrialMarkersEndEvtTypes;
+    private javax.swing.JTextField jTextField_TrialMarkersEndType;
+    private javax.swing.JTextField jTextField__NotchFilterSpan;
     // End of variables declaration//GEN-END:variables
 }
