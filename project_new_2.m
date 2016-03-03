@@ -83,6 +83,11 @@ project.task.events.baseline_end_trigger_value      = '10';
 project.task.events.trial_start_trigger_value       = project.task.events.baseline_start_trigger_value;
 project.task.events.trial_end_trigger_value         = '5';
 
+
+project.task.events.mrkcode_exp(1)                              = struct('label', 'start_experiment_trigger_value', 'value', '1');
+
+
+
 project.task.events.mrkcode_cond                    = { ...
                                                         {'11' '12' '13' '14' '15' '16'};...     % G15:  triggers defining conditions...even if only one trigger is used for each condition, a cell matrix is used
                                                         {'21' '22' '23' '24' '25' '26'};...            
@@ -98,6 +103,13 @@ project.task.events.import_marker                   = [{'1' '2' '3' '4' '5' '6' 
 % ======================================================================================================
 % input file name  = [original_data_prefix subj_name original_data_suffix . original_data_extension]
 % output file name = [original_data_prefix subj_name original_data_suffix project.import.output_suffix . set]
+project.import.start_nch                   = 64;                           % E1:   final channels_number after electrode removal and polygraphic transformation
+project.import.fs                          = 256;                          % E3:   final sampling frequency in Hz, if original is higher, then downsample it during pre-processing
+
+project.import.reference_channels       = {'CAR'};                      % D9:   list of electrodes to be used as reference: []: no referencing, {'CAR'}: CAR ref, {'el1', 'el2'}: used those electrodes
+
+project.import.eeglab_channels_file_name   = 'standard-10-5-cap385.elp';   % E4:   universal channels file name containing the position of 385 channels
+project.import.eeglab_channels_file_path   = '';                           % E5:   later set by define_paths
 
 % input
 project.import.acquisition_system       = 'BIOSEMI';                    % D1:   EEG hardware type: BIOSEMI | BRAINAMP
@@ -112,7 +124,6 @@ project.import.output_folder            = project.import.original_data_folder;  
 project.import.output_suffix            = '';                           % D7:   string appended to input file name after importing original file
 project.import.emg_output_postfix       = [];                  			% D8:   string appended to input file name to EMG file
 
-project.import.reference_channels       = {'CAR'};                      % D9:   list of electrodes to be used as reference: []: no referencing, {'CAR'}: CAR ref, {'el1', 'el2'}: used those electrodes
 
 % D10:   list of electrodes to transform
 project.import.ch2transform(1)          = struct('type', 'emg' , 'ch1', 28,'ch2', 32, 'new_label', 'bAPB');         ... emg bipolar                   
@@ -120,42 +131,52 @@ project.import.ch2transform(2)          = struct('type', 'emg' , 'ch1', 43,'ch2'
 project.import.ch2transform(3)          = struct('type', []    , 'ch1', 7,'ch2' , [], 'new_label', []);             ... discarded 
 project.import.ch2transform(4)          = struct('type', 'eog' , 'ch1', 53,'ch2', 54, 'new_label', 'hEOG');         ... eog bipolar
 project.import.ch2transform(5)          = struct('type', 'eog' , 'ch1', 55,'ch2', [], 'new_label', 'vEOG');         ... eog monopolar
-
-% D11:  list of trigger marker to import. can be a cel array, or a string with these values: 'all', 'stimuli','responses'
-project.import.valid_marker             = {'S1' 'S2' 'S3' 'S4' 'S5' 'S 16' 'S 17' 'S 19' 'S 19' 'S 20' 'S 21' 'S 48' 'S 49' 'S 50' 'S 51' 'S 52' 'S 53' 'S 80' 'S 81' 'S 82' 'S 83' 'S 84' 'S 85' };  
-
-%% ======================================================================================================
-% E:    FINAL EEGDATA
-% ======================================================================================================
-project.eegdata.nch                         = 64;                           % E1:   final channels_number after electrode removal and polygraphic transformation
-project.eegdata.nch_eeg                     = 64;                           % E2:   EEG channels_number
-project.eegdata.fs                          = 256;                          % E3:   final sampling frequency in Hz, if original is higher, then downsample it during pre-processing
-project.eegdata.eeglab_channels_file_name   = 'standard-10-5-cap385.elp';   % E4:   universal channels file name containing the position of 385 channels
-project.eegdata.eeglab_channels_file_path   = '';                           % E5:   later set by define_paths
     
-project.eegdata.eeg_channels_list           = [1:project.eegdata.nch_eeg];  % E6:   list of EEG channels IDs
 
-project.eegdata.emg_channels_list           = [];
-project.eegdata.emg_channels_list_labels    = [];
-project.eegdata.eog_channels_list           = [];
-project.eegdata.eog_channels_list_labels    = [];
+project.import.emg_channels_list           = [];
+project.import.emg_channels_list_labels    = {};
+project.import.eog_channels_list           = [];
+project.import.eog_channels_list_labels    = {};
 
+
+discarded_electrodes = 0;
+non_eeg_channels = 0;
 for ch_id=1:length(project.import.ch2transform)
     ch = project.import.ch2transform(ch_id);
     if ~isempty(ch.new_label)
-        if strcmp(ch.type, 'emg')
-            project.eegdata.emg_channels_list           = [project.eegdata.emg_channels_list (project.eegdata.nch_eeg+ch_id)];
-            project.eegdata.emg_channels_list_labels    = [project.eegdata.emg_channels_list_labels ch.new_label];
-        elseif strcmp(ch.type, 'eog')
-            project.eegdata.eog_channels_list           = [project.eegdata.eog_channels_list (project.eegdata.nch_eeg+ch_id)];
-            project.eegdata.eog_channels_list_labels    = [project.eegdata.eog_channels_list_labels ch.new_label];
+        
+        non_eeg_channels = non_eeg_channels + 1;
+        if ~isempty(ch.ch2) 
+            % bipolar
+            discarded_electrodes = discarded_electrodes + 1;
         end
+        
+        if strcmp(ch.type, 'emg')
+            project.import.emg_channels_list           = [project.import.emg_channels_list non_eeg_channels];
+            project.import.emg_channels_list_labels    = [project.import.emg_channels_list_labels ch.new_label];
+        elseif strcmp(ch.type, 'eog')
+            project.import.eog_channels_list           = [project.import.eog_channels_list non_eeg_channels];
+            project.import.eog_channels_list_labels    = [project.import.eog_channels_list_labels ch.new_label];
+        end
+    else
+        discarded_electrodes = discarded_electrodes + 1;
     end
 end
+project.import.nch                  = project.import.start_nch - discarded_electrodes;                           % E1:   final channels_number after electrode removal and polygraphic transformation
+project.import.nch_eeg              = project.import.nch - non_eeg_channels;
+project.import.emg_channels_list    = project.import.emg_channels_list + project.import.nch_eeg;
+project.import.eog_channels_list    = project.import.eog_channels_list + project.import.nch_eeg;
+project.import.no_eeg_channels_list = [project.import.emg_channels_list project.import.eog_channels_list];  % D10:  list of NO-EEG channels IDs
+project.import.eeg_channels_list    = [1:project.import.nch_eeg];  % E6:   list of EEG channels IDs
+
+
+% D11:  list of trigger marker to import. can be a cel array, or a string with these values: 'all', 'stimuli','responses'
+project.import.valid_marker             = project.task.events.valid_marker; 
+
 clear ch;
 clear ch_id;
-
-project.eegdata.no_eeg_channels_list = [project.eegdata.emg_channels_list project.eegdata.eog_channels_list];  % D10:  list of NO-EEG channels IDs
+clear discarded_electrodes;
+clear non_eeg_channels;
 
 %% ======================================================================================================
 % F:    PREPROCESSING
@@ -327,8 +348,8 @@ project.epoching.bc_end.s               = -0.512;                       % G7:   
 project.epoching.baseline_duration.s    = project.epoching.bc_end.s - project.epoching.bc_st.s ;
 
 % point
-project.epoching.bc_st_point            = round((project.epoching.bc_st.s-project.epoching.epo_st.s)*project.eegdata.fs)+1;     % G7:   EEG baseline correction start point
-project.epoching.bc_end_point           = round((project.epoching.bc_end.s-project.epoching.epo_st.s)*project.eegdata.fs)+1;    % G8:   EEG baseline correction end point
+project.epoching.bc_st_point            = round((project.epoching.bc_st.s-project.epoching.epo_st.s)*project.import.fs)+1;     % G7:   EEG baseline correction start point
+project.epoching.bc_end_point           = round((project.epoching.bc_end.s-project.epoching.epo_st.s)*project.import.fs)+1;    % G8:   EEG baseline correction end point
 
 % EMG
 project.epoching.emg_epo_st.s           = -0.99;                        % G9:   EMG epochs start latency
@@ -337,8 +358,8 @@ project.epoching.emg_bc_st.s            = -0.9;                         % G11:  
 project.epoching.emg_bc_end.s           = -0.512;                       % G12:  EMG baseline correction end latency
 
 % point
-project.epoching.emg_bc_st_point        = round((project.epoching.emg_bc_st.s-project.epoching.emg_epo_st.s)*project.eegdata.fs)+1; % G13:   EMG baseline correction start point
-project.epoching.emg_bc_end_point       = round((project.epoching.emg_bc_end.s-project.epoching.emg_epo_st.s)*project.eegdata.fs)+1; % G14:   EMG baseline correction end point
+project.epoching.emg_bc_st_point        = round((project.epoching.emg_bc_st.s-project.epoching.emg_epo_st.s)*project.import.fs)+1; % G13:   EMG baseline correction start point
+project.epoching.emg_bc_end_point       = round((project.epoching.emg_bc_end.s-project.epoching.emg_epo_st.s)*project.import.fs)+1; % G14:   EMG baseline correction end point
 
 % markers
 
@@ -384,36 +405,21 @@ project.subjects.baseline_file_interval_s   = [];
 %% allow the possibility to define a different reference condition for each band
 % project.subjects.narrowband_suffix_cell ={'baseline','ao','aois'}; 
 
-project.subjects.data(1)  = struct('name', 'CC_01_vittoria', 'group', 'CC', 'age', 13, 'gender', 'f', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(2)  = struct('name', 'CC_02_fabio',    'group', 'CC', 'age', 12, 'gender', 'm', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(3)  = struct('name', 'CC_03_anna',     'group', 'CC', 'age', 12, 'gender', 'f', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(4)  = struct('name', 'CC_04_giacomo',  'group', 'CC', 'age', 8,  'gender', 'm', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(5)  = struct('name', 'CC_05_stefano',  'group', 'CC', 'age', 9,  'gender', 'm', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(6)  = struct('name', 'CC_06_giovanni', 'group', 'CC', 'age', 6,  'gender', 'm', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(7)  = struct('name', 'CC_07_davide',   'group', 'CC', 'age', 11, 'gender', 'm', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(8)  = struct('name', 'CC_08_jonathan', 'group', 'CC', 'age', 8,  'gender', 'm', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(9)  = struct('name', 'CC_09_antonella','group', 'CC', 'age', 9,  'gender', 'f', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(10) = struct('name', 'CC_10_chiara',   'group', 'CC', 'age', 11, 'gender', 'f', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
+project.subjects.data(1)  = struct('name', 'CC_01_vittoria', 'group', 'CC', 'age', 13, 'gender', 'f', 'handedness', 'r', 'bad_ch', [],'frequency_bands_list',[]);
+project.subjects.data(2)  = struct('name', 'CC_02_fabio',    'group', 'CC', 'age', 12, 'gender', 'm', 'handedness', 'r', 'bad_ch', [],'frequency_bands_list',[]);
 
+project.subjects.data(3) = struct('name', 'CP_01_riccardo', 'group', 'CP', 'age', 6,  'gender', 'm', 'handedness', 'l', 'bad_ch', [],'frequency_bands_list',[]);
+project.subjects.data(4) = struct('name', 'CP_02_ester',    'group', 'CP', 'age', 8,  'gender', 'f', 'handedness', 'l', 'bad_ch', [],'frequency_bands_list',[]);
 
-project.subjects.data(11) = struct('name', 'CP_01_riccardo', 'group', 'CP', 'age', 6,  'gender', 'm', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(12) = struct('name', 'CP_02_ester',    'group', 'CP', 'age', 8,  'gender', 'f', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(13) = struct('name', 'CP_03_sara',     'group', 'CP', 'age', 11, 'gender', 'f', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(14) = struct('name', 'CP_04_matteo',   'group', 'CP', 'age', 10, 'gender', 'm', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(15) = struct('name', 'CP_05_gregorio', 'group', 'CP', 'age', 6,  'gender', 'm', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(16) = struct('name', 'CP_06_fernando', 'group', 'CP', 'age', 8,  'gender', 'm', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(17) = struct('name', 'CP_07_roberta',  'group', 'CP', 'age', 9,  'gender', 'f', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(18) = struct('name', 'CP_08_mattia',   'group', 'CP', 'age', 7,  'gender', 'm', 'handedness', 'r', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(19) = struct('name', 'CP_09_alessia',  'group', 'CP', 'age', 10, 'gender', 'f', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-project.subjects.data(20) = struct('name', 'CP_10_livia',    'group', 'CP', 'age', 10, 'gender', 'm', 'handedness', 'l', 'bad_ch', [],'baseline_file',[],'baseline_file_interval_s',[],'frequency_bands_list',[]);
-
-project.subjects.data(16).bad_ch    = {'P1'};
-project.subjects.data(6).bad_ch     = {'PO3'};
+project.subjects.data(1).bad_ch    = {'P1'};
+project.subjects.data(3).bad_ch     = {'PO3'};
 
 
 ...project.subjects.data(1).frequency_bands_list = {[4,8];[5,9];[14,20];[20,32]};
 ...project.subjects.data(6).frequency_bands_list = {[4,8];[6,10];[14,20];[20,32]};
 
+project.subjects.baseline_file_postfix      = [];
+project.subjects.baseline_file_interval     = [];
 
 project.subjects.list               = {project.subjects.data.name};
 project.subjects.numsubj            = length(project.subjects.list);
@@ -789,6 +795,79 @@ project.erp.results_display.z_transform                        = 'on';         %
 %===============================================================================================================================================================
 %===============================================================================================================================================================
 
+%============================================================
+% FREQUENCY BANDS
+%============================================================
+
+if isfield(project, 'ersp')
+    if isfield(project.ersp, 'postprocess')
+        if isfield(project.ersp.postprocess, 'frequency_bands')
+            project.ersp.postprocess = rmfield(project.ersp.postprocess, 'frequency_bands');
+        end
+    end
+end
+
+
+project.ersp.postprocess.frequency_bands(1)=struct('name','teta','min',4,'max',8,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
+project.ersp.postprocess.frequency_bands(2)=struct('name','mu','min',8,'max',12,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
+project.ersp.postprocess.frequency_bands(3)=struct('name','beta1','min',14, 'max',20,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
+project.ersp.postprocess.frequency_bands(4)=struct('name','beta2','min',20, 'max',32,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
+
+...project.postprocess.frequency_bands(1).ref_roi = {'Fp1'};
+
+project.ersp.postprocess.nbands = length(project.ersp.postprocess.frequency_bands);
+
+% % semi-automatic (simplified) input mode: set values for the first roi/design and
+% % other values will be automatically generated
+% which_realign_measure = {'auc'};
+% for nband = 1:project.postprocess.nbands
+%     project.stats.ersp.narrowband.which_realign_measure = repmat(which_realign_measure,1,2); % min |max |auc for each band, select the frequency with the maximum or the minumum ersp or the largest area under the curve to reallign the narrowband
+% end
+
+
+
+project.ersp.postprocess.frequency_bands_list       = {}; ... writes something like {[4,8];[8,12];[14,20];[20,32]};
+for fb=1:project.ersp.postprocess.nbands
+    bands                                           = [project.ersp.postprocess.frequency_bands(fb).min, project.ersp.postprocess.frequency_bands(fb).max];
+    project.ersp.postprocess.frequency_bands_list   = [project.ersp.postprocess.frequency_bands_list; {bands}];
+end
+project.ersp.postprocess.frequency_bands_names      = {project.ersp.postprocess.frequency_bands.name};
+
+
+
+%==============================================================
+% NARROW BAND
+%==============================================================
+project.ersp.stats.ersp.do_narrowband                    = 'off';                % off|ref|auto  the adjustment of spectral band for each subject: off=no adhiustment, ref adjust based on a ref condition, auto ajust each condition separately
+project.ersp.stats.ersp.narrowband.group_tmin            = [];                   % lowest time of the time windows considered to select the narrow band. if empty, consider the start of the epoch
+project.ersp.stats.ersp.narrowband.group_tmax            = [];                   % highest time of the time windows considered to select the narrow band. if empty, consider the end of the epoch
+project.ersp.stats.ersp.narrowband.dfmin                 = 2;                    % low variation in Hz from the barycenter frequency
+project.ersp.stats.ersp.narrowband.dfmax                 = 2;                    % high variation in Hz from the barycenter frequency
+
+project.ersp.stats.ersp.narrowband.which_realign_measure = {'max','min','min','min'}; % min |max |auc for each band, select the frequency with the maximum or the minumum ersp or the largest area under the curve to reallign the narrowband
+project.ersp.stats.ersp.narrowband.which_realign_param   = {'cog_pos','cog_neg','cog_neg','cog_neg'};             % fnb | cog_pos | cog_neg | cog_all : set if re-allign the narrowband to the peak (defined above) of to the center-of-gravity within the wide band
+
+
+% **********CHECK*****************
+if length(project.ersp.stats.ersp.narrowband.which_realign_measure) ~= project.ersp.postprocess.nbands
+    error(['number of which_realign_measure ' num2str(lenght(project.ersp.stats.ersp.narrowband.which_realign_measure)) ' is different than number of defined bands (' num2str(project.postprocess.nbands) ')']);
+end
+if length(project.ersp.stats.ersp.narrowband.which_realign_param) ~= project.ersp.postprocess.nbands
+    error(['number of which_realign_param ' num2str(lenght(project.ersp.stats.ersp.narrowband.which_realign_param)) ' is different than number of defined bands (' num2str(project.postprocess.nbands) ')']);
+end
+
+if strcmp(project.ersp.stats.ersp.do_narrowband, 'ref')
+    for fb=1:project.ersp.postprocess.nbands
+        if isempty(project.ersp.postprocess.frequency_bands(fb).ref_roi_list)
+           error('you asked to calcultate the narrow band with the ref parameters, but you did not insert the ref_roi_list'); 
+        end
+    end
+end
+
+
+%==============================================================
+% 
+%==============================================================
 project.ersp.study_params.tmin_analysis.s              = project.epoching.epo_st.s;
 project.ersp.study_params.tmax_analysis.s              = project.epoching.epo_end.s;
 project.ersp.study_params.ts_analysis.s                = 0.008;
@@ -821,6 +900,8 @@ project.ersp.postprocess.mode.tw_group_align                    = struct('time_r
 project.ersp.postprocess.mode.tw_individual_noalign             = struct('time_resolution_mode', 'tw'        , 'peak_type', 'individual'   , 'align', 'off', 'tw_stat_estimator', 'tw_mean');
 project.ersp.postprocess.mode.tw_individual_align               = struct('time_resolution_mode', 'tw'        , 'peak_type', 'individual'   , 'align', 'on' , 'tw_stat_estimator', 'tw_extremum');
 
+%==============================================================
+% STATS
 
 project.ersp.stats.ersp.pvalue                       = 0.05; ...0.01;        % level of significance applied in ERSP statistical analysis
 project.ersp.stats.ersp.num_permutations             = 3;                    % number of permutations applied in ERP statistical analysis
@@ -832,75 +913,8 @@ project.ersp.stats.ersp.measure                      = 'dB';                 % '
 project.ersp.stats.eeglab.ersp.method                = 'bootstrap';          % method applied in ERP statistical analysis
 project.ersp.stats.eeglab.ersp.correction            = 'none';               % multiple comparison correction applied in ERP statistical analysis
 
-%============================================================
-% FREQUENCY BANDS
-%============================================================
-
-if isfield(project, 'ersp')
-    if isfield(project.ersp, 'postprocess')
-        if isfield(project.ersp.postprocess, 'frequency_bands')
-            project.ersp.postprocess = rmfield(project.ersp.postprocess, 'frequency_bands');
-        end
-    end
-end
 
 
-project.ersp.postprocess.frequency_bands(1)=struct('name','teta','min',4,'max',8,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
-project.ersp.postprocess.frequency_bands(2)=struct('name','mu','min',8,'max',12,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
-project.ersp.postprocess.frequency_bands(3)=struct('name','beta1','min',14, 'max',20,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
-project.ersp.postprocess.frequency_bands(4)=struct('name','beta2','min',20, 'max',32,'dfmin',1,'dfmax',1,'ref_roi_list',{'Cz'}, 'ref_roi_name','Cz','ref_cond', 'tscrambled', 'ref_tw_list', [0 100], 'ref_tw_name', 'gigi', 'which_realign_measure','auc');
-
-
-...project.postprocess.frequency_bands(1).ref_roi = {'Fp1'};
-
-
-project.ersp.postprocess.nbands = length(project.ersp.postprocess.frequency_bands);
-
-% % semi-automatic (simplified) input mode: set values for the first roi/design and
-% % other values will be automatically generated
-% which_realign_measure = {'auc'};
-% for nband = 1:project.postprocess.nbands
-%     project.stats.ersp.narrowband.which_realign_measure = repmat(which_realign_measure,1,2); % min |max |auc for each band, select the frequency with the maximum or the minumum ersp or the largest area under the curve to reallign the narrowband
-% end
-
-
-
-project.ersp.postprocess.frequency_bands_list       = {}; ... writes something like {[4,8];[8,12];[14,20];[20,32]};
-for fb=1:project.ersp.postprocess.nbands
-    bands                                           = [project.ersp.postprocess.frequency_bands(fb).min, project.ersp.postprocess.frequency_bands(fb).max];
-    project.ersp.postprocess.frequency_bands_list   = [project.ersp.postprocess.frequency_bands_list; {bands}];
-end
-project.ersp.postprocess.frequency_bands_names      = {project.ersp.postprocess.frequency_bands.name};
-
-
-%==============================================================
-% NARROW BAND
-%==============================================================
-project.ersp.stats.ersp.do_narrowband                    = 'off';                % off|ref|auto  the adjustment of spectral band for each subject: off=no adhiustment, ref adjust based on a ref condition, auto ajust each condition separately
-project.ersp.stats.ersp.narrowband.group_tmin            = [];                   % lowest time of the time windows considered to select the narrow band. if empty, consider the start of the epoch
-project.ersp.stats.ersp.narrowband.group_tmax            = [];                   % highest time of the time windows considered to select the narrow band. if empty, consider the end of the epoch
-project.ersp.stats.ersp.narrowband.dfmin                 = 2;                    % low variation in Hz from the barycenter frequency
-project.ersp.stats.ersp.narrowband.dfmax                 = 2;                    % high variation in Hz from the barycenter frequency
-
-project.ersp.stats.ersp.narrowband.which_realign_measure = {'max','min','min','min'}; % min |max |auc for each band, select the frequency with the maximum or the minumum ersp or the largest area under the curve to reallign the narrowband
-project.ersp.stats.ersp.narrowband.which_realign_param   = {'cog_pos','cog_neg','cog_neg','cog_neg'};             % fnb | cog_pos | cog_neg | cog_all : set if re-allign the narrowband to the peak (defined above) of to the center-of-gravity within the wide band
-
-
-% **********CHECK*****************
-if length(project.ersp.stats.ersp.narrowband.which_realign_measure) ~= project.ersp.postprocess.nbands
-    error(['number of which_realign_measure ' num2str(lenght(project.ersp.stats.ersp.narrowband.which_realign_measure)) ' is different than number of defined bands (' num2str(project.postprocess.nbands) ')']);
-end
-if length(project.ersp.stats.ersp.narrowband.which_realign_param) ~= project.ersp.postprocess.nbands
-    error(['number of which_realign_param ' num2str(lenght(project.ersp.stats.ersp.narrowband.which_realign_param)) ' is different than number of defined bands (' num2str(project.postprocess.nbands) ')']);
-end
-
-if strcmp(project.ersp.stats.ersp.do_narrowband, 'ref')
-    for fb=1:project.ersp.postprocess.nbands
-        if isempty(project.ersp.postprocess.frequency_bands(fb).ref_roi_list)
-           error('you asked to calcultate the narrow band with the ref parameters, but you did not insert the ref_roi_list'); 
-        end
-    end
-end
 %==============================================================
 % ROI LIST
 %==============================================================
