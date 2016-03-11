@@ -17,9 +17,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jPstudy_design" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPstudy_design" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,133 +42,282 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel_Design" min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="jLabel_design" min="-2" pref="87" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane12" pref="665" max="32767" attributes="0"/>
+                              <Component id="jScrollPane12" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton_DesignNew" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton_design_new" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  <Component id="jButton_DesignRemove" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton_design_remove" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane9" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane13" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel_DesignLevels1" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton_DesignApply1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel_FileMatch" min="-2" pref="64" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButton_FileMatchApply" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel_factor1_levels" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel_DesignLevels2" min="-2" pref="57" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  <Component id="jButton_DesignApply2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_file_match" min="-2" pref="64" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jButton_file_match" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane11" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jButton_factor1_levels_update" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton_factor1_levels_apply" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane13" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" alignment="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel_factor2_levels" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jButton_factor2_levels_update" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton_factor2_levels_apply" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane11" alignment="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel_ExpFactors" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="jLabel_StudyFilename" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_factors" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jLabel_filename" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jCheckBox_DoRecompute" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox_DoErp" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox_DoErsp" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox_DoErpim" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox_DoSpec" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jButton_ExpFactorsNew" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jButton_factors_new" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  <Component id="jButton_ExpFactorsRemove" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton_factors_remove" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton_ExpFactorsApply" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton_factors_apply" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextField_StudyFilename" alignment="0" min="-2" pref="356" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jCheckBox_precompute_recompute" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_precompute_do_erp" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_precompute_do_ersp" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_precompute_do_erpim" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_precompute_do_spec" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jTextField_filename" alignment="0" min="-2" pref="356" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_precompute_specparams" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_specparams_interp" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_specparams_allcomps" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_specparams_recompute" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_specparams_spec" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_precompute_specparams_spec_mode" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_precompute_specparams_spec_mode" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_precompute_specparams_spec_freqs" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="jLabel_precompute_specparams_spec_freqs_low" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="32767" attributes="0"/>
+                                                          <Component id="jTextField_precompute_specparams_spec_freqs_low" min="-2" pref="50" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="jLabel_precompute_specparams_spec_freqs_high" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="jTextField_precompute_specparams_spec_freqs_high" min="-2" pref="50" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_erpimparams_interp" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_erpimparams_allcomps" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_erpimparams_recompute" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox_precompute_erpimparams_erpim" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabel_precompute_erpimparams" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel_precompute_erpimparams_erpim_nlines" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="jTextField_precompute_erpimparams_erpim_nlines" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel_precompute_erpimparams_erpim_smoothing" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_precompute_erpimparams_erpim_smoothing" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Component id="jLabel_study" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel_StudyFilename" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_StudyFilename" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel_study" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_filename" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_filename" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_precompute_erpimparams" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_precompute_erpimparams_erpim_nlines" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_precompute_erpimparams_erpim_nlines" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jCheckBox_precompute_erpimparams_interp" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_erpimparams_allcomps" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_erpimparams_recompute" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_erpimparams_erpim" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_precompute_erpimparams_erpim_smoothing" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_precompute_erpimparams_erpim_smoothing" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jCheckBox_DoRecompute" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox_DoErsp" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox_DoErp" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox_DoSpec" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox_DoErpim" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton_ExpFactorsRemove" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton_ExpFactorsNew" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_ExpFactors" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton_ExpFactorsApply" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_recompute" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_do_ersp" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_do_erp" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_do_spec" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_precompute_do_erpim" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel_precompute_specparams" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jCheckBox_precompute_specparams_interp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox_precompute_specparams_allcomps" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox_precompute_specparams_recompute" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox_precompute_specparams_spec" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel_precompute_specparams_spec_mode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_precompute_specparams_spec_mode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel_precompute_specparams_spec_freqs" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel_precompute_specparams_spec_freqs_low" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jTextField_precompute_specparams_spec_freqs_low" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel_precompute_specparams_spec_freqs_high" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jTextField_precompute_specparams_spec_freqs_high" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButton_factors_remove" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_factors_new" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_factors" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_factors_apply" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane12" min="-2" pref="204" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_file_match" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_file_match" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPane8" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton_DesignRemove" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton_DesignNew" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_Design" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_design_remove" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_design_new" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_design" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane9" min="-2" pref="141" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel_FileMatch" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton_FileMatchApply" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jScrollPane8" min="-2" pref="185" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton_DesignApply1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton_DesignApply2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_DesignLevels1" alignment="3" min="-2" pref="13" max="-2" attributes="0"/>
-                              <Component id="jLabel_DesignLevels2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_factor1_levels" alignment="3" min="-2" pref="13" max="-2" attributes="0"/>
+                              <Component id="jLabel_factor2_levels" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -177,39 +326,46 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="243" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton_factor1_levels_update" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_factor1_levels_apply" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_factor2_levels_update" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_factor2_levels_apply" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel_ExpFactors">
+        <Component class="javax.swing.JLabel" name="jLabel_factors">
           <Properties>
             <Property name="text" type="java.lang.String" value="EXP. FACTORS"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_ExpFactorsRemove">
+        <Component class="javax.swing.JButton" name="jButton_factors_remove">
           <Properties>
             <Property name="text" type="java.lang.String" value="R"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ExpFactorsRemoveActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_factors_removeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_ExpFactorsNew">
+        <Component class="javax.swing.JButton" name="jButton_factors_new">
           <Properties>
             <Property name="text" type="java.lang.String" value="N"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ExpFactorsNewActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_factors_newActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_FileMatchApply">
+        <Component class="javax.swing.JButton" name="jButton_file_match">
           <Properties>
             <Property name="text" type="java.lang.String" value="Apply"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_FileMatchApplyActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_file_matchActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane12">
@@ -219,7 +375,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable_ExpFactors">
+            <Component class="javax.swing.JTable" name="jTable_factors">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="0">
@@ -242,22 +398,16 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList_FileMatch">
+            <Component class="javax.swing.JList" name="jList_file_match">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel_Design">
+        <Component class="javax.swing.JLabel" name="jLabel_design">
           <Properties>
             <Property name="text" type="java.lang.String" value="DESIGN"/>
           </Properties>
@@ -269,7 +419,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable_Design">
+            <Component class="javax.swing.JTable" name="jTable_design">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="7" rowCount="0">
@@ -296,16 +446,10 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList_DesignLevels2">
+            <Component class="javax.swing.JList" name="jList_factor2_levels">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -318,109 +462,232 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList_DesignLevels1">
+            <Component class="javax.swing.JList" name="jList_factor1_levels">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel_DesignLevels1">
+        <Component class="javax.swing.JLabel" name="jLabel_factor1_levels">
           <Properties>
-            <Property name="text" type="java.lang.String" value=" 1"/>
+            <Property name="text" type="java.lang.String" value=" Levels 1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_DesignLevels2">
+        <Component class="javax.swing.JLabel" name="jLabel_factor2_levels">
           <Properties>
             <Property name="text" type="java.lang.String" value="Levels 2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_DesignNew">
+        <Component class="javax.swing.JButton" name="jButton_design_new">
           <Properties>
             <Property name="text" type="java.lang.String" value="N"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_DesignNewActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_design_newActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_DesignRemove">
+        <Component class="javax.swing.JButton" name="jButton_design_remove">
           <Properties>
             <Property name="text" type="java.lang.String" value="R"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_DesignRemoveActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_design_removeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_DesignApply1">
+        <Component class="javax.swing.JButton" name="jButton_factor1_levels_update">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Apply"/>
+            <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_DesignApply1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_factor1_levels_updateActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_DesignApply2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Apply"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_DesignApply2ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_FileMatch">
+        <Component class="javax.swing.JLabel" name="jLabel_file_match">
           <Properties>
             <Property name="text" type="java.lang.String" value="File match"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox_DoRecompute">
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_recompute">
           <Properties>
             <Property name="text" type="java.lang.String" value="recompute"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox_DoErsp">
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_do_ersp">
           <Properties>
             <Property name="text" type="java.lang.String" value="do ersp"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox_DoErp">
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_do_erp">
           <Properties>
             <Property name="text" type="java.lang.String" value="do erp"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox_DoSpec">
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_do_spec">
           <Properties>
             <Property name="text" type="java.lang.String" value="do spec"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jCheckBox_precompute_do_specStateChanged"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox_DoErpim">
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_do_erpim">
           <Properties>
             <Property name="text" type="java.lang.String" value="do erpim"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jCheckBox_precompute_do_erpimStateChanged"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_StudyFilename">
+        <Component class="javax.swing.JLabel" name="jLabel_filename">
           <Properties>
             <Property name="text" type="java.lang.String" value="Study filename"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_StudyFilename">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_filename">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_ExpFactorsApply">
+        <Component class="javax.swing.JButton" name="jButton_factors_apply">
           <Properties>
             <Property name="text" type="java.lang.String" value="A"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ExpFactorsApplyActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_factors_applyActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_study">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Study Design"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_erpimparams">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Erpim params"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_erpimparams_interp">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="interp"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_erpimparams_allcomps">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="allcomps"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_erpimparams_recompute">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="recompute"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_erpimparams_erpim">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="erpim"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jCheckBox_precompute_erpimparams_erpimStateChanged"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_erpimparams_erpim_nlines">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="nlines"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_erpimparams_erpim_smoothing">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="smoothing"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_precompute_erpimparams_erpim_nlines">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_precompute_erpimparams_erpim_smoothing">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_specparams">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Spec params"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_specparams_interp">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="interp"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_specparams_allcomps">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="allcomps"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_specparams_recompute">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="recompute"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_precompute_specparams_spec">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="spec"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jCheckBox_precompute_specparams_specStateChanged"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_specparams_spec_mode">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="mode"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_specparams_spec_freqs">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="freqs"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_precompute_specparams_spec_mode">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_specparams_spec_freqs_low">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="low"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_precompute_specparams_spec_freqs_low">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_precompute_specparams_spec_freqs_high">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="high"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_precompute_specparams_spec_freqs_high">
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_factor1_levels_apply">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Apply"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_factor1_levels_applyActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_factor2_levels_update">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Update"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_factor2_levels_updateActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_factor2_levels_apply">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Apply"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_factor2_levels_applyActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

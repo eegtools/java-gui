@@ -23,6 +23,8 @@ public class Events extends JMatlabStructWrapper{
     public String trial_start_trigger_value;
     public String trial_end_trigger_value;
     
+    public String[] others_trigger_value;
+    
     public String[][] mrkcode_cond;
     public String[] valid_marker;
     public String[] import_marker;
@@ -37,10 +39,12 @@ public class Events extends JMatlabStructWrapper{
         resume_trigger_value            = getString(struct,"resume_trigger_value");
         end_experiment_trigger_value    = getString(struct,"end_experiment_trigger_value");
         
-        trial_end_trigger_value         = getString(struct,"trial_end_trigger_value");
-        baseline_start_trigger_value    = getString(struct,"baseline_start_trigger_value");
         baseline_end_trigger_value      = getString(struct,"baseline_end_trigger_value");
         trial_start_trigger_value       = getString(struct,"trial_start_trigger_value");
+        trial_end_trigger_value         = getString(struct,"trial_end_trigger_value");
+        baseline_start_trigger_value    = getString(struct,"baseline_start_trigger_value");
+        
+        others_trigger_value            = getStringCellArray(struct,"others_trigger_value");
 
         mrkcode_cond                    = getStringCellMatrix(struct,"mrkcode_cond");
         valid_marker                    = getStringCellArray(struct,"valid_marker");
@@ -60,6 +64,8 @@ public class Events extends JMatlabStructWrapper{
         struct.setField("baseline_start_trigger_value",setString(baseline_start_trigger_value));
         struct.setField("baseline_end_trigger_value",setString(baseline_end_trigger_value));
         struct.setField("trial_start_trigger_value",setString(trial_start_trigger_value));
+        
+        struct.setField("others_trigger_value",setStringLineArray(others_trigger_value));
         
         struct.setField("mrkcode_cond",setStringColLineCell(mrkcode_cond));
         struct.setField("valid_marker",setStringLineArray(valid_marker));

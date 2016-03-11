@@ -29,7 +29,7 @@ public class JTPMain extends javax.swing.JPanel {
         //try{
          
         project = new Project();
-        project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_new_2.mat");
+        //project = project.loadMAT("C:\\Users\\PHilt\\Desktop\\behaviour_platform\\PAP\\eeg_tools_gui\\project_new_2.mat");
   
         //int verif = project.saveMAT("C:\\Users\\PHilt\\Desktop\\test_gui\\project_new_1.mat");
 
@@ -74,6 +74,7 @@ public class JTPMain extends javax.swing.JPanel {
         pstudy.setVisible(true);        
         main_tab.setTitleAt(5, "Study Design");
         
+        /*
         perp = new JPErp(this);
         main_tab.add(perp);
         perp.setVisible(true);        
@@ -83,47 +84,60 @@ public class JTPMain extends javax.swing.JPanel {
         main_tab.add(persp);
         persp.setVisible(true);        
         main_tab.setTitleAt(7, "Ersp");
+        */
         
         pbrainstorm = new JPBrainstorm(this);
         main_tab.add(pbrainstorm);
         pbrainstorm.setVisible(true);        
-        main_tab.setTitleAt(8, "Brainstorm");
+        main_tab.setTitleAt(6, "Brainstorm");
         
         poperations = new JPOperations(this);
         main_tab.add(poperations);
         poperations.setVisible(true);        
-        main_tab.setTitleAt(9, "Operations");
+        main_tab.setTitleAt(7, "Operations");
         
         ppaths = new JPPaths(this);
         main_tab.add(ppaths);
         ppaths.setVisible(true);        
-        main_tab.setTitleAt(10, "Paths");
-        
+        main_tab.setTitleAt(8, "Paths");
     }
     
     public void setGUI(Project proj)
     {
         project = proj; 
-        
+ 
         ptask.setGUI(project); 
         pimp.setGUI(project); 
         ppreproc.setGUI(project);
+        pepoching.setGUI(project);
+        psubjects.setGUI(project);
+        pstudy.setGUI(project);
         
+        poperations.setGUI(project);
+        pbrainstorm.setGUI(project);
+        /*
+        //perp.setGUI(project.erp);
+        //persp.setGUI(project.ersp);
+        ppaths.setGUI(project.paths);
+        */
     }    
     
     public Project getGUI()
     {
-        project = ptask.getGUI(project); 
-        project = pimp.getGUI(project);  
-        project = ppreproc.getGUI(project);
-        project = pepoching.getGUI(project); 
-        project = psubjects.getGUI(project); 
-        project = pstudy.getGUI(project);
-        //project = perp.getGUI(project); 
-        //project = persp.getGUI(project);
-        project = pbrainstorm.getGUI(project); 
-        project = poperations.getGUI(project); 
-        project = ppaths.getGUI(project); 
+        project.task = ptask.getGUI(); 
+        project.imp = pimp.getGUI();
+        project.preproc = ppreproc.getGUI(); 
+        project.epoching = pepoching.getGUI(); 
+        project.subjects = psubjects.getGUI(); 
+        project.study = pstudy.getGUI();
+        
+        project.brainstorm = pbrainstorm.getGUI(); 
+        project.operations = poperations.getGUI(); 
+        /*  
+        //project.erp = perp.getGUI(); 
+        //project.ersp = persp.getGUI(); 
+        project.paths = ppaths.getGUI(); 
+        */
         
         return project;
     }  
@@ -225,14 +239,15 @@ public class JTPMain extends javax.swing.JPanel {
         fc.showOpenDialog(null);
         s_project_mat_file = fc.getSelectedFile().getAbsolutePath();
         System.out.println("loading : " + s_project_mat_file);
-
-        project.loadMAT(s_project_mat_file);
         jLab_project_path.setText(s_project_mat_file);
+
+        
+        project.loadMAT(s_project_mat_file);
+        setGUI(project);
     }//GEN-LAST:event_btOpenProjectActionPerformed
 
     private void btSaveProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveProjectActionPerformed
-        project = getGUI();
-        
+        getGUI();
         try
         {
         project.saveMAT(s_project_mat_file);
@@ -245,10 +260,10 @@ public class JTPMain extends javax.swing.JPanel {
     }//GEN-LAST:event_btSaveProjectActionPerformed
  
     private void btSaveAsProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveAsProjectActionPerformed
+        getGUI();
         JFileChooser fc = new JFileChooser(); fc.showOpenDialog(null);
         s_project_mat_file = fc.getSelectedFile().getAbsolutePath();
         System.out.println("saving : " + s_project_mat_file);
-        
         try
         {
         project.saveMAT(s_project_mat_file);

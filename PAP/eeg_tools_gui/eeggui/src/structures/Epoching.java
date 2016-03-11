@@ -23,6 +23,7 @@ public class Epoching extends JMatlabStructWrapper{
     public Latency epo_end;
     public Latency bc_st;
     public Latency bc_end;
+    public Latency baseline_duration;
     
     public Latency emg_epo_st; //just s
     public Latency emg_epo_end; //just s
@@ -53,6 +54,7 @@ public class Epoching extends JMatlabStructWrapper{
         epo_end             = readLatency(struct, "epo_end");
         bc_st               = readLatency(struct, "bc_st");
         bc_end              = readLatency(struct, "bc_end");
+        baseline_duration   = readLatency(struct, "baseline_duration");
         
         emg_epo_st          = readLatency(struct, "emg_epo_st");
         emg_epo_end         = readLatency(struct, "emg_epo_end");
@@ -101,6 +103,7 @@ public class Epoching extends JMatlabStructWrapper{
         struct.setField("epo_end",writeLatency(epo_end));
         struct.setField("bc_st",writeLatency(bc_st));
         struct.setField("bc_end",writeLatency(bc_end));
+        struct.setField("baseline_duration",writeLatency(baseline_duration));
         
         struct.setField("emg_epo_st",writeLatency(emg_epo_st));
         struct.setField("emg_epo_end",writeLatency(emg_epo_end));

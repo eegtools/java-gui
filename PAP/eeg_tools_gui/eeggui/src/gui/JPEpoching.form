@@ -16,25 +16,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1138" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPepoching" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPepoching" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="711" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPepoching" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPepoching" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,90 +40,294 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane10" alignment="1" min="-2" pref="844" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                              <Component id="jLabel_BaselineReplaceMode" min="-2" pref="39" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jComboBox_BaselineReplaceMode" min="-2" pref="145" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jLabel_BaselineReplaceOriginalPos" min="-2" pref="86" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox_BaselineReplaceOriginalPos" min="-2" pref="92" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel_BaselineReplaceFinalPos" min="-2" pref="86" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox_BaselineReplaceFinalPos" min="-2" pref="92" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="jLabel_BaselineReplaceReplace" min="-2" pref="86" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox_BaselineReplaceReplace" min="-2" pref="92" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel_emg_epo_st" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                                      <Component id="jTextField_emg_epo_st" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel_emg_epo_end" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jTextField_emg_epo_end" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel_input_suffix" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextField_input_suffix" min="-2" pref="100" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel_input_folder" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jTextField_input_folder" min="-2" pref="100" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel_emg_bc" min="-2" pref="183" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel_epo_end" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jTextField_epo_end" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel_epo_st" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                                      <Component id="jTextField_epo_st" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel_emg_bc_end" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel_emg_bc_st" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jTextField_emg_bc_st" min="-2" pref="60" max="-2" attributes="0"/>
+                                              <Component id="jTextField_emg_bc_end" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel_emg_bc_end_point" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel_emg_bc_st_point" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jTextField_emg_bc_st_point" min="-2" pref="60" max="-2" attributes="0"/>
+                                              <Component id="jTextField_emg_bc_end_point" min="-2" pref="60" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+                                          <Component id="jLabel_bc_end" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+                                          <Component id="jLabel_EEGBaselineDurationLatency" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jScrollPane10" min="-2" pref="696" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel_baseline_replace_mode" min="-2" pref="39" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jComboBox_baseline_replace_mode" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                          <Component id="jLabel_baseline_replace_baseline_originalposition" min="-2" pref="86" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jComboBox_replace_baseline_originalposition" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel_eeg_bc" min="-2" pref="183" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel_replace_baseline_finalposition" min="-2" pref="78" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jComboBox_replace_baseline_finalposition" min="-2" pref="92" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_replace_baseline_replace" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_bc_type" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jComboBox_bc_type" min="-2" pref="92" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jComboBox_replace_baseline_replace" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <Component id="jLabel_bc_st" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel_BaselineReplace" min="-2" pref="183" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jTextField_bc_end" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="jTextField_bc_st" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="jTextField_baseline_duration" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                              <Component id="jLabel_Conditions" min="-2" pref="180" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_EEGBaselineEndPoint" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="jLabel_bc_st_point" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextField_bc_st_point" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="jTextField_bc_end_point" min="-2" pref="60" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_baseline_replace" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                              <Component id="jLabel_emg_epo" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                              <Component id="jLabel_mrkcode_cond" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                              <Component id="jLabel_epo_eeg" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                              <Component id="jLabel_epoching" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="238" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="jLabel_BaselineReplace" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="jLabel_epoching" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabel_baseline_replace" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_BaselineReplaceReplace" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox_BaselineReplaceReplace" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_baseline_replace_mode" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox_baseline_replace_mode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_epo_eeg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_eeg_bc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_BaselineReplaceFinalPos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox_BaselineReplaceFinalPos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_BaselineReplaceOriginalPos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox_BaselineReplaceOriginalPos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_BaselineReplaceMode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox_BaselineReplaceMode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_replace_baseline_finalposition" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox_replace_baseline_finalposition" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_baseline_replace_baseline_originalposition" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox_replace_baseline_originalposition" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_replace_baseline_replace" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox_replace_baseline_replace" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                  <Component id="jLabel_Conditions" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane10" min="-2" pref="298" max="-2" attributes="0"/>
-                  <EmptySpace pref="228" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_input_suffix" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_input_suffix" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_epo_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_epo_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_bc_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox_bc_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_bc_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_bc_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_bc_st_point" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_bc_st_point" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_input_folder" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_input_folder" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_epo_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_epo_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_bc_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_bc_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_EEGBaselineEndPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_bc_end_point" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_EEGBaselineDurationLatency" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_baseline_duration" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_emg_epo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_emg_bc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_emg_epo_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_emg_epo_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_emg_epo_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_emg_epo_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_emg_bc_st_point" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_emg_bc_st_point" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_emg_bc_end_point" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_emg_bc_end_point" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_emg_bc_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_emg_bc_st" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_emg_bc_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_emg_bc_end" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="jLabel_mrkcode_cond" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane10" min="-2" pref="213" max="-2" attributes="0"/>
+                  <EmptySpace pref="108" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineReplaceMode">
+        <Component class="javax.swing.JLabel" name="jLabel_baseline_replace_mode">
           <Properties>
             <Property name="text" type="java.lang.String" value="mode"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_BaselineReplaceMode">
+        <Component class="javax.swing.JComboBox" name="jComboBox_baseline_replace_mode">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
@@ -139,7 +335,7 @@
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineReplace">
+        <Component class="javax.swing.JLabel" name="jLabel_baseline_replace">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -147,37 +343,27 @@
             <Property name="text" type="java.lang.String" value="Baseline Replace"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineReplaceOriginalPos">
+        <Component class="javax.swing.JLabel" name="jLabel_baseline_replace_baseline_originalposition">
           <Properties>
             <Property name="text" type="java.lang.String" value="original position"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_BaselineReplaceOriginalPos">
+        <Component class="javax.swing.JComboBox" name="jComboBox_replace_baseline_originalposition">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineReplaceFinalPos">
+        <Component class="javax.swing.JLabel" name="jLabel_replace_baseline_finalposition">
           <Properties>
             <Property name="text" type="java.lang.String" value="final position"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_BaselineReplaceFinalPos">
+        <Component class="javax.swing.JComboBox" name="jComboBox_replace_baseline_finalposition">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
         </Component>
@@ -188,7 +374,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable_ConditionTriggers">
+            <Component class="javax.swing.JTable" name="jTable_mrkcode_cond">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="0">
@@ -203,26 +389,196 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel_Conditions">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CONDITIONS"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineReplaceReplace">
+        <Component class="javax.swing.JLabel" name="jLabel_replace_baseline_replace">
           <Properties>
             <Property name="text" type="java.lang.String" value="replace"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_BaselineReplaceReplace">
+        <Component class="javax.swing.JComboBox" name="jComboBox_replace_baseline_replace">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_epo_eeg">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="EEG Epochs"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_input_suffix">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="input suffix"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_input_folder">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="input folder"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_input_suffix">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_input_folder">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_bc_type">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="baseline correction type"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox_bc_type">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_eeg_bc">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="EEG Baseline Correction"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_epo_st">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="start latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_epo_st">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_epo_end">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="end latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_epo_end">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_bc_st">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="start latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_bc_st">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_bc_end">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="end latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_bc_end">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_EEGBaselineDurationLatency">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="baseline duration"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_baseline_duration">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_epo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="EMG Epochs"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_epo_st">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="start latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_epo_end">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="end latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_emg_epo_st">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_emg_epo_end">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_bc">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="EMG Baseline Correction"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_bc_st">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="start latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_emg_bc_st">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_bc_end">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="end latency (s)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_emg_bc_end">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_bc_st_point">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="start point"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_emg_bc_st_point">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_emg_bc_end_point">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="end point"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_emg_bc_end_point">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_bc_st_point">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="start point"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_bc_st_point">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_EEGBaselineEndPoint">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="end point"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_bc_end_point">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_mrkcode_cond">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Markers code"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_epoching">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Epoching"/>
           </Properties>
         </Component>
       </SubComponents>

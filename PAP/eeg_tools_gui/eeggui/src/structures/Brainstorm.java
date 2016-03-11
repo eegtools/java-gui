@@ -26,7 +26,7 @@ public class Brainstorm extends JMatlabStructWrapper{
     public ExportBrains export;
     public StatsBrains stats;
     
-    public String[][] analysis_bands;
+    public String[][][] analysis_bands;
     public String[][][] analysis_times; //matrix cell not vector
 
     public double[] use_same_montage;
@@ -44,7 +44,7 @@ public class Brainstorm extends JMatlabStructWrapper{
         channels_file_path  = getString(struct, "channels_file_path");
         average_file_name   = getString(struct, "average_file_name");
         
-        analysis_bands      = getStringCellMatrix(struct, "analysis_bands");
+        analysis_bands      = getStringCellMatrix_nxm(struct, "analysis_bands");
         analysis_times      = getStringCellMatrix_nxm(struct, "analysis_times");
         
         use_same_montage    = getDoubleArray(struct, "use_same_montage");
@@ -110,7 +110,7 @@ public class Brainstorm extends JMatlabStructWrapper{
         struct.setField("channels_file_path",setString(channels_file_path));
         struct.setField("average_file_name",setString(average_file_name));
 
-        struct.setField("analysis_bands",setStringColLineCell(analysis_bands));
+        struct.setField("analysis_bands",setStringCellMatrix_nxm(analysis_bands));
         struct.setField("analysis_times",setStringCellMatrix_nxm(analysis_times)); 
 
         struct.setField("use_same_montage",setDoubleColumnArray(use_same_montage));
