@@ -83,10 +83,7 @@ project.task.events.baseline_end_trigger_value      = '10';
 project.task.events.trial_start_trigger_value       = project.task.events.baseline_start_trigger_value;
 project.task.events.trial_end_trigger_value         = '5';
 
-
-project.task.events.mrkcode_exp(1)                              = struct('label', 'start_experiment_trigger_value', 'value', '1');
-
-
+project.task.events.others_trigger_value            = {'test add 1','11'};
 
 project.task.events.mrkcode_cond                    = { ...
                                                         {'11' '12' '13' '14' '15' '16'};...     % G15:  triggers defining conditions...even if only one trigger is used for each condition, a cell matrix is used
@@ -367,7 +364,7 @@ project.epoching.mrkcode_cond       = project.task.events.mrkcode_cond;
 project.epoching.numcond            = length(project.epoching.mrkcode_cond);       % G16: conditions' number 
 project.epoching.valid_marker       = [project.epoching.mrkcode_cond{1:length(project.epoching.mrkcode_cond)}];
 
-project.epoching.condition_names={'control' 'AO' 'AOCS' 'AOIS'};        % G 17: conditions' labels
+project.epoching.condition_names={'twalker' 'tscrambled' 'cwalker' 'cscrambled'};        % G 17: conditions' labels
 if length(project.epoching.condition_names) ~= project.epoching.numcond
     disp('ERROR in project_structure: number of conditions do not coincide !!! please verify')
 end
@@ -415,8 +412,8 @@ project.subjects.data(1).bad_ch    = {'P1'};
 project.subjects.data(3).bad_ch     = {'PO3'};
 
 
-...project.subjects.data(1).frequency_bands_list = {[4,8];[5,9];[14,20];[20,32]};
-...project.subjects.data(6).frequency_bands_list = {[4,8];[6,10];[14,20];[20,32]};
+project.subjects.data(1).frequency_bands_list = {'[4,8]';'[5,9]';'[14,20]';'[20,32]'};
+project.subjects.data(2).frequency_bands_list = {'[4,8]';'[6,10]';'[14,20]';'[20,32]'};
 
 project.subjects.baseline_file_postfix      = [];
 project.subjects.baseline_file_interval     = [];
