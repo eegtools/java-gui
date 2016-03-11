@@ -25,7 +25,20 @@ public class SubjectsData extends JMatlabStructWrapper{
     public String[] baseline_file_interval_s;
     public String[] frequency_bands_list;
     
-    public SubjectsData(){}
+    public SubjectsData()
+    {
+        name                        = new String();
+        group                       = new String();
+        gender                      = new String();
+        handedness                  = new String();
+        
+        age                         = new double[1];
+        
+        bad_ch                      = new String[1];
+        baseline_file               = new String[1];
+        baseline_file_interval_s    = new String[1];
+        frequency_bands_list        = new String[1];
+    }
     
     public void setJMatData(MLStructure data)
     {

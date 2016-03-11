@@ -22,7 +22,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="jPpreproc" min="-2" pref="1151" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -51,7 +51,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel_Montage" min="-2" pref="98" max="-2" attributes="0"/>
+                  <Component id="jLabel_montage_list" min="-2" pref="98" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jScrollPane4" pref="979" max="32767" attributes="0"/>
@@ -59,557 +59,533 @@
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel_Trial" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                              <Component id="jLabel_Baseline" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel_TrialMarkersBegin" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextField_TrialMarkersBegin" min="-2" pref="73" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jTextField_BlockMarkers" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel_BaselineBegin" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="jTextField_BaselineBegin" min="-2" pref="73" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel_BaselineEnd" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jTextField_BaselineEnd" min="-2" pref="73" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="jLabel_TrialMarkersBeginType" min="-2" pref="33" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField_TrialMarkersBeginType" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="jLabel_TrialMarkersEndType" min="-2" pref="33" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField_TrialMarkersEndType" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="jLabel_BaselineBeginType" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      <Component id="jLabel_BaselineEndType" min="-2" pref="33" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jTextField_BaselineEndType" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jTextField_BaselineBeginType" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel_BaselineEndDelay" min="-2" pref="33" max="-2" attributes="0"/>
-                                              <Component id="jLabel_BaselineBeginDelay" min="-2" pref="33" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="jTextField_BaselineEndDelay" min="-2" pref="70" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                                  <Component id="jLabel_BaselineEndEvtTypes" min="-2" pref="70" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField_BaselineEndEvtTypes" min="-2" pref="459" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="jTextField_BaselineBeginDelay" min="-2" pref="70" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                                  <Component id="jLabel_BaselineBeginEvtTypes" min="-2" pref="70" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField_BaselineBeginEvtTypes" min="-2" pref="459" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel_TrialMarkersEnd" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextField_TrialMarkersEnd" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                                          <Component id="jLabel_TrialMarkersEndDelay" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_TrialMarkersEndDelay" min="-2" pref="70" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                          <Component id="jLabel_TrialMarkersEndEvtTypes" min="-2" pref="70" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_TrialMarkersEndEvtTypes" min="-2" pref="459" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel_rt" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="jLabel_insert_baseline_trial" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel_insert_block" min="-2" pref="98" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTextField_insert_block_trials_per_block" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel_ReactionTimes" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="jLabel_BaselineTrialsMarkers" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
-                      <Component id="jLabel_BlockMarkers" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel_GlobalFilter" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                              <Component id="jLabel_ff_global" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel_NotchFilter" min="-2" pref="108" max="-2" attributes="0"/>
+                                  <Component id="jLabel_notch" min="-2" pref="108" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jCheckBox_NotchFilter" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox_do_notch" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_notch_fcenter" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_OutputFolder" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Component id="jLabel_ff1_global" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="jTextField_ff1_global" min="-2" pref="50" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTextField_OutputFolder" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                  <Component id="jLabel_FilterAlgo" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="jLabel_ff2_global" min="-2" pref="31" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="JComboBox_FilterAlgo" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="jTextField_ff2_global" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_output_folder" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jTextField_output_folder" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel_notch_remove_armonics" min="-2" pref="97" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                          <Component id="jLabel_GlobalFilterLow" min="-2" pref="28" max="-2" attributes="0"/>
+                                          <Component id="jLabel_filter_algorithm" min="-2" pref="82" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_GlobalFilterLow" min="-2" pref="83" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel_GlobalFilterHigh" min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="JComboBox_filter_algorithm" min="-2" pref="145" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel_NotchFilterCenter" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="jLabel_RemoveArmonics" min="-2" pref="97" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBox_RemoveArmonics" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="134" pref="134" max="-2" attributes="0"/>
-                          <Component id="jLabel_Evt1Type" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_preproc" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel_insert_trial" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="jLabell_insert_baseline" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_rt_eve1_type" min="-2" pref="61" max="-2" attributes="0"/>
+                              <Component id="jLabel_insert_end_baseline" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabel_insert_begin_baseline" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabel_insert_end_trial" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
-                                  <Component id="jLabel_TrialMarkersBeginDelay" min="-2" pref="33" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField_TrialMarkersBeginDelay" min="-2" pref="70" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Component id="jLabel_TrialMarkersBeginEvtTypes" min="-2" pref="70" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField_TrialMarkersBeginEvtTypes" min="-2" pref="459" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField_Evt1Type" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel_Evt2Type" min="-2" pref="67" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_Evt2Type" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel_AllowTwMin" min="-2" pref="111" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextField_AllowTwMin" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel_AllowTwMax" min="-2" pref="106" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="jLabel_marker_type_begin_trial" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jTextField_marker_type_begin_trial" min="-2" pref="70" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="jLabel_marker_type_end_trial" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jTextField_marker_type_end_trial" min="-2" pref="70" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="jLabel_marker_type_begin_baseline" min="-2" pref="33" max="-2" attributes="0"/>
+                                                          <Component id="jLabel_marker_type_end_baseline" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jTextField_marker_type_end_baseline" min="-2" pref="70" max="-2" attributes="0"/>
+                                                          <Component id="jTextField_marker_type_begin_baseline" min="-2" pref="70" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="jLabel_insert_end_baseline_delay" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_insert_begin_baseline_delay" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jTextField_insert_end_baseline_delay" min="-2" pref="70" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                                      <Component id="jLabel_insert_end_baseline_target_event_types" min="-2" pref="70" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jTextField_insert_end_baseline_target_event_types" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jTextField_insert_begin_baseline_delay" min="-2" pref="70" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                                      <Component id="jLabel_insert_begin_baseline_target_event_types" min="-2" pref="70" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jTextField_insert_begin_baseline_target_event_types" min="-2" pref="150" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="139" pref="139" max="-2" attributes="0"/>
+                                              <Component id="jLabel_insert_end_trial_delay" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jTextField_insert_end_trial_delay" min="-2" pref="70" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                              <Component id="jLabel_insert_end_trial_target_event_types" min="-2" pref="70" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jTextField_insert_end_trial_target_event_types" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField_NotchFilterCenter" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Component id="jLabel_NotchFilterSpan" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField_GlobalFilterHigh" min="-2" pref="80" max="-2" attributes="0"/>
-                                              <Component id="jTextField__NotchFilterSpan" min="-2" pref="80" max="-2" attributes="0"/>
-                                          </Group>
+                                          <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_begin_trial_delay" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jTextField_insert_begin_trial_delay" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_begin_trial_target_event_types" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jTextField_insert_begin_trial_target_event_types" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel_EEGFilter" min="-2" pref="108" max="-2" attributes="0"/>
+                                          <Component id="jTextField_notch_fcenter" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Component id="jLabel_notch_fspan" min="-2" pref="33" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel_EEGFilterLow" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_EEGFilterLow" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel_EEGFilterHigh" min="-2" pref="31" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_EEGFilterHigh" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="jTextField_notch_fspan" min="-2" pref="50" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel_EOGFilter" min="-2" pref="108" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel_EOGFilterLow" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_EOGFilterLow" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_rt_eve1_type" min="-2" pref="80" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel_EOGFilterHigh" min="-2" pref="31" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_EOGFilterHigh" min="-2" pref="80" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel_EMGFilter" min="-2" pref="108" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel_EMGFilterLow" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_EMGFilterLow" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel_EMGFilterHigh" min="-2" pref="31" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField_EMGFilterHigh" min="-2" pref="80" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField_AllowTwMax" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel_ReacTimesOutputFolder" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextField_ReacTimesOutputFolder" min="-2" pref="109" max="-2" attributes="0"/>
+                                          <Component id="jLabel_rt_eve2_type" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jTextField_rt_eve2_type" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                          <Component id="jLabel_rt_allowed_tw_ms_min" min="-2" pref="111" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_rt_allowed_tw_ms_min" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jLabel_rt_allowed_tw_ms_max" min="-2" pref="106" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jTextField_rt_allowed_tw_ms_max" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                          <Component id="jLabel_rt_output_folder" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jTextField_rt_output_folder" min="-2" pref="120" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Component id="jComboBox_notch_remove_armonics" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_EEGFilter" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jLabel_ff1_eeg" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_ff1_eeg" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_ff2_eeg" min="-2" pref="31" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jTextField_ff2_eeg" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_EOGFilter" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jLabel_ff1_eog" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_ff1_eog" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_ff2_eog" min="-2" pref="31" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jTextField_ff2_eog" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_EMGFilter" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jLabel_ff1_emg" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_ff1_emg" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_ff2_emg" min="-2" pref="31" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jTextField_ff2_emg" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="388" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
+                      <Component id="jLabel_insert_begin_trial" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="322" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="jLabel_preproc" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel_FilterAlgo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="JComboBox_FilterAlgo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_OutputFolder" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField_OutputFolder" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_filter_algorithm" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="JComboBox_filter_algorithm" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_output_folder" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_output_folder" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel_GlobalFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField_GlobalFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_GlobalFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField_GlobalFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_GlobalFilter" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_ff1_global" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_ff1_global" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_ff2_global" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_ff2_global" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_ff_global" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel_NotchFilterCenter" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField_NotchFilterCenter" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_NotchFilter" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_NotchFilterSpan" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField__NotchFilterSpan" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_RemoveArmonics" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox_RemoveArmonics" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jComboBox_notch_remove_armonics" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel_notch_fcenter" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_notch_fcenter" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_notch" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_notch_fspan" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_notch_fspan" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Component id="jCheckBox_NotchFilter" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_do_notch" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jLabel_ReactionTimes" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_rt" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel_Evt1Type" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_Evt1Type" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_Evt2Type" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_Evt2Type" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_AllowTwMin" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_AllowTwMin" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_AllowTwMax" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_rt_eve1_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_rt_eve1_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_rt_eve2_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_rt_eve2_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_rt_allowed_tw_ms_min" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_rt_allowed_tw_ms_min" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_rt_allowed_tw_ms_max" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_rt_allowed_tw_ms_max" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel_EEGFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_EEGFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_EEGFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_EEGFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_ff1_eeg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_ff1_eeg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_ff2_eeg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_ff2_eeg" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel_EEGFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel_EOGFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_EOGFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_EOGFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_EOGFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_ff1_eog" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_ff1_eog" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_ff2_eog" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_ff2_eog" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel_EOGFilter" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_notch_remove_armonics" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel_EMGFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_EMGFilterLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_EMGFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_EMGFilterHigh" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_ff1_emg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_ff1_emg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_ff2_emg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_ff2_emg" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel_EMGFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="77" pref="77" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField_AllowTwMax" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_ReacTimesOutputFolder" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_ReacTimesOutputFolder" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_rt_output_folder" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_rt_output_folder" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                  <Component id="jLabel_BaselineTrialsMarkers" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="jLabel_insert_trial" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="jLabell_insert_baseline" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="jLabel_insert_baseline_trial" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel_TrialMarkersBegin" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_TrialMarkersBegin" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_Trial" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_TrialMarkersBeginDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_TrialMarkersBeginDelay" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel_marker_type_begin_trial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_marker_type_begin_trial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_insert_begin_trial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel_marker_type_end_trial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_marker_type_end_trial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_insert_end_trial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField_TrialMarkersBeginEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_TrialMarkersBeginEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel_TrialMarkersEnd" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_TrialMarkersEnd" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_TrialMarkersEndDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_TrialMarkersEndDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField_TrialMarkersEndEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_TrialMarkersEndEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel_Baseline" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jTextField_insert_begin_trial_delay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel_insert_begin_trial_delay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jTextField_insert_begin_trial_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel_insert_begin_trial_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel_BaselineBegin" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_BaselineBegin" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_BaselineBeginDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_BaselineBeginDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_BaselineBeginType" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_BaselineBeginType" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_end_trial_delay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_insert_end_trial_delay" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="jTextField_BaselineBeginEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_BaselineBeginEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_end_trial_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_insert_end_trial_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel_insert_begin_baseline_delay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_insert_begin_baseline_delay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_marker_type_begin_baseline" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_marker_type_begin_baseline" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_begin_baseline" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                          <Component id="jTextField_insert_begin_baseline_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_begin_baseline_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel_BaselineEnd" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_BaselineEnd" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_BaselineEndDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_BaselineEndDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField_BaselineEndType" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_BaselineEndType" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_end_baseline_delay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_insert_end_baseline_delay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_marker_type_end_baseline" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_marker_type_end_baseline" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_end_baseline" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="jTextField_BaselineEndEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_BaselineEndEvtTypes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_insert_end_baseline_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_insert_end_baseline_target_event_types" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel_TrialMarkersBeginType" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_TrialMarkersBeginType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel_TrialMarkersEndType" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_TrialMarkersEndType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel_BlockMarkers" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_BlockMarkers" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_insert_block" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_insert_block_trials_per_block" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel_Montage" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_montage_list" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane4" min="-2" pref="70" max="-2" attributes="0"/>
-                  <EmptySpace pref="131" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel_GlobalFilter">
+        <Component class="javax.swing.JLabel" name="jLabel_ff_global">
           <Properties>
             <Property name="text" type="java.lang.String" value="GLOBAL FILTER"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_FilterAlgo">
+        <Component class="javax.swing.JLabel" name="jLabel_filter_algorithm">
           <Properties>
             <Property name="text" type="java.lang.String" value="filter algorythm"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="JComboBox_FilterAlgo">
+        <Component class="javax.swing.JComboBox" name="JComboBox_filter_algorithm">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
             <Property name="name" type="java.lang.String" value="filter_algorithm" noResource="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JComboBox_FilterAlgoActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_GlobalFilterLow">
+        <Component class="javax.swing.JLabel" name="jLabel_ff1_global">
           <Properties>
             <Property name="text" type="java.lang.String" value="low"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_GlobalFilterLow">
+        <Component class="javax.swing.JTextField" name="jTextField_ff1_global">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff1_global" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_GlobalFilterHigh">
+        <Component class="javax.swing.JLabel" name="jLabel_ff2_global">
           <Properties>
             <Property name="text" type="java.lang.String" value="high"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_GlobalFilterHigh">
+        <Component class="javax.swing.JTextField" name="jTextField_ff2_global">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff2_global" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_ff2_globalActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_OutputFolder">
+        <Component class="javax.swing.JLabel" name="jLabel_output_folder">
           <Properties>
             <Property name="text" type="java.lang.String" value="output folder"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_OutputFolder">
+        <Component class="javax.swing.JTextField" name="jTextField_output_folder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="jTextField_OutputFolder" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jTextField_output_folder" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_NotchFilterCenter">
+        <Component class="javax.swing.JLabel" name="jLabel_notch_fcenter">
           <Properties>
             <Property name="text" type="java.lang.String" value="center"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_NotchFilterCenter">
+        <Component class="javax.swing.JTextField" name="jTextField_notch_fcenter">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="notch_fcenter" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_NotchFilter">
+        <Component class="javax.swing.JLabel" name="jLabel_notch">
           <Properties>
             <Property name="text" type="java.lang.String" value="NOTCH FILTER"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox_NotchFilter">
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_do_notch">
           <Properties>
             <Property name="name" type="java.lang.String" value="do_notch" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_NotchFilterSpan">
+        <Component class="javax.swing.JLabel" name="jLabel_notch_fspan">
           <Properties>
             <Property name="text" type="java.lang.String" value="span"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField__NotchFilterSpan">
+        <Component class="javax.swing.JTextField" name="jTextField_notch_fspan">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="notch_fspan" noResource="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField__NotchFilterSpanActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_RemoveArmonics">
+        <Component class="javax.swing.JLabel" name="jLabel_notch_remove_armonics">
           <Properties>
             <Property name="text" type="java.lang.String" value="remove armonics"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_RemoveArmonics">
+        <Component class="javax.swing.JComboBox" name="jComboBox_notch_remove_armonics">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
             <Property name="name" type="java.lang.String" value="notch_remove_armonics" noResource="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox_RemoveArmonicsActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_EEGFilter">
           <Properties>
             <Property name="text" type="java.lang.String" value="EEG FILTER"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EEGFilterLow">
+        <Component class="javax.swing.JLabel" name="jLabel_ff1_eeg">
           <Properties>
             <Property name="text" type="java.lang.String" value="low"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_EEGFilterLow">
+        <Component class="javax.swing.JTextField" name="jTextField_ff1_eeg">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff1_eeg" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EEGFilterHigh">
+        <Component class="javax.swing.JLabel" name="jLabel_ff2_eeg">
           <Properties>
             <Property name="text" type="java.lang.String" value="high"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_EEGFilterHigh">
+        <Component class="javax.swing.JTextField" name="jTextField_ff2_eeg">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff2_eeg" noResource="true"/>
           </Properties>
         </Component>
@@ -618,59 +594,52 @@
             <Property name="text" type="java.lang.String" value="EOG FILTER"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EOGFilterLow">
+        <Component class="javax.swing.JLabel" name="jLabel_ff1_eog">
           <Properties>
             <Property name="text" type="java.lang.String" value="low"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_EOGFilterLow">
+        <Component class="javax.swing.JTextField" name="jTextField_ff1_eog">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff1_eog" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EOGFilterHigh">
+        <Component class="javax.swing.JLabel" name="jLabel_ff2_eog">
           <Properties>
             <Property name="text" type="java.lang.String" value="high"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_EOGFilterHigh">
+        <Component class="javax.swing.JTextField" name="jTextField_ff2_eog">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff2_eog" noResource="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_EOGFilterHighActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_EMGFilter">
           <Properties>
             <Property name="text" type="java.lang.String" value="EMG FILTER"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EMGFilterLow">
+        <Component class="javax.swing.JLabel" name="jLabel_ff1_emg">
           <Properties>
             <Property name="text" type="java.lang.String" value="low"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_EMGFilterLow">
+        <Component class="javax.swing.JTextField" name="jTextField_ff1_emg">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff1_emg" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EMGFilterHigh">
+        <Component class="javax.swing.JLabel" name="jLabel_ff2_emg">
           <Properties>
             <Property name="text" type="java.lang.String" value="high"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_EMGFilterHigh">
+        <Component class="javax.swing.JTextField" name="jTextField_ff2_emg">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="ff2_emg" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_ReactionTimes">
+        <Component class="javax.swing.JLabel" name="jLabel_rt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -678,62 +647,57 @@
             <Property name="text" type="java.lang.String" value="Reaction Times"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Evt1Type">
+        <Component class="javax.swing.JLabel" name="jLabel_rt_eve1_type">
           <Properties>
             <Property name="text" type="java.lang.String" value="eve1 type"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Evt1Type">
+        <Component class="javax.swing.JTextField" name="jTextField_rt_eve1_type">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="eve1_type" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Evt2Type">
+        <Component class="javax.swing.JLabel" name="jLabel_rt_eve2_type">
           <Properties>
             <Property name="text" type="java.lang.String" value="eve 2 type"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Evt2Type">
+        <Component class="javax.swing.JTextField" name="jTextField_rt_eve2_type">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="eve2_type" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_AllowTwMin">
+        <Component class="javax.swing.JLabel" name="jLabel_rt_allowed_tw_ms_min">
           <Properties>
             <Property name="text" type="java.lang.String" value="allowed tw MIN [ms]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_AllowTwMin">
+        <Component class="javax.swing.JTextField" name="jTextField_rt_allowed_tw_ms_min">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="allowed_tw_ms_min" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_AllowTwMax">
+        <Component class="javax.swing.JLabel" name="jLabel_rt_allowed_tw_ms_max">
           <Properties>
             <Property name="text" type="java.lang.String" value="allowed tw MAX [ms]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_AllowTwMax">
+        <Component class="javax.swing.JTextField" name="jTextField_rt_allowed_tw_ms_max">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="allowed_tw_ms_max" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_ReacTimesOutputFolder">
+        <Component class="javax.swing.JLabel" name="jLabel_rt_output_folder">
           <Properties>
             <Property name="text" type="java.lang.String" value="output folder"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_ReacTimesOutputFolder">
+        <Component class="javax.swing.JTextField" name="jTextField_rt_output_folder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="name" type="java.lang.String" value="output_folder" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineTrialsMarkers">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_baseline_trial">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -741,58 +705,43 @@
             <Property name="text" type="java.lang.String" value="Baseline and Trials Markers"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersBegin">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_begin_trial">
           <Properties>
             <Property name="text" type="java.lang.String" value="begin"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersBegin">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="begin_trial" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineBeginType">
+        <Component class="javax.swing.JLabel" name="jLabel_marker_type_begin_baseline">
           <Properties>
             <Property name="text" type="java.lang.String" value="type"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineBeginType">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_marker_type_begin_baseline">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersBeginEvtTypes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_begin_trial_target_event_types">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Trial">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_trial">
           <Properties>
             <Property name="text" type="java.lang.String" value="Trial"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Baseline">
+        <Component class="javax.swing.JLabel" name="jLabell_insert_baseline">
           <Properties>
             <Property name="text" type="java.lang.String" value="Baseline"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersBeginDelay">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_begin_trial_delay">
           <Properties>
             <Property name="text" type="java.lang.String" value="delay"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersBeginDelay">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_begin_trial_delay">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersBeginEvtTypes">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_begin_trial_target_event_types">
           <Properties>
             <Property name="text" type="java.lang.String" value="event types"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BlockMarkers">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_block">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -800,12 +749,9 @@
             <Property name="text" type="java.lang.String" value="Block markers"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BlockMarkers">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_block_trials_per_block">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Montage">
+        <Component class="javax.swing.JLabel" name="jLabel_montage_list">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -820,10 +766,11 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea_Montage2">
+            <Component class="javax.swing.JTextArea" name="jTextArea_montage_list2">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -835,136 +782,100 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea_Montage1">
+            <Component class="javax.swing.JTextArea" name="jTextArea_montage_list1">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersEnd">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_end_trial">
           <Properties>
             <Property name="text" type="java.lang.String" value="end"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersEnd">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="begin_trial" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineEndType">
+        <Component class="javax.swing.JLabel" name="jLabel_marker_type_end_baseline">
           <Properties>
             <Property name="text" type="java.lang.String" value="type"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineEndType">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_marker_type_end_baseline">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersEndEvtTypes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersEndDelay">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_end_trial_delay">
           <Properties>
             <Property name="text" type="java.lang.String" value="delay"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersEndDelay">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_end_trial_delay">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersEndEvtTypes">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_end_trial_target_event_types">
           <Properties>
             <Property name="text" type="java.lang.String" value="event types"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineBegin">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_begin_baseline">
           <Properties>
             <Property name="text" type="java.lang.String" value="begin"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineBegin">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="begin_trial" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineEnd">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_end_baseline">
           <Properties>
             <Property name="text" type="java.lang.String" value="end"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineEnd">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="name" type="java.lang.String" value="begin_trial" noResource="true"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_end_baseline_target_event_types">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineEndEvtTypes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_begin_baseline_target_event_types">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineBeginEvtTypes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineEndDelay">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_end_baseline_delay">
           <Properties>
             <Property name="text" type="java.lang.String" value="delay"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineEndDelay">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_end_baseline_delay">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineEndEvtTypes">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_end_baseline_target_event_types">
           <Properties>
             <Property name="text" type="java.lang.String" value="event types"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineBeginDelay">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_begin_baseline_delay">
           <Properties>
             <Property name="text" type="java.lang.String" value="delay"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_BaselineBeginDelay">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_begin_baseline_delay">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_BaselineBeginEvtTypes">
+        <Component class="javax.swing.JLabel" name="jLabel_insert_begin_baseline_target_event_types">
           <Properties>
             <Property name="text" type="java.lang.String" value="event types"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersBeginType">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField_marker_type_begin_trial">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersBeginType">
+        <Component class="javax.swing.JLabel" name="jLabel_marker_type_begin_trial">
           <Properties>
             <Property name="text" type="java.lang.String" value="type"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_TrialMarkersEndType">
+        <Component class="javax.swing.JLabel" name="jLabel_marker_type_end_trial">
           <Properties>
             <Property name="text" type="java.lang.String" value="type"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_TrialMarkersEndType">
+        <Component class="javax.swing.JTextField" name="jTextField_marker_type_end_trial">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_preproc">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Preprocessing"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_insert_end_trial_target_event_types">
         </Component>
       </SubComponents>
     </Container>

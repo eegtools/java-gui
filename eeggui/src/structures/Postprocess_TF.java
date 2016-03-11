@@ -38,22 +38,22 @@ public class Postprocess_TF extends JMatlabStructWrapper{
      
     public void setJMatData(MLStructure struct)
     {
-        sel_extrema  = getString(struct, "sel_extrema");
+        sel_extrema     = getString(struct, "sel_extrema"); 
         
-        nbands  = getDoubleArray(struct, "nbands");
-        numroi  = getDoubleArray(struct, "numroi");
-        nroi    = getDoubleArray(struct, "nroi");
+        nbands          = getDoubleArray(struct, "nbands");
+        numroi          = getDoubleArray(struct, "numroi");
+        nroi            = getDoubleArray(struct, "nroi");
         
-        frequency_bands_list    = getDoubleCell(struct, "frequency_bands_list");
-        frequency_bands_names   = getStringCellArray(struct, "frequency_bands_names");
-        roi_list                = getStringCellMatrix_DiffSizes(struct, "roi_list");
-        roi_names               = getStringCellArray(struct, "roi_names");
+        frequency_bands_list            = getDoubleCell(struct, "frequency_bands_list");
+        frequency_bands_names           = getStringCellArray(struct, "frequency_bands_names");
+        roi_list                        = getStringCellMatrix_DiffSizes(struct, "roi_list");
+        roi_names                       = getStringCellArray(struct, "roi_names");
         
-        design_factors_ordered_levels = getStringCellMatrix3D_DiffSizes(struct,"design_factors_ordered_levels");
+        design_factors_ordered_levels   = getStringCellMatrix3D_DiffSizes(struct,"design_factors_ordered_levels");
         
-        mode    = readMode(struct, "mode");
-        eog     = readEogParams_TF(struct, "eog");
-        emg     = readEmgParams_TF(struct, "emg");
+        mode            = readMode(struct, "mode");
+        eog             = readEogParams_TF(struct, "eog");
+        emg             = readEmgParams_TF(struct, "emg");
         
         frequency_bands = readFrequencyBands(struct, "frequency_bands");
         design          = readDesignErsp(struct, "design");
@@ -93,7 +93,22 @@ public class Postprocess_TF extends JMatlabStructWrapper{
         {
             Map<String, MLArray>  map = a.getFields(s);
             arr[s] = new FrequencyBands();
-
+            
+            arr[s].name = getString(map,"name");
+            
+            arr[s].min = getDoubleArray(map,"min");
+            arr[s].max = getDoubleArray(map,"max");
+            arr[s].dfmin = getDoubleArray(map,"dfmin");
+            arr[s].dfmax = getDoubleArray(map,"dfmax");
+            
+            arr[s].ref_roi_list = getString(map,"ref_roi_list");
+            arr[s].ref_roi_name = getString(map,"ref_roi_name");
+            arr[s].ref_cond = getString(map,"ref_cond");
+            
+            arr[s].ref_tw_list = getDoubleArray(map,"ref_tw_list");
+            
+            arr[s].ref_tw_name = getString(map,"ref_tw_name");
+            arr[s].which_realign_measure = getString(map,"which_realign_measure");
         }  
         return arr;
     }

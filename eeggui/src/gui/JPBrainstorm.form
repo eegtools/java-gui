@@ -16,13 +16,647 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_db_name" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTextField_db_name" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_sources_norm" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jComboBox_sources_norm" min="-2" pref="72" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="jLabel_sources_orient" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jComboBox_sources_orient" min="-2" pref="72" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel_sources_loose_value" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextField_sources_loose_value" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="jLabel_sources_depth_weighting" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel_paths_db" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextField_paths_db" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jTextField_sources_depth_weighting" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="jLabel_sources_downsample_atlasname" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextField_sources_downsample_atlasname" min="-2" pref="70" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel_paths_data" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTextField_paths_data" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel_sources_window_samples_halfwidth" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextField_sources_window_samples_halfwidth" min="-2" pref="70" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel_paths_channels_file" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTextField_paths_channels_file" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="682" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" pref="327" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_analysis_times" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="460" max="-2" attributes="0"/>
+                              <Component id="jButton_analysis_times_new" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton_analysis_times_remove" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="jLabel_analysis_bands" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel_Sources" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_brainstorm" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_ConductorVolume" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jCheckBox_use_same_montage" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel_conductorvolume_type" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextField_conductorvolume_type" min="-2" pref="50" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel_conductorvolume_surf_bem_file_name" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextField_conductorvolume_surf_bem_file_name" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel_default_anatomy" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextField_default_anatomy" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel_channels_file_name" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel_Export" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel_export_spm_vol_downsampling" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextField_export_spm_vol_downsampling" min="-2" pref="90" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel_export_spm_time_downsampling" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jTextField_export_spm_time_downsampling" min="-2" pref="90" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="jLabel_conductorvolume_vol_bem_file_name" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextField_conductorvolume_vol_bem_file_name" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel_average_file_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel_std_loose_value" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jTextField_std_loose_value" min="-2" pref="90" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_average_file_name" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Component id="jTextField_channels_file_name" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="jLabel_channels_file_type" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextField_channels_file_type" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel_Stats" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel_stats_ttest_abstype" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_stats_pvalue" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_stats_correction" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextField_stats_correction" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Component id="jTextField_stats_pvalue" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Component id="jTextField_stats_ttest_abstype" min="-2" pref="90" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel_channels_file_path" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextField_channels_file_path" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel_Brainstorm" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="jLabel_brainstorm" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel_db_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_db_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_paths_db" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_paths_db" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_paths_data" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_paths_data" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_paths_channels_file" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_paths_channels_file" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jLabel_Sources" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel_sources_norm" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_sources_orient" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox_sources_norm" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox_sources_orient" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_sources_loose_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_sources_loose_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_sources_depth_weighting" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_sources_depth_weighting" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_sources_downsample_atlasname" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_sources_downsample_atlasname" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_sources_window_samples_halfwidth" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_sources_window_samples_halfwidth" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel_analysis_bands" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel_analysis_times" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_analysis_times_remove" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_analysis_times_new" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane3" pref="169" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="jLabel_ConductorVolume" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel_conductorvolume_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_conductorvolume_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_conductorvolume_surf_bem_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_conductorvolume_surf_bem_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_conductorvolume_vol_bem_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_conductorvolume_vol_bem_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jLabel_Brainstorm" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jCheckBox_use_same_montage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_default_anatomy" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_default_anatomy" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_channels_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_channels_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_channels_file_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_channels_file_type" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_channels_file_path" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_channels_file_path" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel_Export" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_export_spm_vol_downsampling" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_export_spm_vol_downsampling" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_export_spm_time_downsampling" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_export_spm_time_downsampling" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_std_loose_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_std_loose_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel_average_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_average_file_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel_Stats" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel_stats_ttest_abstype" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_stats_ttest_abstype" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel_stats_pvalue" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_stats_pvalue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel_stats_correction" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_stats_correction" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel_db_name">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="brainstorm name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_db_name">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_paths_db">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="brainstorm path"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_paths_db">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_paths_data">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data path"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_paths_data">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_paths_channels_file">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_paths_channels_file">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Channels path"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_Sources">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Sources"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_brainstorm">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Brainstorm"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_sources_norm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="norm"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_sources_orient">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="orient"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox_sources_norm">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox_sources_orient">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_sources_loose_value">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="loose value"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_sources_loose_value">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_sources_depth_weighting">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="depth weighting"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_sources_depth_weighting">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_sources_downsample_atlasname">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="down sample name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_sources_downsample_atlasname">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_sources_window_samples_halfwidth">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="window sample halfw"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_sources_window_samples_halfwidth">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_analysis_bands">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="analysis bands"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTable_analysis_times">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="3" rowCount="0">
+                <Column editable="true" title="number" type="java.lang.String"/>
+                <Column editable="true" title="time interv." type="java.lang.String"/>
+                <Column editable="true" title="type" type="java.lang.String"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel_analysis_times">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="analysis times"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton_analysis_times_remove">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Remove"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton_analysis_times_new">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="New"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_ConductorVolume">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Conductor Volume"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_conductorvolume_type">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="type"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_conductorvolume_type">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_conductorvolume_surf_bem_file_name">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="surf file name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_conductorvolume_surf_bem_file_name">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_conductorvolume_vol_bem_file_name">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="vol file name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_conductorvolume_vol_bem_file_name">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_Brainstorm">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Brainstorm"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox_use_same_montage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="same montage"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_default_anatomy">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="default anatomy"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_default_anatomy">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_channels_file_name">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="channels filename"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_channels_file_name">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_channels_file_type">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="channels file type"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_channels_file_type">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_channels_file_path">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="channels file path"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_channels_file_path">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_Export">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Export"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_Stats">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Stats"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_export_spm_vol_downsampling">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="spm downsampling vol"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_export_spm_time_downsampling">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="spm downsampling time"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_std_loose_value">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="std loose value"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_average_file_name">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="average filename"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_stats_ttest_abstype">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ttest abs type"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_stats_pvalue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="p value"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_stats_correction">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="correction"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_export_spm_vol_downsampling">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_export_spm_time_downsampling">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_std_loose_value">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_average_file_name">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_stats_ttest_abstype">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_stats_pvalue">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_stats_correction">
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTable_analysis_bands">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="0">
+                <Column editable="true" title="band" type="java.lang.String"/>
+                <Column editable="true" title="freq min" type="java.lang.Double"/>
+                <Column editable="true" title="freq max" type="java.lang.Double"/>
+                <Column editable="true" title="type" type="java.lang.String"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>

@@ -53,11 +53,11 @@ public class Erpim extends JMatlabStructWrapper{
         cell.set(mlchar2,0,2);
         cell.set(setString(erpim.allcomps),0,3);
         
-        MLChar mlchar3 = new MLChar("XXX","spec");
+        MLChar mlchar3 = new MLChar("XXX","erpim");
         cell.set(mlchar3,0,4);
         cell.set(setString(erpim.erpim),0,5);
         
-        MLChar mlchar4 = new MLChar("XXX","specparams");
+        MLChar mlchar4 = new MLChar("XXX","erpimparams");
         cell.set(mlchar4,0,6);
         cell.set(writeErpimParams(erpim.erpimparams),0,7);
         

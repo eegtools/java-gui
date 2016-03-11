@@ -13,18 +13,18 @@ import com.jmatio.types.MLStructure;
  */
 public class FrequencyBands extends JMatlabStructWrapper{
     
-    String name;
-    String ref_roi_list;
-    String ref_roi_name;
-    String ref_cond;
-    String ref_tw_name;
-    String which_realign_measure;
+    public String name;
+    public String ref_roi_list;
+    public String ref_roi_name;
+    public String ref_cond;
+    public String ref_tw_name;
+    public String which_realign_measure;
     
-    double[] min;
-    double[] max;
-    double[] dfmin;
-    double[] dfmax;
-    double[] ref_tw_list;
+    public double[] min;
+    public double[] max;
+    public double[] dfmin;
+    public double[] dfmax;
+    public double[] ref_tw_list;
     
     public FrequencyBands(){}
     

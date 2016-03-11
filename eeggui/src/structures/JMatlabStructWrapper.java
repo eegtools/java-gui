@@ -658,7 +658,7 @@ public class JMatlabStructWrapper
 
     public String[] getStringCellArray(MLStructure struct, String field)
     {
-        if ((struct.getField(field)).isEmpty()) return null;
+        if (struct.getField(field)==null) return null;
         else 
         {
             MLCell a            = (MLCell) struct.getField(field);

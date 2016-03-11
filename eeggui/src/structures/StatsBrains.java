@@ -13,8 +13,8 @@ import com.jmatio.types.*;
  */
 public class StatsBrains extends JMatlabStructWrapper{
     
-    double[] ttest_abstype;
-    double[] pvalue;
+    public double[] ttest_abstype;
+    public double[] pvalue;
     public String correction;
     
     public StatsBrains(){}

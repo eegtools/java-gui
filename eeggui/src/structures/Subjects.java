@@ -27,7 +27,10 @@ public class Subjects extends JMatlabStructWrapper{
     public double[] numsubj; //int
 
     
-    public Subjects(){}
+    public Subjects()
+    {
+        numsubj = new double[1];
+    }
     
     public void setJMatData(MLStructure struct)
     {
