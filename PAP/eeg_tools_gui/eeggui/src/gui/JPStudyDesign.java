@@ -6,6 +6,7 @@
 package gui;
 
 import java.awt.Component;
+import java.util.Arrays;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
@@ -100,8 +101,9 @@ public class JPStudyDesign extends javax.swing.JPanel {
         setCombo_factor2InTable_design();
         
         setList_file_match();
-        setList_factor1_levels("factors");
         
+        initList_factor1_levels();
+        initList_factor2_levels();
     }
     
     public Study getGUI()
@@ -305,6 +307,20 @@ public class JPStudyDesign extends javax.swing.JPanel {
             return this;
           }
         }
+    
+        
+    private void initList_factor1_levels()
+    {
+        DefaultListModel ListMD_factor1_levels = new DefaultListModel();   
+        jList_factor1_levels.setModel(ListMD_factor1_levels);
+    }
+    
+        
+    private void initList_factor2_levels()
+    {
+        DefaultListModel ListMD_factor2_levels = new DefaultListModel();   
+        jList_factor2_levels.setModel(ListMD_factor2_levels);
+    }
 
     
     
@@ -346,55 +362,29 @@ public class JPStudyDesign extends javax.swing.JPanel {
          
         jList_file_match.setModel(ListMD_FileMatch);
     }
+
     
-    private void setList_factor1_levels(String cond)
+    private void setList_factor1_levels(String[] RowNames)
     {
         DefaultListModel ListMD_factor1_levels = new DefaultListModel();
         
-        if (cond.equals("group"))
+        if (RowNames.length > 0)
         {
-            Object[] columnName = project.subjects.group_names; 
-            for (int i = 0; i < columnName.length; i++) 
-            {ListMD_factor1_levels.addElement(columnName[i]);}
+        for (int i = 0; i < RowNames.length; i++) 
+        {ListMD_factor1_levels.addElement(RowNames[i]);}
         }
-        else if (cond.equals("cond"))
-        {
-            Object[] columnName = project.epoching.condition_names; 
-            for (int i = 0; i < columnName.length; i++) 
-            {ListMD_factor1_levels.addElement(columnName[i]);}
-        }       
-        else if (cond.equals("factors"))
-        {
-            String[] columnName = getLevels();
-            for (int i = 0; i < columnName.length; i++) 
-            {ListMD_factor1_levels.addElement(columnName[i]);}
-        }
-        
+            
         jList_factor1_levels.setModel(ListMD_factor1_levels);
-        
     }
     
-    private void setList_factor2_levels(String cond)
+    private void setList_factor2_levels(String[] RowNames)
     {
         DefaultListModel ListMD_factor1_levels = new DefaultListModel();
         
-        if (cond.equals("group"))
+        if (RowNames.length > 0)
         {
-            Object[] columnName = project.subjects.group_names; 
-            for (int i = 0; i < columnName.length; i++) 
-            {ListMD_factor1_levels.addElement(columnName[i]);}
-        }
-        else if (cond.equals("cond"))
-        {
-            Object[] columnName = project.epoching.condition_names; 
-            for (int i = 0; i < columnName.length; i++) 
-            {ListMD_factor1_levels.addElement(columnName[i]);}
-        }       
-        else if (cond.equals("factors"))
-        {
-            String[] columnName = getLevels();
-            for (int i = 0; i < columnName.length; i++) 
-            {ListMD_factor1_levels.addElement(columnName[i]);}
+        for (int i = 0; i < RowNames.length; i++) 
+        {ListMD_factor1_levels.addElement(RowNames[i]);}
         }
         
         jList_factor2_levels.setModel(ListMD_factor1_levels);
@@ -452,22 +442,12 @@ public class JPStudyDesign extends javax.swing.JPanel {
         String[] cond       = project.epoching.condition_names;
         String[] factors    = getFactors();
         
-        Object[] cmbinitvalues = new Object[factors.length+groups.length+cond.length+1];
+        Object[] cmbinitvalues = new Object[factors.length+2];
         for (int i = 0; i < factors.length; i++)
         {cmbinitvalues[i] = factors[i];}
         
         cmbinitvalues[factors.length] = "group";
         cmbinitvalues[factors.length+1] = "condition";
-        
-        /*
-        for (int i = 0; i < groups.length; i++)
-        {cmbinitvalues[factors.length+i] = groups[i];}
-        
-        for (int i = 0; i < cond.length; i++)
-        {cmbinitvalues[factors.length+groups.length+i] = cond[i];}
-        */
-        
-        // cmbinitvalues[factors.length+groups.length+cond.length] = "";
         
         JComboBox comboBox = new JComboBox(cmbinitvalues);
         TableCellEditor editor = new DefaultCellEditor(comboBox);        
@@ -481,27 +461,18 @@ public class JPStudyDesign extends javax.swing.JPanel {
         String[] cond       = project.epoching.condition_names;
         String[] factors    = getFactors();
 
-        Object[] cmbinitvalues = new Object[factors.length+groups.length+cond.length+1];
+        Object[] cmbinitvalues = new Object[factors.length+3];
         for (int i = 0; i < factors.length; i++)
         {cmbinitvalues[i] = factors[i];}
         
         cmbinitvalues[factors.length] = "group";
         cmbinitvalues[factors.length+1] = "condition";
         
-        /*
-        for (int i = 0; i < groups.length; i++)
-        {cmbinitvalues[factors.length+i] = groups[i];}
-        
-        for (int i = 0; i < cond.length; i++)
-        {cmbinitvalues[factors.length+groups.length+i] = cond[i];}
-        */
-        
-        cmbinitvalues[factors.length+groups.length+cond.length] = "";
+        cmbinitvalues[factors.length+2] = "";
         
         JComboBox comboBox = new JComboBox(cmbinitvalues);
         TableCellEditor editor = new DefaultCellEditor(comboBox);        
         jTable_design.getColumnModel().getColumn(4).setCellEditor(editor);
-
     }
     
     private String[] getFactors()
@@ -539,39 +510,27 @@ public class JPStudyDesign extends javax.swing.JPanel {
         return factors_resize;
     }
     
-    private String[] getLevels()
+    private String[] getLevels(String factor_name)
     {
-        int l_factors       = project.study.factors.length;
-        String[] levels    = new String[l_factors];
-        int compt = 0;
+        int l_factors = jTable_factors.getRowCount();
+        String[] tmp_levels = new String[20];
+        
+        int compt_levels = 0;
         for (int i = 0; i < l_factors; i++)
         {
-            if (i==0)
+            if (jTable_factors.getValueAt(i,0).equals(factor_name))
             {
-                levels[compt] = project.study.factors[i].level;
-                compt++;
-            }
-            else
-            {
-                boolean bool_compare = false;
-                for (int i2 = 0; i2 < levels.length ; i2++)
-                {
-                    if (project.study.factors[i].level.equals(levels[i2]))
-                    {bool_compare = true;}
-                }
-                if (!bool_compare)
-                {
-                    levels[compt] = project.study.factors[i].level;
-                    compt++;
-                }
+                tmp_levels[compt_levels] = (String) jTable_factors.getValueAt(i,1);
+                compt_levels++;
             }
         }
         
-        String[] levels_resize = new String[compt];
-        for (int i = 0; i < compt ; i++)
-        {levels_resize[i] = levels[i];}
+        String[] levels = new String[compt_levels];
         
-        return levels_resize;
+        for (int i = 0; i < compt_levels; i++)
+        {levels[i] = tmp_levels[i];}
+        
+        return levels;
     }
     
     
@@ -1132,18 +1091,6 @@ public class JPStudyDesign extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton_design_removeActionPerformed
 
     private void jButton_factors_applyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_factors_applyActionPerformed
-        /*
-        Object[] columnName = new Object[jTableDM_ExpFactors.getRowCount()];
-        DefaultListModel ListMD_DesignLevels = new DefaultListModel();
-        for (int i = 0; i < jTableDM_ExpFactors.getRowCount(); i++) 
-        {
-            columnName[i] = jTable_ExpFactors.getValueAt(i, 1);
-            ListMD_DesignLevels.addElement(columnName[i]);
-        }
-        jList_DesignLevels1.setModel(ListMD_DesignLevels); 
-        jList_DesignLevels2.setModel(ListMD_DesignLevels);
-        */
-
         Object[] cmbinitvalues = new Object[jTableDM_factors.getRowCount()];
         for (int i = 0; i < jTableDM_factors.getRowCount(); i++) 
         {cmbinitvalues[i] = jTable_factors.getValueAt(i, 0);}
@@ -1234,11 +1181,19 @@ public class JPStudyDesign extends javax.swing.JPanel {
        
         if ((jList_factor1_levels.getSelectedValues().length != 0) && (jTable_design.getSelectedRow() != -1))
         {
+        String factor1_value = (String) jTable_design.getValueAt(jTable_design.getSelectedRow(), 1);
+        
+        if (factor1_value==null)
+            {}
+        else if (factor1_value.equals(""))
+            {}
+        else
+            {
         Object[] obj_list_select = jList_factor1_levels.getSelectedValues();
         
         if (jList_factor1_levels.getSelectedValues() == null){}
         else
-        {
+            {
         String[] str_list_select = new String[obj_list_select.length];
         String test_chaine = new String();
             for (int i = 0; i < obj_list_select.length; i++) 
@@ -1252,6 +1207,7 @@ public class JPStudyDesign extends javax.swing.JPanel {
         jTable_design.setValueAt(test_chaine, jTable_design.getSelectedRow(), 3);
         }
         }
+    }
         
     }//GEN-LAST:event_jButton_factor1_levels_applyActionPerformed
 
@@ -1293,7 +1249,7 @@ public class JPStudyDesign extends javax.swing.JPanel {
 
         if (jTable_design.getSelectedRow() != -1)
         {        
-        String search_cond = "";
+        String[] list_rows = new String[10];
         
         String[] groups     = project.subjects.group_names;
         String[] cond       = project.epoching.condition_names;
@@ -1301,32 +1257,48 @@ public class JPStudyDesign extends javax.swing.JPanel {
         
         int select_idx = jTable_design.getSelectedRow();
         
-        if ((jTable_design.getValueAt(select_idx, 4) !=null) || (jTable_design.getValueAt(select_idx, 4) !=""))
+        if (jTable_design.getValueAt(select_idx, 1) !=null)
         {
-        String value = (String) jTable_design.getValueAt(select_idx, 1);
+            String value = (String) jTable_design.getValueAt(select_idx, 1);
+            int size_finalString = 0;
         
-        if (value.equals("group"))
-            {search_cond = "group";}
-        
-        if (value.equals("condition"))
-            {search_cond = "cond";}
-        
-        for (int i = 0; i < factors.length; i++)
-        {if (value.equals(factors[i]))
-            {search_cond = "factors";}}
-        
-            setList_factor1_levels(search_cond);
-        }
+            if (value.equals("group"))
+                {
+                    for (int i = 0; i < groups.length; i++)
+                    {list_rows[i] = groups[i];}
+                    size_finalString = groups.length;
+                }
+            else if (value.equals("condition"))
+                {
+                    for (int i = 0; i < cond.length; i++)
+                    {list_rows[i] = cond[i];}
+                    size_finalString = cond.length;
+                }
+            else
+                for (int i = 0; i < factors.length; i++)
+                {
+                    if (value.equals(factors[i]))
+                    {
+                        list_rows = getLevels(value);
+                        size_finalString = list_rows.length;
+                    }
+                }
             
+            if (size_finalString>0)
+            {
+            String[] finalstring = Arrays.copyOfRange(list_rows,0,(size_finalString));
+            setList_factor1_levels(finalstring);
+            }
+        }
         }
         
     }//GEN-LAST:event_jButton_factor1_levels_updateActionPerformed
 
     private void jButton_factor2_levels_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_factor2_levels_updateActionPerformed
-       
+   
         if (jTable_design.getSelectedRow() != -1)
-        {
-        String search_cond = "";
+        {        
+        String[] list_rows = new String[10];
         
         String[] groups     = project.subjects.group_names;
         String[] cond       = project.epoching.condition_names;
@@ -1336,21 +1308,35 @@ public class JPStudyDesign extends javax.swing.JPanel {
         
         if (jTable_design.getValueAt(select_idx, 4) !=null)
         {
-        String value = (String) jTable_design.getValueAt(select_idx, 4);
-            
-        if (value.equals("group"))
-            {search_cond = "group";}
+            String value = (String) jTable_design.getValueAt(select_idx, 4);
+            int size_finalString = 0;
         
-        if (value.equals("condition"))
-            {search_cond = "cond";}
-        
-        for (int i = 0; i < factors.length; i++)
-        {if (value.equals(factors[i]))
-            {search_cond = "factors";}}
-        
-        if (!search_cond.equals(""))
-        {setList_factor2_levels(search_cond);}
-        
+            if (value.equals("group"))
+                {
+                    for (int i = 0; i < groups.length; i++)
+                    {list_rows[i] = groups[i];}
+                    size_finalString = groups.length;
+                }
+            else if (value.equals("condition"))
+                {
+                    for (int i = 0; i < cond.length; i++)
+                    {list_rows[i] = cond[i];}
+                    size_finalString = cond.length;
+                }
+            else
+                for (int i = 0; i < factors.length; i++)
+                {
+                    if (value.equals(factors[i]))
+                    {
+                        list_rows = getLevels(value);
+                        size_finalString = list_rows.length;
+                    }
+                }
+            if (size_finalString>0)
+            {
+            String[] finalstring = Arrays.copyOfRange(list_rows,0,(size_finalString));
+            setList_factor2_levels(finalstring);
+            }
         }
         }
             
